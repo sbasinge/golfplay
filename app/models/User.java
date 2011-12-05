@@ -1,12 +1,13 @@
 package models;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,13 +20,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
-import net.sf.oval.constraint.Size;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import play.data.validation.Email;
 import play.data.validation.Match;
+import play.data.validation.MaxSize;
+import play.data.validation.MinSize;
+import play.data.validation.Phone;
 import play.data.validation.Required;
 import play.db.jpa.GenericModel;
 
@@ -37,23 +39,26 @@ public class User extends GenericModel {
     public static Logger log = LoggerFactory.getLogger(User.class);
     
     @Id
-    @Size(min = 3, max = 15)
+    @MinSize(3)
+    @MaxSize(15)
     @Match(value="^\\w*$", message="Not a valid username")
     public String username;
     
     @Required
-    @Size(min = 5, max = 15)
+    @MinSize(5)
+    @MaxSize(15)
     public String password;
     
     @Required
-    @Size(min = 1, max = 100)
+    @MinSize(1)
+    @MaxSize(100)
     public String name;
     
     @Required
     @Email
     public String email;
 
-//    @Pattern(regexp="^(1?(-?\\d{3})-?)?(\\d{3})(-?\\d{4})$")
+    @Phone
     @Column(nullable=true)
     public String phone;
 
@@ -88,6 +93,11 @@ public class User extends GenericModel {
 
 	@OneToOne(cascade=CascadeType.ALL)
 	public NotificationPreference teeTimeFullNotificationType = new NotificationPreference();
+
+	@Transient
+	public Club selectedClub;
+	@Transient
+	private Set<String> roles = new HashSet<String>();
 
     public User() {
     	newMemberShipNotificationType.notifyOnSite = true;
@@ -182,7 +192,10 @@ public class User extends GenericModel {
 				score.counter = true;
 			}
 			handicap = new BigDecimal((totalDifferential / scoresToUse)*0.96).setScale(1,BigDecimal.ROUND_DOWN);
-			handicapHistory.add(new Handicap(handicap, Calendar.getInstance().getTime()));
+			Handicap newHandicap = new Handicap(handicap, Calendar.getInstance().getTime());
+			newHandicap.save();
+			handicapHistory.add(newHandicap);
+			this.save();
 			handicapCalculated = true;
 		}
 		return handicapCalculated;
@@ -268,4 +281,77 @@ public class User extends GenericModel {
 	public Score getLastScore() {
 		return scores.size() > 0 ? scores.get(0) : new Score();
 	}
+
+    public static User connect(String email, String password) {
+        return find("byUsernameAndPassword", email, password).first();
+    }
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", name=" + name + ", email=" + email + ", phone=" + phone + "]";
+	}
+	
+    public boolean hasRole(String roleName) {
+    	log.info("Checking for role "+roleName + " in "+clubRoles);
+    	boolean retVal = false;
+    	for (ClubRole clubRole: clubRoles) {
+    		if (roleName.equalsIgnoreCase(clubRole.role.name)) {
+    			retVal = true;
+    			break;
+    		}
+    	}
+    	log.info("Checking for role "+roleName+", returning "+retVal);
+    	return retVal;
+    }
+    
+    public boolean isClubListVisible() {
+    	boolean retVal = hasRole("Admin");
+    	return retVal;
+    }
+
+    public boolean isCourseListVisible() {
+    	boolean retVal = hasRole("Admin") || hasRole("ClubAdmin");
+    	return retVal;
+    }
+
+    public boolean isMemberRequestsVisible() {
+    	boolean retVal = hasRole("Admin") || hasRole("ClubAdmin");
+    	return retVal;
+    }
+
+    public boolean isTeeTimeListVisible() {
+    	boolean retVal = hasRole("Admin") || hasRole("ClubAdmin") || hasRole("TeeTimeChair") || hasRole("Member");
+    	return retVal;
+    }
+
+    public boolean isTeeTimeListDeleteable() {
+    	boolean retVal = hasRole("Admin") || hasRole("ClubAdmin") || hasRole("TeeTimeChair");
+    	return retVal;
+    }
+
+    public boolean isTeeTimeListUpdateable() {
+    	boolean retVal = hasRole("Admin") || hasRole("ClubAdmin") || hasRole("TeeTimeChair");
+    	return retVal;
+    }
+
+    public boolean isScoreListVisible() {
+    	boolean retVal = hasRole("Admin") || hasRole("ClubAdmin") || hasRole("TeeTimeChair") || hasRole("Member");
+    	return retVal;
+    }
+
+//    public boolean isMemberListVisible() {
+//    	boolean retVal = isClubSelected() && (hasRole("Admin") || hasRole("ClubAdmin") || hasRole("TeeTimeChair") || hasRole("Member"));
+//    	return retVal;
+//    }
+
+    public boolean isTournamentListVisible() {
+    	boolean retVal = isScoreListVisible();
+    	return retVal;
+    }
+
+//    public boolean isAbleToModifyOthersScores() {
+//    	boolean retVal = isClubSelected() && (hasRole("Admin") || hasRole("ClubAdmin"));
+//    	return retVal;
+//    }
+
 }

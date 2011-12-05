@@ -5,7 +5,11 @@
 # Home page
 GET     /                                       Application.index
 
-# Adminstration
+# Import Secure routes
+*       /                                       module:secure
+
+# Administration
+GET     /admin/?                                Admin.index
 *       /admin                                  module:crud
 
 # Ignore favicon requests

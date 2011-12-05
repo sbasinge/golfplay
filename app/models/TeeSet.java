@@ -103,4 +103,10 @@ public class TeeSet extends BaseEntity implements Comparable<TeeSet> {
 		return this.teeType.getOrder().compareTo(teeSet.teeType.getOrder());
 	}
 
+//	@Override
+//	public String toString() {
+//		return "TeeSet [teeType=" + teeType + ", par=" + par + ", courseRating=" + courseRating + ", slopeRating="
+//				+ slopeRating + "]";
+//	}
+
 }

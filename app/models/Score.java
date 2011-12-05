@@ -74,7 +74,7 @@ public class Score extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Score [teeSet=" + teeSet + ", date=" + date + ", user=" + user + ", teeTime=" + teeTime + ", grossScore=" + grossScore
+		return "Score [date=" + date + ", user=" + user.username  + ", grossScore=" + grossScore
 				+ ", netScore=" + netScore + ", counter=" + counter + "]";
 	}
 	

@@ -29,7 +29,7 @@ public class Club extends BaseEntity {
 	public Club() {};
 	public Club(String name) {this.name=name;}
 	
-    @ManyToMany
+    @ManyToMany(mappedBy="clubs")
     public List<User> members = new ArrayList<User>();
 
     @OneToMany(cascade={CascadeType.ALL})
@@ -65,5 +65,9 @@ public class Club extends BaseEntity {
 			}
 		}
 		return retVal;
+	}
+	@Override
+	public String toString() {
+		return "Club [name=" + name + ", websiteUrl=" + websiteUrl + ", rssFeedUrl=" + rssFeedUrl + "]";
 	}
 }

@@ -37,4 +37,9 @@ public class Address extends BaseEntity {
 		this.zipCode = zip;
 	}
 
+	@Override
+	public String toString() {
+		return "Address [addressLine1=" + addressLine1 + ", city=" + city + ", zipCode=" + zipCode + ", state=" + state + "]";
+	}
+
 }

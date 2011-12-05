@@ -38,4 +38,8 @@ public class Course extends BaseEntity {
 		teeSet.course = this;
 		teeSets.add(teeSet);
 	}
+	@Override
+	public String toString() {
+		return "Course [name=" + name + "]";
+	}
 }

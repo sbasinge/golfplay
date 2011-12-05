@@ -1,3 +1,49 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+name=Name
+websiteUrl=Web Site URL
+rssFeedUrl=RSS Feed URL
+members=Members
+membershipRequests=Membership Requests
+role=Role
+club=Club
+facility=Facility
+teeSets=Tee Sets
+notifyByEmail=Email?
+notifyByText=Text?
+notifyOnSite=Left Nav?
+teeSet=Tee Set
+date=Date
+user=User
+teeTime=Tee Time
+grossScore=Gross Score
+netScore=Adjusted Score
+counter=Counter?
+messageRead=Read?
+messageText=Text
+course=Course
+teeType=Tee Type
+par=Par
+courseRating=Course Rating
+slopeRating=Slope Rating
+participants=Participants
+tournament=Tournament
+notificationOn=Send Notifications
+complete=Complete?
+numPlayers=Number of Players
+organizer=Organizer
+teetime=Tee Time
+score=Score
+courseIndex=Course Index
+bestBallIndex=Best Ball Index
+type=Type
+username=User Name
+password=Password
+email=E-Mail Address
+phone=Phone #
+clubs=Clubs
+clubRoles=Roles
+handicapHistory=Handicap History
+teeTimes=Tee Times
+

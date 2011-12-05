@@ -67,4 +67,10 @@ public class TeeTimeParticipant extends BaseEntity {
 		int total = getNetScore() - par;
 		return total;
 	}
+
+	@Override
+	public String toString() {
+		return "TeeTimeParticipant [user=" + user.username + ", score=" + score + ", courseIndex=" + courseIndex + ", bestBallIndex="
+				+ bestBallIndex + "]";
+	}
 }

@@ -18,6 +18,10 @@ public class MembershipRequest extends BaseEntity {
 		this.user = user;
 		this.club = club;
 	}
+	@Override
+	public String toString() {
+		return "MembershipRequest [user=" + user + ", club=" + club + "]";
+	}
 	
 	
 }

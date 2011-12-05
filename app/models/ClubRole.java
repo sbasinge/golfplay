@@ -23,5 +23,9 @@ public class ClubRole extends BaseEntity {
 		this.club = club;
 		this.role = role;
 	}
+	@Override
+	public String toString() {
+		return "ClubRole [role=" + role + ", club=" + club + "]";
+	}
 	
 }

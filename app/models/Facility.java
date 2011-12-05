@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import net.sf.oval.constraint.Size;
+import play.data.validation.MaxSize;
 import play.data.validation.Required;
 
 
@@ -20,12 +20,12 @@ public class Facility extends BaseEntity {
 	@Column
 	@Required
 	public String name;
-	
-//    @NotNull
+
+	@Required
     @OneToOne(cascade={CascadeType.ALL})
     public Address address;
 
-    @Size(max=20)
+    @MaxSize(20)
     public String phone;
     
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -48,5 +48,10 @@ public class Facility extends BaseEntity {
 	public void removeCourse(Course course) {
 		course.facility = null;
 		courses.remove(course);
+	}
+
+	@Override
+	public String toString() {
+		return "Facility [name=" + name +  ", phone=" + phone + "]";
 	}
 }

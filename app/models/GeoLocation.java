@@ -19,6 +19,10 @@ public class GeoLocation implements Serializable {
 	public Date lastGeoLookup;
 	
 	public GeoLocation() {};
-	public GeoLocation(double lat, double lng) {this.lat=lat; this.lng = lng;};
+	public GeoLocation(double lat, double lng) {this.lat=lat; this.lng = lng;}
+	@Override
+	public String toString() {
+		return "GeoLocation [lat=" + lat + ", lng=" + lng + ", lastGeoLookup=" + lastGeoLookup + "]";
+	};
 	
 }

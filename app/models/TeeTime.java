@@ -125,4 +125,12 @@ public class TeeTime extends BaseEntity {
 			participants.remove(participant);
 		}
 	}
+
+
+	@Override
+	public String toString() {
+		return "TeeTime [date=" + date + ", course=" + course + ", teeSet=" + teeSet + ", participants=" + participants + ", tournament="
+				+ tournament + ", notificationOn=" + notificationOn + ", complete=" + complete + ", numPlayers=" + numPlayers + ", organizer="
+				+ organizer + "]";
+	}
 }

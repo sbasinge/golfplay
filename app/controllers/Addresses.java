@@ -1,9 +1,11 @@
 package controllers;
 
-import play.*;
-import play.mvc.*;
+import models.Address;
+import play.mvc.With;
 
 
+@With(Secure.class)
+@CRUD.For(Address.class)
 public class Addresses extends CRUD {
 
 }

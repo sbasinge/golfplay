@@ -42,4 +42,9 @@ public class Tournament extends BaseEntity {
 		}
 		return retVal;
 	}
+
+	@Override
+	public String toString() {
+		return "Tournament [name=" + name + ", type=" + type + ", teeTimes=" + teeTimes + "]";
+	}
 }
