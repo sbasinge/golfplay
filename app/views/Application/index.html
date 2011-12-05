@@ -1,0 +1,18 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{welcome /}
+
+        <div class="older-posts">    
+            <h3>Older posts <span class="from">from this blog</span></h3>
+        
+            #{list items:users, as:'user'}
+                <div class="post">
+                    <div class="post-metadata">
+                        <span class="post-author">
+                            by ${user.username}
+                        </span>
+                    </div>
+                </div>
+            #{/list}
+        </div>
