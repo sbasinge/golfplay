@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <title>#{get 'title' /}</title>		
+        <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>
+        #{get 'moreStyles' /}
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/golfplus.css'}" />
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />
+        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}"></script>
+		<script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js"></script>
+    </head>
+    <body class="page">
+        <div id="document">
+            <div id="header">
+                <div id="title">
+	                <h1>#{get 'title' /}</h1>
+                </div>
+                <form id="menuForm">
+                    <div id="status">
+                        <span>Welcome ${user}</span>
+                    </div>
+                </form>
+            </div>
+            <div id="container">
+                <div id="sidebar">
+                </div>
+                <div id="content">
+					#{if flash.error || error}
+			            <div class="error">
+            			    ${error ?: flash.error}
+			            </div>
+					#{/if}
+					#{doLayout /}
+                </div>
+            </div>
+            <div id="footer">
+            </div>
+        </div>
+	</body>    
+</html>
