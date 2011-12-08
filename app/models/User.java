@@ -290,7 +290,7 @@ public class User extends GenericModel {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", name=" + name + ", email=" + email + ", phone=" + phone + "]";
+		return name;
 	}
 	
     public boolean hasRole(String roleName) {
