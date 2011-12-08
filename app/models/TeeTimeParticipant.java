@@ -70,7 +70,7 @@ public class TeeTimeParticipant extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "TeeTimeParticipant [user=" + user.username + ", score=" + score + ", courseIndex=" + courseIndex + ", bestBallIndex="
+		return "TeeTimeParticipant [score=" + score + ", courseIndex=" + courseIndex + ", bestBallIndex="
 				+ bestBallIndex + "]";
 	}
 }

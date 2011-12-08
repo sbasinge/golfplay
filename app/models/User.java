@@ -98,7 +98,9 @@ public class User extends GenericModel {
 	public Club selectedClub;
 	@Transient
 	private Set<String> roles = new HashSet<String>();
-
+	@Transient
+	private BigDecimal handicap;
+	
     public User() {
     	newMemberShipNotificationType.notifyOnSite = true;
     	handicapCalculateNotificationType.notifyOnSite = true;
@@ -348,6 +350,10 @@ public class User extends GenericModel {
     	boolean retVal = isScoreListVisible();
     	return retVal;
     }
+
+	public void setHandicap(BigDecimal handicap) {
+		this.handicap = handicap;
+	}
 
 //    public boolean isAbleToModifyOthersScores() {
 //    	boolean retVal = isClubSelected() && (hasRole("Admin") || hasRole("ClubAdmin"));
