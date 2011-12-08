@@ -1,6 +1,6 @@
-body {
+body, #crud {
     background-color: #1A1A1C;
-    background-image: url("../img/bg03.png");
+    background-image: url("../images/bg03.png");
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: small;
     line-height: 1.25em;
@@ -36,7 +36,7 @@ label {
 input, select {
     border: 1px solid #C3BBB6;
     margin: 5px 0;
-    background: #FFFFFF url(../img/input.bg.gif) 0 0 repeat-x;
+    background: #FFFFFF url(../images/input.bg.gif) 0 0 repeat-x;
 }
 
 input {
@@ -52,7 +52,7 @@ input[type=submit], input[type=button] {
     color: #FFFFFF;
     border: 1px solid #5D1414;
     height: 26px;
-    background: #FFFFFF url(../img/btn.bg.gold.png) 0 0 repeat-x;
+    background: #FFFFFF url(../images/btn.bg.gold.png) 0 0 repeat-x;
     border-style: none;
     cursor: pointer;
 }
@@ -71,11 +71,11 @@ input[type=submit], input[type=button] {
     padding: 1px 0 6px 15px;
 }
 
-#header {
+#header, #crudHeader {
     float: left;
     width: 958px;
     height: 46px;
-    background: url("../img/hdr.bg.png") 0 0 repeat-x;
+    background: url("../images/hdr.bg.png") 0 0 repeat-x;
 }
 
 #status {
@@ -98,10 +98,10 @@ div.overlay-widget {
     display: block;
 }
 
-#container {
+#container, #crudContent {
     float: left;
     width: 958px;
-    background: url(../img/golf01.jpg) 0 0 repeat-x;
+    background: url(../images/golf01.jpg) 0 0 repeat-x;
 }
 
 #sidebar {
@@ -130,7 +130,7 @@ div.overlay-widget {
     background-attachment: scroll;
     background-color: transparent;
 
-    background-image: url("../img/div.bg.png");
+    background-image: url("../images/div.bg.png");
     border: solid 1px white;
     padding: 10px;
     width: 95%;
@@ -147,7 +147,7 @@ div.overlay-widget {
     text-shadow: #c89f40 2px 2px 2px;
 }
 
-#content {
+#content, #crudContent {
     -moz-background-clip: border;
     -moz-background-origin: padding;
     -moz-background-size: auto auto;
@@ -166,7 +166,7 @@ div.overlay-widget {
 
     background-attachment: scroll;
     background-color: transparent;
-    background-image: url("../img/div.bg.png");
+    background-image: url("../images/div.bg.png");
     border: solid 1px white;
     margin-left: 10px;
     padding: 10px;
@@ -202,7 +202,7 @@ div.overlay-widget {
 
     background-attachment: scroll;
     background-color: transparent;
-    background-image: url("../img/div.bg.png");
+    background-image: url("../images/div.bg.png");
     border: solid 1px white;
     margin-left: 10px;
     padding: 10px;
@@ -222,7 +222,7 @@ div.overlay-widget {
 div.section {
 }
 
-#footer {
+#footer, #crudFooter {
     clear: both;
     margin-top: 10px;
     float: left;
@@ -255,7 +255,7 @@ div.section {
     background-attachment: scroll;
     background-color: transparent;
 
-    background-image: url("../img/div.bg.png");
+    background-image: url("../images/div.bg.png");
     border: solid 1px white;
     padding: 10px;
     color: white;
@@ -285,7 +285,7 @@ div.section {
     background-attachment: scroll;
     background-color: transparent;
 
-    background-image: url("../img/div.bg.png");
+    background-image: url("../images/div.bg.png");
     border: solid 1px white;
     color: white;
     margin-top: 25px;
@@ -458,4 +458,29 @@ td.action {
 
 .contextMenu {
 	background-color: #166993;
+}
+
+#crudBreadcrumb {
+	padding: 5px 20px;
+	font-size: 80%;
+	border-bottom: 1px solid #ddd;
+}
+
+#crudBreadcrumb ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#crudBreadcrumb li {
+	display: inline;
+}
+
+#crudBreadcrumb a {
+	color: #333;
+}
+
+#crudBreadcrumb li:last-child a {
+	color: #888;
+	text-decoration: none;
 }
