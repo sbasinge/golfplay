@@ -21,12 +21,11 @@ import models.User;
 import play.Logger;
 import play.db.jpa.GenericModel;
 import play.jobs.Job;
-import play.jobs.OnApplicationStart;
 import enums.State;
 import enums.TeeType;
 import enums.TournamentType;
 
-@OnApplicationStart
+//@OnApplicationStart
 public class ApplicationInitializer extends Job {
 
 	private final List<ClubRole> clubRoles = new ArrayList<ClubRole>();

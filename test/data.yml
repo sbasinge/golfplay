@@ -1,7 +1,77 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("data.yml")
 
-# User(bob):
-#   email: bob@gmail.com
-#   password: secret
-#   fullname: Bob
+ Club(test):
+   name: Test
+   websiteUrl: 'http://columbusmetrogolfclub.blogspot.com/'
+   rssFeedUrl: 'http://columbusmetrogolfclub.blogspot.com/feeds/posts/default'
+
+ Role(Admin):
+  name: Admin
+
+ Role(ClubAdmin):
+  name: ClubAdmin
+
+ Role(Member):
+  name: Member
+
+ Role(TeeTimeChair):
+  name: TeeTimeChair
+
+ ClubRole(TestAdmin):
+   role: Admin
+   club: test
+
+ ClubRole(TestClubAdmin):
+   role: ClubAdmin
+   club: test
+
+ ClubRole(TestMember):
+   role: Member
+   club: test
+   
+ ClubRole(TestTeeTimeChair):
+   role: TeeTimeChair
+   club: test
+
+#  Address(FoxFireAddress):
+#    addressLine1: 123 Main St
+#    city: Somewhere
+#    state: OH
+#    zipCode: 43004
+    
+#  Facility(FoxFireFacility):
+#   name: FoxFire
+#   address: FoxFireAddress
+#   phone: 740-111-1111
+
+#  TeeSet(PlayersClubWhite):
+#   teeType: WHITE
+#   courseRating: 72.2
+#   slopeRating: 129
+
+#  TeeSet(PlayersClubBlue):
+#   teeType: BLUE
+#   courseRating: 74.2
+#   slopeRating: 132
+   
+#  Course(PlayersClubCourse):
+#   name: Player's Club
+#   facility: FoxFireFacility
+#   teeSets: [PlayersClubWhite, PlayersClubBlue] 
+
+#  Score(scottScore1):
+#    teeSet: PlayersClubWhite
+#    date: 10/21/2010
+#    grossScore: 92
+#    netScore: 90
+    
+#  User(scott):
+#   username: sbasingetest
+#   password: password
+#   name: Scott Basinger
+#   email: sbasinge@gmail.com
+#   clubs: [test]
+#   clubRoles: [TestAdmin]
+#   scores: [scottScore1]
+    
