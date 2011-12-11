@@ -28,7 +28,7 @@ public class Facility extends BaseEntity {
     @MaxSize(20)
     public String phone;
     
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="facility")
 	public List<Course> courses = new ArrayList<Course>();
     
     public Facility() {};

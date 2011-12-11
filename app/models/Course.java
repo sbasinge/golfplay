@@ -24,7 +24,7 @@ public class Course extends BaseEntity {
 	@JoinColumn(name = "FACILITY_ID", nullable = true)
 	public Facility facility;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval=true, mappedBy="course")
 	public List<TeeSet> teeSets = new ArrayList<TeeSet>();
 	
 	public Course() {};

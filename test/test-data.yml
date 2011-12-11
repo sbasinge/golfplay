@@ -54,250 +54,268 @@
       lat: 0
       lng: 0
     
-  TeeSet(PlayersClubWhite):
-    teeType: WHITE
-    courseRating: 72.2
-    slopeRating: 129
-
-  TeeSet(PlayersClubBlue):
-   teeType: BLUE
-   courseRating: 74.2
-   slopeRating: 132
-
-  TeeSet(SandpiperWhite):
-   teeType: WHITE
-   courseRating: 69.5
-   slopeRating: 128
-
-  TeeSet(MentelWhite):
-   teeType: WHITE
-   courseRating: 70.6
-   slopeRating: 118
-
-  TeeSet(PheonixWhite):
-   teeType: WHITE
-   courseRating: 68.8
-   slopeRating: 116
-
-  TeeSet(RoyalAmericanWhite):
-   teeType: WHITE
-   courseRating: 70.4
-   slopeRating: 122
-
-  TeeSet(BlacklickWhite):
-   teeType: WHITE
-   courseRating: 69.6
-   slopeRating: 119
-
-  TeeSet(GlenrossWhite):
-   teeType: WHITE
-   courseRating: 68.4
-   slopeRating: 116
-
-  TeeSet(GrandeDunesWhite):
-   teeType: WHITE
-   courseRating: 70.8
-   slopeRating: 128
-
-  TeeSet(TidewaterWhite):
-   teeType: WHITE
-   courseRating: 70.4
-   slopeRating: 130
-
-  TeeSet(PrestwickWhite):
-   teeType: WHITE
-   courseRating: 71.1
-   slopeRating: 131
-
-  TeeSet(GlenDornochWhite):
-   teeType: WHITE
-   courseRating: 70.2
-   slopeRating: 127
-
-  TeeSet(WestchesterWhite):
-   teeType: WHITE
-   courseRating: 69.8
-   slopeRating: 122
-
-  TeeSet(SplitRockWhite):
-   teeType: WHITE
-   courseRating: 69.5
-   slopeRating: 120
-
-  TeeSet(PineHillsWhite):
-   teeType: WHITE
-   courseRating: 68.4
-   slopeRating: 119
-   
-  TeeSet(TurnberryWhite):
-   teeType: WHITE
-   courseRating: 69.3
-   slopeRating: 120
-
-  TeeSet(ChampionsWhite):
-   teeType: WHITE
-   courseRating: 69.5
-   slopeRating: 129
-   
-  Course(PlayersClubCourse):
-   name: Player's Club
-   teeSets: [PlayersClubWhite, PlayersClubBlue] 
-
-  Course(SandpiperBayCourse):
-   name: Sandpiper's Bay
-   teeSets: [SandpiperWhite] 
-
-  Course(MentelCourse):
-   name: Mentel Memorial
-   teeSets: [MentelWhite] 
-
-  Course(PheonixCourse):
-   name: The Pheonix
-   teeSets: [PheonixWhite] 
-
-  Course(RoyalAmericanCourse):
-   name: Royal American
-   teeSets: [RoyalAmericanWhite] 
-
-  Course(BlacklickCourse):
-   name: Blacklick
-   teeSets: [BlacklickWhite] 
-
-  Course(GlenrossCourse):
-   name: Glenross
-   teeSets: [GlenrossWhite] 
-
-  Course(GrandeDunesCourse):
-   name: Grande Dunes
-   teeSets: [GrandeDunesWhite] 
-
-  Course(TidewaterCourse):
-   name: Tidewater
-   teeSets: [TidewaterWhite] 
-
-  Course(PrestwickCourse):
-   name: Prestwick CC
-   teeSets: [PrestwickWhite] 
-
-  Course(GlenDornochCourse):
-   name: Glen Dornoch
-   teeSets: [GlenDornochWhite] 
-
-  Course(WestchesterCourse):
-   name: Westchester
-   teeSets: [WestchesterWhite] 
-
-  Course(SplitRockCourse):
-   name: Split Rock
-   teeSets: [SplitRockWhite] 
-
-  Course(PineHillsCourse):
-   name: Pine Hills
-   teeSets: [PineHillsWhite] 
-
-  Course(TurnberryCourse):
-   name: Turnberry
-   teeSets: [TurnberryWhite] 
-
-  Course(ChampionsCourse):
-   name: Champions
-   teeSets: [ChampionsWhite] 
-
   Facility(FoxFireFacility):
    name: FoxFire
    address: OHAddress
    phone: 740-111-1111
-   courses: [PlayersClubCourse]
 
   Facility(SandpiperFacility):
    name: Sandpiper Bay
    address: SCAddress
    phone: 740-111-1111
-   courses: [SandpiperBayCourse]
    
   Facility(MentelFacility):
    name: Mentel Memorial
    address: OHAddress
    phone: 740-111-1111
-   courses: [MentelCourse]
 
   Facility(PheonixFacility):
    name: Pheonix
    address: OHAddress
    phone: 740-111-1111
-   courses: [PheonixCourse]
 
   Facility(RoyalAmericanFacility):
    name: RoyalAmerican
    address: OHAddress
    phone: 740-111-1111
-   courses: [RoyalAmericanCourse]
 
   Facility(BlacklickFacility):
    name: Blacklick
    address: OHAddress
    phone: 740-111-1111
-   courses: [BlacklickCourse]
 
   Facility(GlenrossFacility):
    name: Glenross
    address: OHAddress
    phone: 740-111-1111
-   courses: [GlenrossCourse]
 
   Facility(GrandeDunesFacility):
    name: GrandeDunes
    address: SCAddress
    phone: 740-111-1111
-   courses: [GrandeDunesCourse]
 
   Facility(TidewaterFacility):
    name: Tidewater
    address: SCAddress
    phone: 740-111-1111
-   courses: [TidewaterCourse]
 
   Facility(PrestwickFacility):
    name: Prestwick
    address: SCAddress
    phone: 740-111-1111
-   courses: [PrestwickCourse]
 
   Facility(GlenDornochFacility):
    name: GlenDornoch
    address: SCAddress
    phone: 740-111-1111
-   courses: [GlenDornochCourse]
 
   Facility(WestchesterFacility):
    name: Westchester
    address: OHAddress
    phone: 740-111-1111
-   courses: [WestchesterCourse]
 
   Facility(SplitRockFacility):
    name: SplitRock
    address: OHAddress
    phone: 740-111-1111
-   courses: [SplitRockCourse]
 
   Facility(PineHillsFacility):
    name: PineHills
    address: OHAddress
    phone: 740-111-1111
-   courses: [PineHillsCourse]
 
   Facility(TurnberryFacility):
    name: Turnberry
    address: OHAddress
    phone: 740-111-1111
-   courses: [TurnberryCourse]
 
   Facility(ChampionsFacility):
    name: Champions
    address: OHAddress
    phone: 740-111-1111
-   courses: [ChampionsCourse]
+   
+  Course(PlayersClubCourse):
+   name: Player's Club
+   teeSets: [PlayersClubWhite, PlayersClubBlue]
+   facility: FoxFireFacility
+
+  Course(SandpiperBayCourse):
+   name: Sandpiper's Bay
+   teeSets: [SandpiperWhite] 
+   facility: SandpiperFacility
+
+  Course(MentelCourse):
+   name: Mentel Memorial
+   teeSets: [MentelWhite] 
+   facility: MentelFacility
+
+  Course(PheonixCourse):
+   name: The Pheonix
+   teeSets: [PheonixWhite] 
+   facility: PheonixFacility
+
+  Course(RoyalAmericanCourse):
+   name: Royal American
+   teeSets: [RoyalAmericanWhite] 
+   facility: RoyalAmericanFacility
+
+  Course(BlacklickCourse):
+   name: Blacklick
+   teeSets: [BlacklickWhite] 
+   facility: BlacklickFacility
+
+  Course(GlenrossCourse):
+   name: Glenross
+   teeSets: [GlenrossWhite] 
+   facility: GlenrossFacility
+
+  Course(GrandeDunesCourse):
+   name: Grande Dunes
+   teeSets: [GrandeDunesWhite] 
+   facility: GrandeDunesFacility
+
+  Course(TidewaterCourse):
+   name: Tidewater
+   teeSets: [TidewaterWhite] 
+   facility: TidewaterFacility
+
+  Course(PrestwickCourse):
+   name: Prestwick CC
+   teeSets: [PrestwickWhite] 
+   facility: PrestwickFacility
+
+  Course(GlenDornochCourse):
+   name: Glen Dornoch
+   teeSets: [GlenDornochWhite] 
+   facility: GlenDornochFacility
+
+  Course(WestchesterCourse):
+   name: Westchester
+   teeSets: [WestchesterWhite] 
+   facility: WestchesterFacility
+
+  Course(SplitRockCourse):
+   name: Split Rock
+   teeSets: [SplitRockWhite] 
+   facility: SplitRockFacility
+
+  Course(PineHillsCourse):
+   name: Pine Hills
+   teeSets: [PineHillsWhite] 
+   facility: PineHillsFacility
+
+  Course(TurnberryCourse):
+   name: Turnberry
+   teeSets: [TurnberryWhite] 
+   facility: TurnberryFacility
+
+  Course(ChampionsCourse):
+   name: Champions
+   teeSets: [ChampionsWhite] 
+   facility: ChampionsFacility
+
+  TeeSet(PlayersClubWhite):
+    teeType: WHITE
+    courseRating: 72.2
+    slopeRating: 129
+    course: PlayersClubCourse
+
+  TeeSet(PlayersClubBlue):
+   teeType: BLUE
+   courseRating: 74.2
+   slopeRating: 132
+   course: PlayersClubCourse
+
+  TeeSet(SandpiperWhite):
+   teeType: WHITE
+   courseRating: 69.5
+   slopeRating: 128
+   course: SandpiperBayCourse
+
+  TeeSet(MentelWhite):
+   teeType: WHITE
+   courseRating: 70.6
+   slopeRating: 118
+   course: MentelCourse
+
+  TeeSet(PheonixWhite):
+   teeType: WHITE
+   courseRating: 68.8
+   slopeRating: 116
+   course: PheonixCourse
+
+  TeeSet(RoyalAmericanWhite):
+   teeType: WHITE
+   courseRating: 70.4
+   slopeRating: 122
+   course: RoyalAmericanCourse
+
+  TeeSet(BlacklickWhite):
+   teeType: WHITE
+   courseRating: 69.6
+   slopeRating: 119
+   course: BlacklickCourse
+
+  TeeSet(GlenrossWhite):
+   teeType: WHITE
+   courseRating: 68.4
+   slopeRating: 116
+   course: GlenrossCourse
+
+  TeeSet(GrandeDunesWhite):
+   teeType: WHITE
+   courseRating: 70.8
+   slopeRating: 128
+   course: GrandeDunesCourse
+
+  TeeSet(TidewaterWhite):
+   teeType: WHITE
+   courseRating: 70.4
+   slopeRating: 130
+   course: TidewaterCourse
+
+  TeeSet(PrestwickWhite):
+   teeType: WHITE
+   courseRating: 71.1
+   slopeRating: 131
+   course: PrestwickCourse
+
+  TeeSet(GlenDornochWhite):
+   teeType: WHITE
+   courseRating: 70.2
+   slopeRating: 127
+   course: GlenDornochCourse
+
+  TeeSet(WestchesterWhite):
+   teeType: WHITE
+   courseRating: 69.8
+   slopeRating: 122
+   course: WestchesterCourse
+
+  TeeSet(SplitRockWhite):
+   teeType: WHITE
+   courseRating: 69.5
+   slopeRating: 120
+   course: SplitRockCourse
+
+  TeeSet(PineHillsWhite):
+   teeType: WHITE
+   courseRating: 68.4
+   slopeRating: 119
+   course: PineHillsCourse
+   
+  TeeSet(TurnberryWhite):
+   teeType: WHITE
+   courseRating: 69.3
+   slopeRating: 120
+   course: TurnberryCourse
+
+  TeeSet(ChampionsWhite):
+   teeType: WHITE
+   courseRating: 69.5
+   slopeRating: 129
+   course: ChampionsCourse
+
 
   User(scott):
    username: sbasinge
