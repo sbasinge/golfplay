@@ -253,20 +253,6 @@ public class User extends GenericModel {
 		return temp;
 	}
 
-	@Transient
-	public String getLast20ScoreRowClasses() {
-		String retVal = "";
-		for (Score score : getLast20Scores()) {
-			if (score.counter)
-				retVal += "counter,";
-			else
-				retVal += ",";
-		}
-		retVal += ",";
-		log.warn("Returning rowClasses {}",retVal);
-		return retVal;
-	}
-
 	public boolean hasClubRole(String roleName) {
 		boolean retVal = false;
 		if (roleName != null) {

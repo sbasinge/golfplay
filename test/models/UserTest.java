@@ -1,5 +1,6 @@
 package models;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.Test;
@@ -25,8 +26,22 @@ public class UserTest extends ModelTest {
 	    assertNotNull("Users should be found!",allUsers);
 	    
 	    
-	    User scott = User.find("byUsername", "sbasingetest").first();
-	    assertNotNull("sbasingetest should be found!",scott);
-	    assertEquals("sbasingetest", scott.username);
+	    User scott = User.find("byUsername", "sbasinge").first();
+	    assertNotNull("sbasinge should be found!",scott);
+	    assertEquals("sbasinge", scott.username);
 	}
+
+	@Test
+	public void calculateHandicap() {
+	    User scott = User.find("byUsername", "sbasinge").first();
+	    assertNotNull("sbasinge should be found!",scott);
+	    assertEquals("sbasinge", scott.username);
+	    
+	    boolean calculated = scott.calculateHandicap();
+	    assertTrue("Handicap should be calculated.",calculated);
+	    BigDecimal handicap = scott.getHandicap();
+	    assertEquals("Handicap should be 14.7.",new BigDecimal(14.70).setScale(1,BigDecimal.ROUND_UP),handicap);
+	}
+
+	
 }

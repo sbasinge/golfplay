@@ -2,3 +2,5 @@
 
 require:
     - play
+    - com.kenai.nbpwr -> com-sun-syndication-feed 1.0-201002241208
+    - play -> cobertura 2.4

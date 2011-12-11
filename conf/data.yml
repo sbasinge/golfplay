@@ -1,0 +1,521 @@
+# you describe your data using the YAML notation here
+# and then load them using Fixtures.load("data.yml")
+
+  Club(test):
+    name: Test
+    websiteUrl: http://columbusmetrogolfclub.blogspot.com/
+    rssFeedUrl: http://columbusmetrogolfclub.blogspot.com/feeds/posts/default
+
+  Role(Admin):
+    name: Admin
+
+  Role(ClubAdmin):
+    name: ClubAdmin
+
+  Role(Member):
+    name: Member
+
+  Role(TeeTimeChair):
+    name: TeeTimeChair
+
+  ClubRole(TestAdmin):
+    role: Admin
+    club: test
+
+  ClubRole(TestClubAdmin):
+    role: ClubAdmin
+    club: test
+
+  ClubRole(TestMember):
+    role: Member
+    club: test
+   
+  ClubRole(TestTeeTimeChair):
+    role: TeeTimeChair
+    club: test
+
+  Address(OHAddress):
+    addressLine1: 123 Main St
+    addressLine2: P.O. Box 123
+    city: Somewhere
+    state: OH
+    zipCode: 43004
+    geoLocation:
+      lat: 0
+      lng: 0
+
+  Address(SCAddress):
+    addressLine1: 123 Main St
+    addressLine2: P.O. Box 123
+    city: Somewhere
+    state: SC
+    zipCode: 43004
+    geoLocation:
+      lat: 0
+      lng: 0
+    
+  TeeSet(PlayersClubWhite):
+    teeType: WHITE
+    courseRating: 72.2
+    slopeRating: 129
+
+  TeeSet(PlayersClubBlue):
+   teeType: BLUE
+   courseRating: 74.2
+   slopeRating: 132
+
+  TeeSet(SandpiperWhite):
+   teeType: WHITE
+   courseRating: 69.5
+   slopeRating: 128
+
+  TeeSet(MentelWhite):
+   teeType: WHITE
+   courseRating: 70.6
+   slopeRating: 118
+
+  TeeSet(PheonixWhite):
+   teeType: WHITE
+   courseRating: 68.8
+   slopeRating: 116
+
+  TeeSet(RoyalAmericanWhite):
+   teeType: WHITE
+   courseRating: 70.4
+   slopeRating: 122
+
+  TeeSet(BlacklickWhite):
+   teeType: WHITE
+   courseRating: 69.6
+   slopeRating: 119
+
+  TeeSet(GlenrossWhite):
+   teeType: WHITE
+   courseRating: 68.4
+   slopeRating: 116
+
+  TeeSet(GrandeDunesWhite):
+   teeType: WHITE
+   courseRating: 70.8
+   slopeRating: 128
+
+  TeeSet(TidewaterWhite):
+   teeType: WHITE
+   courseRating: 70.4
+   slopeRating: 130
+
+  TeeSet(PrestwickWhite):
+   teeType: WHITE
+   courseRating: 71.1
+   slopeRating: 131
+
+  TeeSet(GlenDornochWhite):
+   teeType: WHITE
+   courseRating: 70.2
+   slopeRating: 127
+
+  TeeSet(WestchesterWhite):
+   teeType: WHITE
+   courseRating: 69.8
+   slopeRating: 122
+
+  TeeSet(SplitRockWhite):
+   teeType: WHITE
+   courseRating: 69.5
+   slopeRating: 120
+
+  TeeSet(PineHillsWhite):
+   teeType: WHITE
+   courseRating: 68.4
+   slopeRating: 119
+   
+  TeeSet(TurnberryWhite):
+   teeType: WHITE
+   courseRating: 69.3
+   slopeRating: 120
+
+  TeeSet(ChampionsWhite):
+   teeType: WHITE
+   courseRating: 69.5
+   slopeRating: 129
+   
+  Course(PlayersClubCourse):
+   name: Player's Club
+   teeSets: [PlayersClubWhite, PlayersClubBlue] 
+
+  Course(SandpiperBayCourse):
+   name: Sandpiper's Bay
+   teeSets: [SandpiperWhite] 
+
+  Course(MentelCourse):
+   name: Mentel Memorial
+   teeSets: [MentelWhite] 
+
+  Course(PheonixCourse):
+   name: The Pheonix
+   teeSets: [PheonixWhite] 
+
+  Course(RoyalAmericanCourse):
+   name: Royal American
+   teeSets: [RoyalAmericanWhite] 
+
+  Course(BlacklickCourse):
+   name: Blacklick
+   teeSets: [BlacklickWhite] 
+
+  Course(GlenrossCourse):
+   name: Glenross
+   teeSets: [GlenrossWhite] 
+
+  Course(GrandeDunesCourse):
+   name: Grande Dunes
+   teeSets: [GrandeDunesWhite] 
+
+  Course(TidewaterCourse):
+   name: Tidewater
+   teeSets: [TidewaterWhite] 
+
+  Course(PrestwickCourse):
+   name: Prestwick CC
+   teeSets: [PrestwickWhite] 
+
+  Course(GlenDornochCourse):
+   name: Glen Dornoch
+   teeSets: [GlenDornochWhite] 
+
+  Course(WestchesterCourse):
+   name: Westchester
+   teeSets: [WestchesterWhite] 
+
+  Course(SplitRockCourse):
+   name: Split Rock
+   teeSets: [SplitRockWhite] 
+
+  Course(PineHillsCourse):
+   name: Pine Hills
+   teeSets: [PineHillsWhite] 
+
+  Course(TurnberryCourse):
+   name: Turnberry
+   teeSets: [TurnberryWhite] 
+
+  Course(ChampionsCourse):
+   name: Champions
+   teeSets: [ChampionsWhite] 
+
+  Facility(FoxFireFacility):
+   name: FoxFire
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [PlayersClubCourse]
+
+  Facility(SandpiperFacility):
+   name: Sandpiper Bay
+   address: SCAddress
+   phone: 740-111-1111
+   courses: [SandpiperBayCourse]
+   
+  Facility(MentelFacility):
+   name: Mentel Memorial
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [MentelCourse]
+
+  Facility(PheonixFacility):
+   name: Pheonix
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [PheonixCourse]
+
+  Facility(RoyalAmericanFacility):
+   name: RoyalAmerican
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [RoyalAmericanCourse]
+
+  Facility(BlacklickFacility):
+   name: Blacklick
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [BlacklickCourse]
+
+  Facility(GlenrossFacility):
+   name: Glenross
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [GlenrossCourse]
+
+  Facility(GrandeDunesFacility):
+   name: GrandeDunes
+   address: SCAddress
+   phone: 740-111-1111
+   courses: [GrandeDunesCourse]
+
+  Facility(TidewaterFacility):
+   name: Tidewater
+   address: SCAddress
+   phone: 740-111-1111
+   courses: [TidewaterCourse]
+
+  Facility(PrestwickFacility):
+   name: Prestwick
+   address: SCAddress
+   phone: 740-111-1111
+   courses: [PrestwickCourse]
+
+  Facility(GlenDornochFacility):
+   name: GlenDornoch
+   address: SCAddress
+   phone: 740-111-1111
+   courses: [GlenDornochCourse]
+
+  Facility(WestchesterFacility):
+   name: Westchester
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [WestchesterCourse]
+
+  Facility(SplitRockFacility):
+   name: SplitRock
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [SplitRockCourse]
+
+  Facility(PineHillsFacility):
+   name: PineHills
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [PineHillsCourse]
+
+  Facility(TurnberryFacility):
+   name: Turnberry
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [TurnberryCourse]
+
+  Facility(ChampionsFacility):
+   name: Champions
+   address: OHAddress
+   phone: 740-111-1111
+   courses: [ChampionsCourse]
+
+  User(scott):
+   username: sbasinge
+   password: password
+   name: Scott Basinger
+   email: sbasinge@gmail.com
+   clubs: [test]
+   clubRoles: [TestAdmin]
+
+  User(jeff):
+   username: jmccorkle
+   password: password
+   name: Jeff McCorkle
+   email: jmccorkle@gmail.com
+   clubs: [test]
+   clubRoles: [TestClubAdmin]
+
+  User(steve):
+   username: shawley
+   password: password
+   name: Steve Hawley
+   email: shawley@gmail.com
+   clubs: [test]
+   clubRoles: [TestTeeTimeChair]
+
+  User(vince):
+   username: vresor
+   password: password
+   name: Vince Resor
+   email: vresor@gmail.com
+   clubs: [test]
+   clubRoles: [TestMember]
+
+  User(skern):
+   username: skern
+   password: password
+   name: Scott Kern
+   email: skern@gmail.com
+   clubs: [test]
+   clubRoles: [TestMember]
+
+  User(ehawley):
+   username: ehawley
+   password: password
+   name: Ed Hawley
+   email: ehawley@gmail.com
+   clubs: [test]
+   clubRoles: [TestMember]
+
+  User(rich):
+   username: rjenks
+   password: password
+   name: Rich Jenks
+   email: rjenks@gmail.com
+   clubs: [test]
+   clubRoles: [TestMember]
+
+  User(tom):
+   username: tkirk
+   password: password
+   name: Tom Kirk
+   email: tkirk@gmail.com
+   clubs: [test]
+   clubRoles: [TestMember]
+
+  User(jkempton):
+   username: jkempton
+   password: password
+   name: John Kempton
+   email: jkempton@gmail.com
+   clubs: [test]
+   clubRoles: [TestMember]
+
+  User(jomccorkle):
+   username: jomccorkle
+   password: password
+   name: John McCorkle
+   email: jomccorkle@gmail.com
+   clubs: [test]
+   clubRoles: [TestMember]
+
+  Score(scott1):
+    teeSet: PlayersClubWhite
+    date: 2010-04-03
+    grossScore: 104
+    netScore: 104
+    user: scott    
+
+  Score(scott2):
+    teeSet: SandpiperWhite
+    date: 2010-02-22
+    grossScore: 90
+    netScore: 89
+    user: scott    
+
+  Score(scott3):
+    teeSet: MentelWhite
+    date: 2010-07-10
+    grossScore: 93
+    netScore: 90
+    user: scott    
+    
+  Score(scott4):
+    teeSet: PheonixWhite
+    date: 2010-07-25
+    grossScore: 91
+    netScore: 90
+    user: scott    
+    
+  Score(scott5):
+    teeSet: RoyalAmericanWhite
+    date: 2010-08-28
+    grossScore: 84
+    netScore: 84
+    user: scott    
+    
+  Score(scott6):
+    teeSet: RoyalAmericanWhite
+    date: 2010-08-29
+    grossScore: 94
+    netScore: 92
+    user: scott    
+    
+  Score(scott7):
+    teeSet: BlacklickWhite
+    date: 2010-10-09
+    grossScore: 90
+    netScore: 88
+    user: scott    
+    
+  Score(scott8):
+    teeSet: GlenrossWhite
+    date: 2010-10-16
+    grossScore: 87
+    netScore: 87
+    user: scott        
+
+  Score(scott9):
+    teeSet: GrandeDunesWhite
+    date: 2011-02-25
+    grossScore: 113
+    netScore: 100
+    user: scott        
+
+  Score(scott10):
+    teeSet: TidewaterWhite
+    date: 2011-02-26
+    grossScore: 110
+    netScore: 108
+    user: scott
+
+  Score(scott11):
+    teeSet: PrestwickWhite
+    date: 2011-02-27
+    grossScore: 98
+    netScore: 95
+    user: scott
+
+  Score(scott12):
+    teeSet: GlenDornochWhite
+    date: 2011-02-28
+    grossScore: 99
+    netScore: 98
+    user: scott
+
+  Score(scott13):
+    teeSet: WestchesterWhite
+    date: 2011-05-14
+    grossScore: 92
+    netScore: 92
+    user: scott
+
+  Score(scott14):
+    teeSet: WestchesterWhite
+    date: 2011-05-15
+    grossScore: 84
+    netScore: 83
+    user: scott
+
+  Score(scott15):
+    teeSet: SplitRockWhite
+    date: 2011-06-18
+    grossScore: 82
+    netScore: 82
+    user: scott            
+
+
+  Score(scott16):
+    teeSet: PlayersClubBlue
+    date: 2011-06-25
+    grossScore: 101
+    netScore: 96
+    user: scott            
+    
+  Score(scott17):
+    teeSet: BlacklickWhite
+    date: 2011-07-16
+    grossScore: 87
+    netScore: 86
+    user: scott
+
+  Score(scott18):
+    teeSet: PineHillsWhite
+    date: 2011-07-30
+    grossScore: 84
+    netScore: 84
+    user: scott            
+
+  Score(scott19):
+    teeSet: TurnberryWhite
+    date: 2011-08-14
+    grossScore: 88
+    netScore: 86
+    user: scott
+
+  Score(scott20):
+    teeSet: ChampionsWhite
+    date: 2011-08-20
+    grossScore: 98
+    netScore: 96
+    user: scott                                    

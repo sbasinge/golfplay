@@ -5,11 +5,11 @@ import org.junit.Before;
 import play.test.Fixtures;
 import play.test.UnitTest;
 
-public class ModelTest extends UnitTest {
+public abstract class ModelTest extends UnitTest {
 	@Before
 	public void setUp() {
 	    Fixtures.deleteAll();
-	    Fixtures.loadModels("data.yml");
+	    Fixtures.loadModels("test-data.yml");
 	}
 	
 
