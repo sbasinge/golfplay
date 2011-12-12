@@ -16,29 +16,20 @@
 				<div id="title">
 					<h1>&{'home_title', home_title}</h1>
 				</div>
-				<form id="menuForm">
-					<div id="status">
-						<span>${user}</span>
-						<a href="@{Clubs.list()}">Login</a>
-						&nbsp;|&nbsp;
-						<a href="@{Clubs.list()}">Clubs</a>
-						&nbsp;|&nbsp;
-						<a href="@{Clubs.list()}">Members</a>
-						&nbsp;|&nbsp;
-						<a href="@{Clubs.list()}">Courses</a>
-						&nbsp;|&nbsp;
-						<a href="@{Clubs.list()}">Tee Times</a>
-						&nbsp;|&nbsp;
-						<a href="@{Clubs.list()}">Tournaments</a>
-						&nbsp;|&nbsp;
-						<a href="@{Clubs.list()}">Account</a>
-						&nbsp;|&nbsp;
-	                    <a href="@{Secure.logout()}">Log out</a>
-					</div>
-				</form>
+					<nav id="status">
+						#{secure.check 'LoggeOut'}<span>(${user})&nbsp;</span>#{/secure.check}
+						#{secure.check 'ClubListVisible'}<a href="@{Clubs.list()}">Clubs</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'MemberListVisible'}<a href="@{Users.list()}">Members</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'CourseListVisible'}<a href="@{Courses.list()}">Courses</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'ScoreListVisible'}<a href="@{Scores.list()}">Scores</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'TeeTimeListVisible'}<a href="@{TeeTimes.list()}">Tee Times</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'TournamentListVisible'}<a href="@{Tournaments.list()}">Tournaments</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'AccountVisible'}<a href="@{Clubs.list()}">Account</a>&nbsp;|&nbsp;#{/secure.check}
+	                    #{secure.check 'LoggedIn'}<a href="@{Secure.logout()}">Log out</a>#{/secure.check}
+				</nav>
 	    	</div>
 	    	<div id="container">
-	        	<div id="sidebar">
+	        	<aside id="sidebar">
 					<form id="login" action="/login" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
 						<fieldset>
 							<p id="username-field">
@@ -58,7 +49,7 @@
 							</p>
 						</fieldset>
 					</form>
- 	        	</div>
+ 	        	</aside>
 		    	<div id="content">
 			    	<ul class="errors">
 						#{errors}
@@ -71,8 +62,6 @@
 	    	<div id="footer">
 	                &{'template_createdWith'}<br/>
 	                &{'template_projectStage'}: 
-	                &nbsp;|&nbsp;
-	                &{'template_currentConversation'}:
 	                <br/>
 	                Selected Club: ${selectedClub}
 	    	

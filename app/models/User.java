@@ -327,10 +327,10 @@ public class User extends GenericModel {
     	return retVal;
     }
 
-//    public boolean isMemberListVisible() {
-//    	boolean retVal = isClubSelected() && (hasRole("Admin") || hasRole("ClubAdmin") || hasRole("TeeTimeChair") || hasRole("Member"));
-//    	return retVal;
-//    }
+    public boolean isAccountVisible() {
+    	boolean retVal = (hasRole("Admin") || hasRole("ClubAdmin") || hasRole("TeeTimeChair") || hasRole("Member"));
+    	return retVal;
+    }
 
     public boolean isTournamentListVisible() {
     	boolean retVal = isScoreListVisible();
