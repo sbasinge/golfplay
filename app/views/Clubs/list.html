@@ -1,24 +1,20 @@
-#{extends 'CRUD/layout.html' /}
-#{set title:messages.get('crud.list.title', type.name) /}
+#{extends 'main.html' /}
+#{set title:'Clubs' /}
 
-<div id="crudList" class="${type.name}">
-
-    <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
-
-    <div id="crudListSearch">
-        #{crud.search /}
-    </div>
-
-    <div id="crudListTable">
-        #{crud.table fields:['name','rssFeedUrl'] /}
-    </div>
-
-    <div id="crudListPagination">
-        #{crud.pagination /}
-    </div>
-
-    <p id="crudListAdd">
-        <a href="@{blank()}">&{'crud.add', type.modelName}</a>
-    </p>
-
-</div>
+<table>
+    <thead>
+        <tr>
+        	<td>Name</td>
+        	<td>RSS Url</td>
+		</tr>
+	</thead>
+	<tbody>
+		 %{clubs.eachWithIndex() { object, k -> }%
+	    <tr style="clickrow" class="${k % 2 ? 'even' : 'odd'}">
+	      <td>${object.name}</td>
+	      <td>${object.rssFeedUrl}</td>
+	    </tr>
+	    %{ } }%
+	</tbody>
+</table>
+ 

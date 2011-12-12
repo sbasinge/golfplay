@@ -27,26 +27,28 @@ public class Security extends Secure.Security {
 	}
 	
 	static boolean check(String profile) {
+		String connected = connected();
+		Logger.info("Connected is %s", connected);
+		User user =  User.find("byUsername", connected).first();
+		if (user == null) {
+			return false;
+		}
 	    if("Admin".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().hasRole(profile);
+	        return user.hasRole(profile);
 	    } else if ("ClubListVisible".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().isClubListVisible();
+	        return user.isClubListVisible();
 	    } else if ("MemberListVisible".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().isMemberRequestsVisible();
+	        return user.isMemberRequestsVisible();
 	    } else if ("CourseListVisible".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().isCourseListVisible();
+	        return user.isCourseListVisible();
 	    } else if ("ScoreListVisible".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().isScoreListVisible();
+	        return user.isScoreListVisible();
 	    } else if ("TeeTimeListVisible".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().isTeeTimeListVisible();
+	        return user.isTeeTimeListVisible();
 	    } else if ("TournamentListVisible".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().isTournamentListVisible();
+	        return user.isTournamentListVisible();
 	    } else if ("AccountVisible".equals(profile)) {
-	        return User.find("byUsername", connected()).<User>first().isAccountVisible();
-	    } else if ("LoggedIn".equals(profile)) {
-	    	return connected() != null;
-	    } else if ("LoggedOut".equals(profile)) {
-	    	return connected() == null;
+	        return user.isAccountVisible();
 	    }
 	    return false;
 	}

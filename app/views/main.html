@@ -17,7 +17,7 @@
 					<h1>&{'home_title', home_title}</h1>
 				</div>
 					<nav id="status">
-						#{secure.check 'LoggeOut'}<span>(${user})&nbsp;</span>#{/secure.check}
+						#{loggedIn}<span>(${user})&nbsp;</span>#{/loggedIn}
 						#{secure.check 'ClubListVisible'}<a href="@{Clubs.list()}">Clubs</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'MemberListVisible'}<a href="@{Users.list()}">Members</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'CourseListVisible'}<a href="@{Courses.list()}">Courses</a>&nbsp;|&nbsp;#{/secure.check}
@@ -25,11 +25,12 @@
 						#{secure.check 'TeeTimeListVisible'}<a href="@{TeeTimes.list()}">Tee Times</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'TournamentListVisible'}<a href="@{Tournaments.list()}">Tournaments</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'AccountVisible'}<a href="@{Clubs.list()}">Account</a>&nbsp;|&nbsp;#{/secure.check}
-	                    #{secure.check 'LoggedIn'}<a href="@{Secure.logout()}">Log out</a>#{/secure.check}
+	                    #{loggedIn}<a href="@{Secure.logout()}">Log out</a>#{/loggedIn}
 				</nav>
 	    	</div>
 	    	<div id="container">
 	        	<aside id="sidebar">
+	        		#{loggedOut}
 					<form id="login" action="/login" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
 						<fieldset>
 							<p id="username-field">
@@ -49,6 +50,7 @@
 							</p>
 						</fieldset>
 					</form>
+					#{/loggedOut}
  	        	</aside>
 		    	<div id="content">
 			    	<ul class="errors">

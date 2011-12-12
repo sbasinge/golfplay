@@ -3,7 +3,7 @@
 # ~~~~
 
 # Home page
-GET     /                                       Application.index
+*     /                                       Application.index
 
 # Import Secure routes
 *       /                                       module:secure
@@ -11,6 +11,9 @@ GET     /                                       Application.index
 # Administration
 GET     /admin/?                                Admin.index
 *       /admin                                  module:crud
+
+# Clubs
+GET		/clubs/?								Clubs.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

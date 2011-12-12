@@ -1,23 +1,21 @@
 package controllers;
 
-import models.User;
-import play.mvc.Before;
+import java.util.List;
+
+import models.Club;
 import play.mvc.With;
 
 
 @With(Secure.class)
-public class Clubs extends CRUD {
+public class Clubs extends Application {
 
-    @Before
-    static void setConnectedUser() {
-        if(Security.isConnected()) {
-            User user = User.find("byUsername", Security.connected()).first();
-            renderArgs.put("user", user.name);
-        }
-    }
- 
     public static void index() {
         render();
+    }
+
+    public static void list() {
+    	List<Club> clubs = Club.findAll();
+        render(clubs);
     }
 
 }
