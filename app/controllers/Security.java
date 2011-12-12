@@ -1,6 +1,7 @@
 package controllers;
 
 import models.User;
+import play.Logger;
 
 public class Security extends Secure.Security {
 
@@ -9,7 +10,10 @@ public class Security extends Secure.Security {
 		if (user != null) {
 			if (user.clubs.size()==1) {
 				user.selectedClub = user.clubs.get(0);
+				renderArgs.put("selectedClub", user.selectedClub.name);
 			}
+			renderArgs.put("user", user.name);
+			Logger.info("User logged in: %s", user.name);
 		}
 		return user != null;
 	}

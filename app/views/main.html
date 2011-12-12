@@ -39,21 +39,34 @@
 	    	</div>
 	    	<div id="container">
 	        	<div id="sidebar">
-	        		<form id="login">
+					<form id="login" action="/login" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
 						<fieldset>
-							<div>
-							</div>
+							<p id="username-field">
+								<label for="username">Username:</label>
+								<input type="text" name="username" id="username" value="" />
+							</p>
+							<p id="password-field">
+								<label for="password">Password:</label>
+								<input type="password" name="password" id="password" value="" />
+							</p>
+							<p id="remember-field">
+								<input type="checkbox" name="remember" id="remember" value="true"  />
+								<label for="remember">Remember me</label>
+							</p>
+							<p id="signin-field">
+								<input type="submit" id="signin" value="Sign in" />
+							</p>
 						</fieldset>
-	        		</form>
-	        	</div>
-	    	</div>
-	    	<div id="content">
-		    	<ul class="errors">
-					#{errors}
-						<li>${error}</li>
-					#{/errors}
-				</ul>
-		        #{doLayout /}
+					</form>
+ 	        	</div>
+		    	<div id="content">
+			    	<ul class="errors">
+						#{errors}
+							<li>${error}</li>
+						#{/errors}
+					</ul>
+			        #{doLayout /}
+		    	</div>
 	    	</div>
 	    	<div id="footer">
 	                &{'template_createdWith'}<br/>
@@ -61,7 +74,7 @@
 	                &nbsp;|&nbsp;
 	                &{'template_currentConversation'}:
 	                <br/>
-	                Selected Club: 
+	                Selected Club: ${selectedClub}
 	    	
 	    	</div>
     	</div>

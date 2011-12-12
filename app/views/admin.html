@@ -1,98 +1,82 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
- 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
     <head>
-        <title>Administration</title>		
-        <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>
+        <title>#{get 'title' /}</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/golfplus.css'}">
         #{get 'moreStyles' /}
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/golfplus.css'}" />
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}"></script>
-		<script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js"></script>
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
     </head>
-    <body id="admin">
-        
-        <div id="header">
-            <div id="logo">
-                GolfPlay <span>administration</span>
-            </div>
-            <ul id="tools">
-                <li>
-                    <a href="@{Secure.logout()}">Log out</a>
-                </li>
-            </ul>
-        </div>
-        
-        <div id="main">
-            
-            <ul id="adminMenu">
-                <li class="${request.controller == 'Admin' ? 'selected' : ''}">
-                    <a href="@{Admin.index()}">Admin Page</a>
-                </li>
-                #{secure.check 'Admin'}
-                    <li class="${request.controller == 'Addresses' ? 'selected' : ''}">
-                        <a href="@{Addresses.list()}">Addresses</a>
-                    </li>
-                    <li class="${request.controller == 'ClubRoles' ? 'selected' : ''}">
-                        <a href="@{ClubRoles.list()}">ClubRoles</a>
-                    </li>
-                    <li class="${request.controller == 'Users' ? 'selected' : ''}">
-                        <a href="@{Users.list()}">Users</a>
-                    </li>
-                #{/secure.check}
-                #{secure.check 'ClubListVisible'}
-                    <li class="${request.controller == 'Clubs' ? 'selected' : ''}">
-                        <a href="@{Clubs.list()}">Clubs</a>
-                    </li>
-                #{/secure.check}
-                #{secure.check 'CourseListVisible'}
-                    <li class="${request.controller == 'Courses' ? 'selected' : ''}">
-                        <a href="@{Courses.list()}">Courses</a>
-                    </li>
-                #{/secure.check}
-                <li class="${request.controller == 'Facilities' ? 'selected' : ''}">
-                    <a href="@{Facilities.list()}">Facilities</a>
-                </li>
-                <li class="${request.controller == 'Handicaps' ? 'selected' : ''}">
-                    <a href="@{Handicaps.list()}">Handicaps</a>
-                </li>
-                <li class="${request.controller == 'MembershipRequests' ? 'selected' : ''}">
-                    <a href="@{MembershipRequests.list()}">MembershipRequests</a>
-                </li>
-                <li class="${request.controller == 'NotificationPreferences' ? 'selected' : ''}">
-                    <a href="@{NotificationPreferences.list()}">NotificationPreferences</a>
-                </li>
-                <li class="${request.controller == 'Roles' ? 'selected' : ''}">
-                    <a href="@{Roles.list()}">Roles</a>
-                </li>
-                <li class="${request.controller == 'Scores' ? 'selected' : ''}">
-                    <a href="@{Scores.list()}">Scores</a>
-                </li>
-                <li class="${request.controller == 'SiteMessages' ? 'selected' : ''}">
-                    <a href="@{SiteMessages.list()}">SiteMessages</a>
-                </li>
-                <li class="${request.controller == 'TeeSets' ? 'selected' : ''}">
-                    <a href="@{TeeSets.list()}">TeeSets</a>
-                </li>
-                <li class="${request.controller == 'TeeTimeParticipants' ? 'selected' : ''}">
-                    <a href="@{TeeTimeParticipants.list()}">TeeTimeParticipants</a>
-                </li>
-                <li class="${request.controller == 'TeeTimes' ? 'selected' : ''}">
-                    <a href="@{TeeTimes.list()}">TeeTimes</a>
-                </li>
-                <li class="${request.controller == 'Tournaments' ? 'selected' : ''}">
-                    <a href="@{Tournaments.list()}">Tournaments</a>
-                </li>
-            </ul>
-            
-            #{doLayout /} 
-        </div>
-        
-        <p id="footer">
-            Yabe is a (not so) powerful blog engine built with the 
-            <a href="http://www.playframework.org">play framework</a>
-            as a tutorial application.
-        </p>
-        
+    <body class="home">
+		<div id="document">
+	    	<div id="header">
+				<div id="title">
+					<h1>&{'home_title', home_title}</h1>
+				</div>
+				<form id="menuForm">
+					<div id="status">
+						<span>${user}</span>
+						<a href="@{Clubs.list()}">Login</a>
+						&nbsp;|&nbsp;
+						<a href="@{Clubs.list()}">Clubs</a>
+						&nbsp;|&nbsp;
+						<a href="@{Clubs.list()}">Members</a>
+						&nbsp;|&nbsp;
+						<a href="@{Clubs.list()}">Courses</a>
+						&nbsp;|&nbsp;
+						<a href="@{Clubs.list()}">Tee Times</a>
+						&nbsp;|&nbsp;
+						<a href="@{Clubs.list()}">Tournaments</a>
+						&nbsp;|&nbsp;
+						<a href="@{Clubs.list()}">Account</a>
+						&nbsp;|&nbsp;
+	                    <a href="@{Secure.logout()}">Log out</a>
+					</div>
+				</form>
+	    	</div>
+	    	<div id="container">
+	        	<div id="sidebar">
+					<form id="login" action="/login" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
+						<fieldset>
+							<p id="username-field">
+								<label for="username">Username:</label>
+								<input type="text" name="username" id="username" value="" />
+							</p>
+							<p id="password-field">
+								<label for="password">Password:</label>
+								<input type="password" name="password" id="password" value="" />
+							</p>
+							<p id="remember-field">
+								<input type="checkbox" name="remember" id="remember" value="true"  />
+								<label for="remember">Remember me</label>
+							</p>
+							<p id="signin-field">
+								<input type="submit" id="signin" value="Sign in" />
+							</p>
+						</fieldset>
+					</form>
+ 	        	</div>
+		    	<div id="content">
+			    	<ul class="errors">
+						#{errors}
+							<li>${error}</li>
+						#{/errors}
+					</ul>
+			        #{doLayout /}
+		    	</div>
+	    	</div>
+	    	<div id="footer">
+	                &{'template_createdWith'}<br/>
+	                &{'template_projectStage'}: 
+	                &nbsp;|&nbsp;
+	                &{'template_currentConversation'}:
+	                <br/>
+	                Selected Club: ${selectedClub}
+	    	
+	    	</div>
+    	</div>
     </body>
 </html>
