@@ -10,12 +10,22 @@ import play.mvc.With;
 public class Clubs extends Application {
 
     public static void index() {
-        render();
+    	list();
     }
 
     public static void list() {
     	List<Club> clubs = Club.findAll();
         render(clubs);
+    }
+
+    public static void edit(Long id) {
+    	Club club = Club.findById(id);
+        render(club);
+    }
+
+    public static void view(Long id) {
+    	Club club = Club.findById(id);
+        render(club);
     }
 
 }

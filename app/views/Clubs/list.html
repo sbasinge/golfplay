@@ -1,20 +1,32 @@
 #{extends 'main.html' /}
 #{set title:'Clubs' /}
 
-<table>
+<table id="example">
     <thead>
         <tr>
         	<td>Name</td>
-        	<td>RSS Url</td>
+        	<td>Action</td>
 		</tr>
 	</thead>
 	<tbody>
 		 %{clubs.eachWithIndex() { object, k -> }%
-	    <tr style="clickrow" class="${k % 2 ? 'even' : 'odd'}">
+	    <tr class="${k % 2 ? 'even' : 'odd'}">
 	      <td>${object.name}</td>
-	      <td>${object.rssFeedUrl}</td>
+	      <td><a href="@{view(object._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(object._key())}">Edit</a></td>
 	    </tr>
 	    %{ } }%
 	</tbody>
 </table>
- 
+
+<script type="text/javascript">
+$(document).ready(function() {
+    oTable = $('#example').dataTable({
+        "bJQueryUI": true,
+        "bLengthChange": false,
+        "bFilter": false,
+        "bPaginate": false,
+        "bInfo": false,
+        "bSort": false
+    });
+} );
+</script>
