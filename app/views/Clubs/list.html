@@ -1,26 +1,31 @@
 #{extends 'main.html' /}
 #{set title:'Clubs' /}
 
-<table id="example">
-    <thead>
-        <tr>
-        	<td>Name</td>
-        	<td>Action</td>
-		</tr>
-	</thead>
-	<tbody>
-		 %{clubs.eachWithIndex() { object, k -> }%
-	    <tr class="${k % 2 ? 'even' : 'odd'}">
-	      <td>${object.name}</td>
-	      <td><a href="@{view(object._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(object._key())}">Edit</a></td>
-	    </tr>
-	    %{ } }%
-	</tbody>
-</table>
-
+<div class="section">
+	<div class="section">
+	    <h3>List of Clubs</h3>
+	</div>
+	<br/>
+	<table id="dataTable">
+	    <thead>
+	        <tr>
+	        	<td>Name</td>
+	        	<td>Action</td>
+			</tr>
+		</thead>
+		<tbody>
+			 %{clubs.eachWithIndex() { object, k -> }%
+		    <tr class="${k % 2 ? 'even' : 'odd'}">
+		      <td>${object.name}</td>
+		      <td><a href="@{view(object._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(object._key())}">Edit</a></td>
+		    </tr>
+		    %{ } }%
+		</tbody>
+	</table>
+</div>
 <script type="text/javascript">
 $(document).ready(function() {
-    oTable = $('#example').dataTable({
+    oTable = $('#dataTable').dataTable({
         "bJQueryUI": true,
         "bLengthChange": false,
         "bFilter": false,

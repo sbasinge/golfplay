@@ -4,6 +4,7 @@ import java.util.List;
 
 import models.Club;
 import play.mvc.With;
+import controllers.CRUD.ObjectType;
 
 
 @With(Secure.class)
@@ -25,7 +26,17 @@ public class Clubs extends Application {
 
     public static void view(Long id) {
     	Club club = Club.findById(id);
-        render(club);
+        ObjectType type = ObjectType.get(getControllerClass());
+
+        render(type, club);
     }
 
+    public static void save(Long id) {
+    	Club club = Club.findById(id);
+    	club.save();
+    	list();
+    }
+    
+    public static void delete(String id) {
+    }
 }

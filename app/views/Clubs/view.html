@@ -1,10 +1,55 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+#{extends 'main.html' /} 
+#{set title:'View Club' /}
 
-</body>
-</html>
+<div class="section">
+    <div class="section">
+        <h1>Club Details</h1>
+    </div>
+
+    <div class="entry" id="clubname">
+        <span class="label">Name:</span>
+     	<span class="output"><span id="j_idt40:output">CMGC</span></span>
+    </div>
+	<br />
+	<div class="section">
+		<h1>Members</h1>
+	</div>
+      
+	<div class="section">
+		<form id="memberSelectionForm" name="memberSelectionForm" method="post" action="@{list()}" enctype="application/x-www-form-urlencoded">
+			<div id="members" class="ui-datatable ui-widget">
+				<table>
+					<thead>
+						<tr>
+							<th id="nameCol" class="ui-state-default"><div class="ui-dt-c"><span>Member name</span></div></th>
+							<th id="handicapCol" class="ui-state-default"><div class="ui-dt-c"><span>Handicap</span></div></th>
+							<th id="actCol" class="ui-state-default"><div class="ui-dt-c"><span>Action</span></div></th>
+						</tr>
+					</thead>
+					<tfoot></tfoot>
+					<tbody id="members_data" class="ui-datatable-data ui-widget-content">
+						 %{club.members.eachWithIndex() { object, k -> }%
+						<tr data-ri="0" class="ui-widget-content ui-datatable-even">
+							<td><div class="ui-dt-c">${object.name}</div></td>
+							<td><div class="ui-dt-c">${object.handicap}</div></td>
+							<td><div class="ui-dt-c">
+									<a id="view" href="@{Users.show(object._key())}">View</a>
+									<a id="calc" href="#" onclick="">Calculate</a>
+							    </div>
+							</td>
+						</tr>
+						%{ } }%
+					</tbody>
+				</table>
+			</div>
+		</form>
+	</div>
+	<div class="section">
+		<h1>Pending Memberships</h1>
+	</div>
+	<div class="section">
+		<span id="noMembershipMsg">No Membership Requests Found</span>
+		<form id="membershipSelectionForm" name="membershipSelectionForm" method="post" action="/clubs/club.jsf?cid=1" enctype="application/x-www-form-urlencoded">
+		</form>
+    </div>	
+</div>
