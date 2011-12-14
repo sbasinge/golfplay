@@ -33,28 +33,9 @@ label {
     margin-right: 10px;
 }
 
-input, select {
-    border: 1px solid #C3BBB6;
-    margin: 5px 0;
-    background: #FFFFFF url(../images/input.bg.gif) 0 0 repeat-x;
-}
-
-input {
-    padding: 4px;
-}
 
 select {
     padding: 2px;
-}
-
-input[type=submit], input[type=button] {
-    font-weight: bold;
-    color: #FFFFFF;
-    border: 1px solid #5D1414;
-    height: 26px;
-    background: #FFFFFF url(../images/btn.bg.gold.png) 0 0 repeat-x;
-    border-style: none;
-    cursor: pointer;
 }
 
 #document {

@@ -4,8 +4,8 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/golfplus.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/themes/dark-hive/jquery-ui-1.8.16.custom.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/golfplus.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.6.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
@@ -33,33 +33,53 @@
 	    	</div>
 	    	<div id="container">
 	        	<aside id="sidebar">
+					#{if flash.error}
+	                        <p class="error">
+	                                &{flash.error}
+	                        </p>
+	                #{/if}
+	                #{if flash.success}
+	                        <p class="success">
+	                                &{flash.success}
+	                        </p>
+	                #{/if}
 	        		#{loggedOut}
 					<form id="login" action="/login" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
-						<fieldset>
+                		<fieldset>
 							<p id="username-field">
 								<label for="username">Username:</label>
-								<input type="text" name="username" id="username" value="" />
+								<input type="text" name="username" id="username" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
 							</p>
 							<p id="password-field">
 								<label for="password">Password:</label>
-								<input type="password" name="password" id="password" value="" />
+								<input type="password" name="password" id="password" class="ui-inputfield ui-inputtext ui-widget ui-corner-all" />
 							</p>
 							<p id="remember-field">
-								<input type="checkbox" name="remember" id="remember" value="true"  />
+								<input type="checkbox" name="remember" id="remember"  />
 								<label for="remember">Remember me</label>
 							</p>
 							<p id="signin-field">
 								<input type="submit" id="signin" value="Sign in" />
 							</p>
+			                <div class="notes">
+			                	<a id="login:register" name="login:register" href="/register;jsessionid=DlGFci0A9a-4qE0VbuRBfswC">Register New User</a>
+			                </div>
 						</fieldset>
 					</form>
 					#{/loggedOut}
  	        	</aside>
 		    	<div id="content">
 			    	<ul class="errors">
-						#{errors}
-							<li>${error}</li>
-						#{/errors}
+						#{if flash.error}
+		                        <p class="error">
+		                                &{flash.error}
+		                        </p>
+		                #{/if}
+		                #{if flash.success}
+		                        <p class="success">
+		                                &{flash.success}
+		                        </p>
+		                #{/if}
 					</ul>
 			        #{doLayout /}
 		    	</div>

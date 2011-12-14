@@ -4,6 +4,8 @@
 
 # Home page
 *     /                                       Application.index
+POST     /login									Security.authenticate
+*     /security/login							Security.login
 
 # Import Secure routes
 *       /                                       module:secure
