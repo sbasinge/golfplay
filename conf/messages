@@ -54,6 +54,12 @@ account_usernameTaken=The username '{0}' is already taken. Please choose another
 
 conversation_ended=You have to move faster than that!
 
+register.fullname=Full Name
+register.username=User Name
+register.email=Email Address
+register.password=Password
+register.confirmpassword=Retype Password
+register.register=Register
 registration_registered=You have been successfully registered as the user {0}! You may now login.
 registration_invalid=Invalid registration. Please correct the errors and try again.
 
