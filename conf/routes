@@ -4,11 +4,11 @@
 
 # Home page
 *     /                                       Application.index
-POST     /login									Security.authenticate
-*     /security/login							Security.login
+POST     /login									Application.authenticate
+*		/register							Application.register
 
 # Import Secure routes
-*       /                                       module:secure
+#*       /                                       module:secure
 
 # Administration
 GET     /admin/?                                Admin.index

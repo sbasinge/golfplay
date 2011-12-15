@@ -1,5 +1,4 @@
 /tmp
-/precompiled
 /.settings
 /.classpath
 /.project
@@ -7,4 +6,7 @@
 /modules
 /lib
 /test-result
+/precompiled
+/cobertura.ser
 /logs
+/modules

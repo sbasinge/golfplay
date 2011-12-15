@@ -38,38 +38,36 @@
 	                                &{flash.error}
 	                        </p>
 	                #{/if}
-	                #{if flash.success}
-	                        <p class="success">
-	                                &{flash.success}
-	                        </p>
-	                #{/if}
 	        		#{loggedOut}
-					<form id="login" action="/login" method="post" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" >
-                		<fieldset>
-							<p id="username-field">
-								<label for="username">Username:</label>
-								<input type="text" name="username" id="username" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
-							</p>
-							<p id="password-field">
-								<label for="password">Password:</label>
-								<input type="password" name="password" id="password" class="ui-inputfield ui-inputtext ui-widget ui-corner-all" />
-							</p>
-							<p id="remember-field">
-								<input type="checkbox" name="remember" id="remember"  />
-								<label for="remember">Remember me</label>
-							</p>
-							<p id="signin-field">
-								<input type="submit" id="signin" value="Sign in" />
-							</p>
-			                <div class="notes">
-			                	<a id="login:register" name="login:register" href="/register;jsessionid=DlGFci0A9a-4qE0VbuRBfswC">Register New User</a>
-			                </div>
-						</fieldset>
-					</form>
+					#{form  @authenticate()}
+						<span id="login">
+	                		<fieldset>
+								<p id="username-field">
+									<label for="username">&{'secure.username'}</label>
+									<input type="text" name="username" id="username" value="${flash.username}" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+								</p>
+								<p id="password-field">
+									<label for="password">&{'secure.password'}</label>
+									<input type="password" name="password" id="password" value="" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+								</p>
+								<p id="remember-field">
+									<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
+									<label for="remember">&{'secure.remember'}</label>
+								</p>
+								<p id="signin-field">
+									<input type="submit" id="signin" value="&{'secure.signin'}" />
+								</p>
+								<div class="notes">
+					               	<a id="login:register" name="login:register" href="/register">Register New User</a>
+								</div>
+							</fieldset>
+						</span>
+					#{/form}
+	        		
 					#{/loggedOut}
+					#{get 'sidebar' /}
  	        	</aside>
 		    	<div id="content">
-			    	<ul class="errors">
 						#{if flash.error}
 		                        <p class="error">
 		                                &{flash.error}
@@ -80,7 +78,6 @@
 		                                &{flash.success}
 		                        </p>
 		                #{/if}
-					</ul>
 			        #{doLayout /}
 		    	</div>
 	    	</div>

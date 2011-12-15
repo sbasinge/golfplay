@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+#{set title:'Register' /}
+
+
+#{set 'sidebar'}
+        <div class="content">
+            <h1>GolfPlus Registration</h1>
+
+            <p>
+                Register an account at GolfPlus allows you to sign in and either create a club or join a club.  When joining a club, a 
+ 				membership request will be sent to the club administrator for approval.  Once approved you will be notified by email,
+ 				text or by coming back to the site and checking your messages in the left navigation bar.
+            </p>
+
+        </div>
+#{/ set}
+
+
+#{form  @registerNewUser()}
+	<fieldset>
+	    <p id="name-field">
+			<label for="fullname">&{'register.fullname'}</label>
+			<input type="text" name="fullname" id="fullname" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+		</p>
+	    <p id="username-field">
+			<label for="username">&{'register.username'}</label>
+			<input type="text" name="username" id="username" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+		</p>
+	    <p id="email-field">
+			<label for="email">&{'register.email'}</label>
+			<input type="text" name="email" id="email" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+		</p>
+	    <p id="password-field">
+			<label for="password">&{'register.password'}</label>
+			<input type="text" name="password" id="password" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+		</p>
+	    <p id="confirmpassword-field">
+			<label for="confirmpassword">&{'register.confirmpassword'}</label>
+			<input type="text" name="confirmpassword" id="confirmpassword" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+		</p>
+	</fieldset>
+	<div class="buttonBox">
+		<input type="submit" id="signin" value="&{'register.register'}" />
+        
+	</div>
+#{/form}
