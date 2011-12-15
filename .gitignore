@@ -1,0 +1,10 @@
+/tmp
+/precompiled
+/.settings
+/.classpath
+/.project
+/tmp
+/modules
+/lib
+/test-result
+/logs
