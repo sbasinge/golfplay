@@ -406,7 +406,7 @@ td.action {
     display: none;
 }
 
-.ui-widget-content .counter {
+.counter {
 	background-color: rgba(2,52,68,0.6) ;
 }
 

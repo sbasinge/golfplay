@@ -1,0 +1,35 @@
+#{extends 'template.html' /}
+#{set title:'Scores' /}
+
+<div class="section">
+    <h1>Scores</h1>
+	<br/>
+	<table id="dataTable">
+	    <thead>
+	        <tr>
+	        	<th>Player</th>
+	        	<th>Date</th>
+	        	<th>Course</th>
+	        	<th>Slope</th>
+	        	<th>Gross</th>
+	        	<th>Adjusted</th>
+	        	<th>Differential</th>
+	        	<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			 %{scores.eachWithIndex() { score, k -> }%
+		    <tr class="${score.counter ? 'counter' : ''}">
+		      <td>${score.user.name}</td>
+		      <td>${score.date}</td>
+		      <td>${score.teeSet.course.name}</td>
+		      <td>${score.teeSet.slopeRating}</td>
+		      <td>${score.grossScore}</td>
+		      <td>${score.adjustedScore}</td>
+		      <td>${score.getDifferential()}</td>
+		      <td><a href="#">View</a>&nbsp;&nbsp;<a href="#">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a></td>
+		    </tr>
+		    %{ } }%
+		</tbody>
+	</table>
+</div>

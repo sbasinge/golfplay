@@ -1,0 +1,51 @@
+#{extends 'template.html' /}
+#{set title:'Edit Club' /}
+
+#{set 'sidebar'}
+        <div class="content">
+            <h1>Edit Club</h1>
+
+            <p>
+                Change the club name, the url used to read blog posts and the url that links to your club's external web site. 
+            </p>
+
+        </div>
+#{/ set}
+
+<div class="section">
+    <h1>Edit Course</h1>
+    
+    #{form  @save()}
+    	<fieldset>
+    		<input type="hidden" name="course.id" id="course.id" value="${course?.id}"/>
+	    	#{field 'club.name'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'club.name'}</label>
+	            	<input type="text" name="${field.name}" size="16" value="${club?.name}"> *
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'club.websiteUrl'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'club.websiteUrl'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${club?.websiteUrl}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'club.rssFeedUrl'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'club.rssFeedUrl'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${club?.rssFeedUrl}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+    	
+    	</fieldset>
+		<div class="buttonBox">
+			<input type="submit" id="save" value="&{'club.save'}"  />
+			<a id="cancel" href="@{cancel}">&{'club.cancel'}</a>
+		</div>
+    	
+    #{/form}
+    
+</div>

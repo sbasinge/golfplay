@@ -17,7 +17,7 @@
 		    <tr class="${k % 2 ? 'even' : 'odd'}">
 		      <td>${member.name}</td>
 		      <td>${member.handicap}</td>
-		      <td><a href="@{Scores.listForMember(member._key())}">View</a>&nbsp;&nbsp;<a href="@{calculateHandicap(member._key())}">Calculate</a></td>
+		      <td><a href="@{view(member._key())}">View</a>&nbsp;&nbsp;<a href="@{calculateHandicap(member._key())}">Calculate</a></td>
 		    </tr>
 		    %{ } }%
 		</tbody>

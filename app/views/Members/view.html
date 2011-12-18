@@ -16,7 +16,7 @@
 	</div>
       
 	<div class="section">
-		<form id="memberSelectionForm" name="memberSelectionForm" method="post" action="@{list()}" enctype="application/x-www-form-urlencoded">
+		<form id="memberSelectionForm" name="memberSelectionForm" method="post" enctype="application/x-www-form-urlencoded">
 			<div id="members">
 				<table id="dataTable">
 					<thead>
@@ -27,12 +27,12 @@
 						</tr>
 					</thead>
 					<tbody id="members_data">
-						 %{club.members.eachWithIndex() { object, k -> }%
+						 %{club.members.eachWithIndex() { member, k -> }%
 						<tr data-ri="0">
-							<td>${object.name}</td>
-							<td>${object.handicap}</td>
+							<td>${member.name}</td>
+							<td>${member.handicap}</td>
 							<td>
-								<a id="view" href="@{Users.show(object._key())}">View</a>
+								<a id="view" href="@{Scores.list(member._key())}">View</a>
 								<a id="calc" href="#" onclick="">Calculate</a>
 							</td>
 						</tr>

@@ -22,4 +22,14 @@ public class Scores extends Application {
 		}
 		render(scores);
 	}
+	
+	public static void listForMember(String id) {
+		User member = User.findById(id);
+		List<Score> scores = new ArrayList<Score>();
+		if (member != null) {
+			scores = member.scores;
+		}
+		render(scores);
+	}
+
 }

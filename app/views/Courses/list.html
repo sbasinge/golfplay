@@ -1,24 +1,23 @@
-#{extends 'CRUD/layout.html' /}
-#{set title:messages.get('crud.list.title', type.name) /}
+#{extends 'template.html' /}
+#{set title:'Courses' /}
 
-<div id="crudList" class="${type.name}">
-
-    <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
-
-    <div id="crudListSearch">
-        #{crud.search /}
-    </div>
-
-    <div id="crudListTable">
-        #{crud.table fields:['name','facility'] /}
-    </div>
-
-    <div id="crudListPagination">
-        #{crud.pagination /}
-    </div>
-
-    <p id="crudListAdd">
-        <a href="@{blank()}">&{'crud.add', type.modelName}</a>
-    </p>
-
+<div class="section">
+    <h1>Courses</h1>
+	<br/>
+	<table id="dataTable">
+	    <thead>
+	        <tr>
+	        	<th>Name</th>
+	        	<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			 %{courses.eachWithIndex() { course, k -> }%
+		    <tr class="${k % 2 ? 'even' : 'odd'}">
+		      <td>${course.name}</td>
+		      <td><a href="@{view(member._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(member._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(member._key())}">Delete</a></td>
+		    </tr>
+		    %{ } }%
+		</tbody>
+	</table>
 </div>

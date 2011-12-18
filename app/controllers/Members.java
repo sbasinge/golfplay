@@ -21,7 +21,15 @@ public class Members extends Application {
 			render(members);
 		}
 	}
-	
+
+	public static void listForClub(Long id) {
+		Club club = Club.findById(id);
+		if (club != null) {
+			List<User> members = club.members;
+			render(members);
+		}
+	}
+
     public static void calculateHandicap(String id) {
     	User member = User.findById(id);
     	member.calculateHandicap();
