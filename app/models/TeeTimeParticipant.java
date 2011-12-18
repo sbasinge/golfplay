@@ -44,7 +44,7 @@ public class TeeTimeParticipant extends BaseEntity {
 		}
 		score.date = teetime.date;
 		score.grossScore = grossScore;
-		score.netScore = netScore;
+		score.adjustedScore = netScore;
 		score.teeTime = this.teetime;
 		score.teeSet = teetime.teeSet;
 		score.user = user;

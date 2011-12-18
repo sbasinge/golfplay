@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Club;
+import play.Logger;
 import play.mvc.With;
 import controllers.CRUD.ObjectType;
 
@@ -31,12 +32,18 @@ public class Clubs extends Application {
         render(type, club);
     }
 
-    public static void save(Long id) {
-    	Club club = Club.findById(id);
+    public static void save(Club club) {
+    	Logger.info("Called save club with %s", club);
+        if(validation.hasErrors()) {
+            render("@index", club);
+        }
     	club.save();
+    	flash.success("club_saved");
     	list();
     }
     
-    public static void delete(String id) {
+    
+    public static void cancel() {
+    	index();
     }
 }

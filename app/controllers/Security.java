@@ -2,9 +2,6 @@ package controllers;
 
 import models.User;
 import play.Logger;
-import play.data.validation.Required;
-import play.libs.Crypto;
-import play.mvc.Http;
 
 public class Security extends Secure.Security {
 
@@ -23,58 +20,12 @@ public class Security extends Secure.Security {
 		return user != null;
 	}
 	
-    public static void authenticate(@Required String username, String password, boolean remember) throws Throwable {
-    	Logger.info("Authenticating...");
-        // Check tokens
-        Boolean allowed = false;
-        allowed = (Boolean)authenticate(username, password);
-        if(validation.hasErrors() || !allowed) {
-        	Logger.warn("Errors logging in", validation.errorsMap());
-            flash.keep("url");
-            flash.error("secure.error");
-            flash.error("invalid id or password");
-            params.flash();
-            login();
-        }
-        // Mark user as connected
-        session.put("username", username);
-        // Remember if needed
-        if(remember) {
-            response.setCookie("rememberme", Crypto.sign(username) + "-" + username, "30d");
-        }
-        // Redirect to the original URL (or /)
-        redirectToOriginalURL();
-    }
-
-    public static void login() throws Throwable {
-        Http.Cookie remember = request.cookies.get("rememberme");
-        if(remember != null && remember.value.indexOf("-") > 0) {
-            String sign = remember.value.substring(0, remember.value.indexOf("-"));
-            String username = remember.value.substring(remember.value.indexOf("-") + 1);
-            if(Crypto.sign(username).equals(sign)) {
-                session.put("username", username);
-                redirectToOriginalURL();
-            }
-        }
-        flash.keep("url");
-        Application.index();
-    }
-
-    static void redirectToOriginalURL() throws Throwable {
-    	onAuthenticated();
-        String url = flash.get("url");
-        if(url == null) {
-            url = "/";
-        }
-        redirect(url);
-    }
-
 	static void onDisconnected() {
 		Application.index();
 	}
 	
 	static void onAuthenticated() {
-		flash.error("Successful login");
+		flash.success("Successful login");
 		Application.index();
 	}
 	

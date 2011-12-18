@@ -141,6 +141,8 @@ public class User extends GenericModel {
 	}
 
 	public boolean calculateHandicap() {
+		log.info("Calculating handicap for {}",this.username);
+		
 		boolean handicapCalculated = false;
 		BigDecimal handicap = null;
 		//get up to last 20 scores
@@ -183,6 +185,8 @@ public class User extends GenericModel {
 		} else if (numElligibleScores == 20) {
 			scoresToUse = 10;
 		}
+		log.info("Found {} scores to use.",scoresToUse);
+
 		if (scoresToUse > 0) {
 			//sort by differential asc, lowest first
 			Collections.sort(eligibleScores, new Comparator<Score>() {

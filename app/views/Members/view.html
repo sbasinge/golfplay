@@ -1,0 +1,53 @@
+#{extends 'template.html' /} 
+#{set title:'View Club' /}
+
+<div class="section">
+    <div class="section">
+        <h1>Club Details</h1>
+    </div>
+
+    <div class="entry" id="clubname">
+        <span class="label">Name:</span>
+     	<span class="output"><span id="j_idt40:output">CMGC</span></span>
+    </div>
+	<br />
+	<div class="section">
+		<h1>Members</h1>
+	</div>
+      
+	<div class="section">
+		<form id="memberSelectionForm" name="memberSelectionForm" method="post" action="@{list()}" enctype="application/x-www-form-urlencoded">
+			<div id="members">
+				<table id="dataTable">
+					<thead>
+						<tr>
+							<th id="nameCol">Member name</th>
+							<th id="handicapCol" >Handicap</th>
+							<th id="actCol">Action</th>
+						</tr>
+					</thead>
+					<tbody id="members_data">
+						 %{club.members.eachWithIndex() { object, k -> }%
+						<tr data-ri="0">
+							<td>${object.name}</td>
+							<td>${object.handicap}</td>
+							<td>
+								<a id="view" href="@{Users.show(object._key())}">View</a>
+								<a id="calc" href="#" onclick="">Calculate</a>
+							</td>
+						</tr>
+						%{ } }%
+					</tbody>
+				</table>
+			</div>
+		</form>
+	</div>
+	<div class="section">
+		<h1>Pending Memberships</h1>
+	</div>
+	<div class="section">
+		<span id="noMembershipMsg">No Membership Requests Found</span>
+		<form id="membershipSelectionForm" name="membershipSelectionForm" method="post" action="/clubs/club.jsf?cid=1" enctype="application/x-www-form-urlencoded">
+		</form>
+    </div>	
+</div>

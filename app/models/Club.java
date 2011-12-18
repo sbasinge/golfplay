@@ -68,6 +68,6 @@ public class Club extends BaseEntity {
 	}
 	@Override
 	public String toString() {
-		return "Club [name=" + name +" ]";
+		return "Club [id="+id+", name=" + name +" ]";
 	}
 }

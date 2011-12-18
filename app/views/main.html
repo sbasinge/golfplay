@@ -23,7 +23,7 @@
 					<nav id="status">
 						#{loggedIn}<span>(${user})&nbsp;</span>#{/loggedIn}
 						#{secure.check 'ClubListVisible'}<a href="@{Clubs.list()}">Clubs</a>&nbsp;|&nbsp;#{/secure.check}
-						#{secure.check 'MemberListVisible'}<a href="@{Users.list()}">Members</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'MemberListVisible'}<a href="@{Members.list()}">Members</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'CourseListVisible'}<a href="@{Courses.list()}">Courses</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'ScoreListVisible'}<a href="@{Scores.list()}">Scores</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'TeeTimeListVisible'}<a href="@{TeeTimes.list()}">Tee Times</a>&nbsp;|&nbsp;#{/secure.check}
@@ -34,11 +34,6 @@
 	    	</div>
 	    	<div id="container">
 	        	<aside id="sidebar">
-					#{if flash.error}
-	                        <p class="error">
-	                                &{flash.error}
-	                        </p>
-	                #{/if}
 	        		#{loggedOut}
 					#{form  @authenticate()}
 						<span id="login">
@@ -66,6 +61,17 @@
 					#{/form}
 	        		
 					#{/loggedOut}
+					#{loggedIn}
+						<div id="siteMessageTable">
+							%{siteMessages.eachWithIndex() { siteMessage, k -> }%
+						      <div>
+						      	<span>${siteMessage.messageText}</span>
+						      	<br/>
+						      	<a href="#" onclick="reloadSiteMessages(${siteMessage.id});">Mark as Read</a>
+						      </div>
+						    %{ } }%
+						</div>
+					#{/loggedIn}
 					#{get 'sidebar' /}
  	        	</aside>
 		    	<div id="content">

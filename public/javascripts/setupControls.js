@@ -17,8 +17,8 @@ $(document).ready(function() {
 	        "bJQueryUI": true,
 	        "bLengthChange": false,
 	        "bFilter": false,
-	        "bPaginate": false,
-	        "bInfo": false,
+	        "bPaginate": true,
+	        "bInfo": true,
 	        "bSort": true,
 	    });
 	});
@@ -44,4 +44,12 @@ $(document).ready(function() {
 		$("input[type='submit']").button();
 	});
 
+	$(function() {
+		$( ".buttonBox a" ).button();
+	});
+
 });
+
+function reloadSiteMessages(id) {
+	$('#siteMessageTable').load('/sitemessages/list?id='+id);
+};

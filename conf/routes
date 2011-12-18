@@ -17,6 +17,9 @@ GET     /admin/?                                Admin.index
 # Clubs
 GET		/clubs/?								Clubs.index
 
+# Members
+GET		/members/?								Members.index
+
 # Ignore favicon requests
 GET     /favicon.ico                            404
 

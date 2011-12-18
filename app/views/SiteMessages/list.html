@@ -1,0 +1,7 @@
+%{siteMessages.eachWithIndex() { siteMessage, k -> }%
+     <div>
+     	<span>${siteMessage.messageText}</span>
+     	<br/>
+     	<a href="#" onclick="reloadSiteMessages();">Mark as Read</a>
+     </div>
+   %{ } }%

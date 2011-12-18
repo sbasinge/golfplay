@@ -536,4 +536,8 @@
     date: 2011-08-20
     grossScore: 98
     netScore: 96
-    user: scott                                    
+    user: scott                
+    
+  SiteMessage(sm1):
+   user: scott
+   messageText: Welcome to the CMGC                    
