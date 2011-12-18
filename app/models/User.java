@@ -29,6 +29,7 @@ import play.data.validation.MaxSize;
 import play.data.validation.MinSize;
 import play.data.validation.Phone;
 import play.data.validation.Required;
+import play.data.validation.Unique;
 import play.db.jpa.GenericModel;
 
 @Entity
@@ -39,6 +40,8 @@ public class User extends GenericModel {
     public static Logger log = LoggerFactory.getLogger(User.class);
     
     @Id
+    @Required
+    @Unique
     @MinSize(3)
     @MaxSize(15)
     @Match(value="^\\w*$", message="Not a valid username")

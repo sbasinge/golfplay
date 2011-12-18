@@ -1,4 +1,4 @@
-#{extends 'main.html' /} 
+#{extends 'template.html' /} 
 #{set title:'View Club' /}
 
 <div class="section">
@@ -17,25 +17,23 @@
       
 	<div class="section">
 		<form id="memberSelectionForm" name="memberSelectionForm" method="post" action="@{list()}" enctype="application/x-www-form-urlencoded">
-			<div id="members" class="ui-datatable ui-widget">
-				<table>
+			<div id="members">
+				<table id="dataTable">
 					<thead>
 						<tr>
-							<th id="nameCol" class="ui-state-default"><div class="ui-dt-c"><span>Member name</span></div></th>
-							<th id="handicapCol" class="ui-state-default"><div class="ui-dt-c"><span>Handicap</span></div></th>
-							<th id="actCol" class="ui-state-default"><div class="ui-dt-c"><span>Action</span></div></th>
+							<th id="nameCol">Member name</th>
+							<th id="handicapCol" >Handicap</th>
+							<th id="actCol">Action</th>
 						</tr>
 					</thead>
-					<tfoot></tfoot>
-					<tbody id="members_data" class="ui-datatable-data ui-widget-content">
+					<tbody id="members_data">
 						 %{club.members.eachWithIndex() { object, k -> }%
-						<tr data-ri="0" class="ui-widget-content ui-datatable-even">
-							<td><div class="ui-dt-c">${object.name}</div></td>
-							<td><div class="ui-dt-c">${object.handicap}</div></td>
-							<td><div class="ui-dt-c">
-									<a id="view" href="@{Users.show(object._key())}">View</a>
-									<a id="calc" href="#" onclick="">Calculate</a>
-							    </div>
+						<tr data-ri="0">
+							<td>${object.name}</td>
+							<td>${object.handicap}</td>
+							<td>
+								<a id="view" href="@{Users.show(object._key())}">View</a>
+								<a id="calc" href="#" onclick="">Calculate</a>
 							</td>
 						</tr>
 						%{ } }%

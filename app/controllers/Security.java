@@ -24,6 +24,7 @@ public class Security extends Secure.Security {
 	}
 	
     public static void authenticate(@Required String username, String password, boolean remember) throws Throwable {
+    	Logger.info("Authenticating...");
         // Check tokens
         Boolean allowed = false;
         allowed = (Boolean)authenticate(username, password);

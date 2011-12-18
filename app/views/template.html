@@ -1,41 +1,61 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
- 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+
+<html>
     <head>
-        <title>#{get 'title' /}</title>		
-        <meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>
+        <title>#{get 'title' /}</title>
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/themes/dark-hive/jquery-ui-1.8.16.custom.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/golfplus.css'}">
         #{get 'moreStyles' /}
-        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/golfplus.css'}" />
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />
-        <script src="@{'/public/javascripts/jquery-1.6.2.min.js'}"></script>
-		<script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js"></script>
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <script src="@{'/public/javascripts/jquery-1.6.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery.dataTables.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/setupControls.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        #{get 'moreScripts' /}
     </head>
-    <body class="page">
-        <div id="document">
-            <div id="header">
-                <div id="title">
-	                <h1>#{get 'title' /}</h1>
-                </div>
-                <form id="menuForm">
-                    <div id="status">
-                        <span>Welcome ${user}</span>
-                    </div>
-                </form>
-            </div>
-            <div id="container">
-                <div id="sidebar">
-                </div>
-                <div id="content">
-					#{if flash.error || error}
-			            <div class="error">
-            			    ${error ?: flash.error}
-			            </div>
-					#{/if}
-					#{doLayout /}
-                </div>
-            </div>
-            <div id="footer">
-            </div>
-        </div>
-	</body>    
+    <body class="home">
+		<div id="document">
+	    	<div id="header">
+				<div id="title">
+					<h1>&{'home_title', home_title}</h1>
+				</div>
+					<nav id="status">
+						#{loggedIn}<span>(${user})&nbsp;</span>#{/loggedIn}
+						#{secure.check 'ClubListVisible'}<a href="@{Clubs.list()}">Clubs</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'MemberListVisible'}<a href="@{Users.list()}">Members</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'CourseListVisible'}<a href="@{Courses.list()}">Courses</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'ScoreListVisible'}<a href="@{Scores.list()}">Scores</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'TeeTimeListVisible'}<a href="@{TeeTimes.list()}">Tee Times</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'TournamentListVisible'}<a href="@{Tournaments.list()}">Tournaments</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'AccountVisible'}<a href="@{Clubs.list()}">Account</a>&nbsp;|&nbsp;#{/secure.check}
+	                    #{loggedIn}<a href="@{Secure.logout()}">Log out</a>#{/loggedIn}
+				</nav>
+	    	</div>
+	    	<div id="container">
+	        	<aside id="sidebar">
+					#{get 'sidebar' /}
+ 	        	</aside>
+		    	<div id="content">
+						#{if flash.error}
+		                        <p class="error">
+		                                &{flash.error}
+		                        </p>
+		                #{/if}
+		                #{if flash.success}
+		                        <p class="success">
+		                                &{flash.success}
+		                        </p>
+		                #{/if}
+			        #{doLayout /}
+		    	</div>
+	    	</div>
+	    	<div id="footer">
+	                &{'template_createdWith'}<br/>
+	                &{'template_projectStage'}: 
+	                <br/>
+	                Selected Club: ${selectedClub}
+	    	
+	    	</div>
+    	</div>
+    </body>
 </html>

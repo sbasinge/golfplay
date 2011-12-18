@@ -3,9 +3,9 @@
 # ~~~~
 
 # Home page
-*     /                                       Application.index
+*     /                                       	Application.index
 POST     /login									Application.authenticate
-*		/register							Application.register
+*		/register								Application.register
 
 # Import Secure routes
 #*       /                                       module:secure

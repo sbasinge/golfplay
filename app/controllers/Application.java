@@ -2,11 +2,13 @@ package controllers;
 
 import models.User;
 import play.Logger;
+import play.data.validation.Required;
 import play.libs.Crypto;
 import play.mvc.Before;
+import play.mvc.Controller;
 import play.mvc.Http;
 
-public class Application extends Secure {
+public class Application extends Controller {
 
     @Before(unless={"login", "authenticate", "logout", "register"})
     static void setConnectedUser() {
@@ -47,6 +49,9 @@ public class Application extends Secure {
         render();
     }
 
+    public static void authenticate(@Required String username, String password, boolean remember) throws Throwable {
+    	Secure.authenticate(username, password, remember);
+    }
 
 	static boolean authenticate(String username, String password) {
 		User user = User.connect(username, password);
@@ -63,11 +68,6 @@ public class Application extends Secure {
 		return user != null;
 	}
 
-	public static void register() {
-		User user = new User();
-		render(user);
-	}
-	
     public static void registerNewUser(User user) {
         render();
     }

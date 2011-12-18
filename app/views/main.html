@@ -11,6 +11,7 @@
         <script src="@{'/public/javascripts/jquery-1.6.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/jquery.dataTables.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/setupControls.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
     </head>
     <body class="home">
@@ -44,11 +45,11 @@
 	                		<fieldset>
 								<p id="username-field">
 									<label for="username">&{'secure.username'}</label>
-									<input type="text" name="username" id="username" value="${flash.username}" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+									<input type="text" name="username" id="username" value="${flash.username}"/>
 								</p>
 								<p id="password-field">
 									<label for="password">&{'secure.password'}</label>
-									<input type="password" name="password" id="password" value="" class="ui-inputfield ui-inputtext ui-widget ui-corner-all"/>
+									<input type="password" name="password" id="password" value=""/>
 								</p>
 								<p id="remember-field">
 									<input type="checkbox" name="remember" id="remember" value="true" ${flash.remember ? 'checked="true"' : ''} />
@@ -58,7 +59,7 @@
 									<input type="submit" id="signin" value="&{'secure.signin'}" />
 								</p>
 								<div class="notes">
-					               	<a id="login:register" name="login:register" href="/register">Register New User</a>
+					               	<a id="login:register" name="login:register" href="@{Register.index}">Register New User</a>
 								</div>
 							</fieldset>
 						</span>

@@ -1,4 +1,4 @@
-#{extends 'main.html' /}
+#{extends 'template.html' /}
 #{set title:'Clubs' /}
 
 <div class="section">
@@ -23,15 +23,3 @@
 		</tbody>
 	</table>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    oTable = $('#dataTable').dataTable({
-        "bJQueryUI": true,
-        "bLengthChange": false,
-        "bFilter": false,
-        "bPaginate": false,
-        "bInfo": false,
-        "bSort": false
-    });
-} );
-</script>
