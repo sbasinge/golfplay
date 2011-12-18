@@ -1,11 +1,12 @@
 /tmp
-/hs_err_pid6808.log
-/hs_err_pid6796.log
-/hs_err_pid8568.log
-/hs_err_pid4348.log
+/.settings
+/.classpath
+/.project
+/tmp
+/modules
+/lib
 /test-result
 /precompiled
 /cobertura.ser
 /logs
 /modules
-/lib
