@@ -3,43 +3,94 @@
 
 <div class="section">
     <div class="section">
-        <h1>Club Details</h1>
+        <h1>Course Details</h1>
     </div>
 
-    <div class="entry" id="clubname">
-        <span class="label">Name:</span>
-     	<span class="output"><span id="j_idt40:output">CMGC</span></span>
-    </div>
-	<br />
-	<div class="section">
-		<h1>Members</h1>
-	</div>
       
 	<div class="section">
 		<form id="memberSelectionForm" name="memberSelectionForm" method="post" enctype="application/x-www-form-urlencoded">
-			<div id="members">
-				<table id="dataTable">
-					<thead>
-						<tr>
-							<th id="nameCol">Member name</th>
-							<th id="handicapCol" >Handicap</th>
-							<th id="actCol">Action</th>
-						</tr>
-					</thead>
-					<tbody id="members_data">
-						 %{club.members.eachWithIndex() { member, k -> }%
-						<tr data-ri="0">
-							<td>${member.name}</td>
-							<td>${member.handicap}</td>
-							<td>
-								<a id="view" href="@{Members.listForClub(club.id)}">View</a>
-								<a id="calc" href="@{Members.calculateHandicap(member._key())}" onclick="">Calculate</a>
-							</td>
-						</tr>
-						%{ } }%
-					</tbody>
-				</table>
-			</div>
+			<fieldset>
+	    	#{field 'course.name'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'course.name'}</label>
+	            	<input type="text" name="${field.name}" size="16" value="${course?.name}" disabled="true"> *
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.name'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'facility.name'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.name}" disabled="true">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.addressLine1'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.addressLine1'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.addressLine1}" disabled="true">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.addressLine2'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.addressLine2'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.addressLine2}" disabled="true">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.city'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.city'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.city}" disabled="true">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.state'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.state'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.state}" disabled="true">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.zipCode'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.zipCode'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.zipCode}" disabled="true">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.phone'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'facility.phone'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.phone}" disabled="true">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+    	
+    		<table id="dataTable">
+			    <thead>
+			        <tr>
+			        	<th>Type</th>
+			        	<th>Rating</th>
+			        	<th>Slope</th>
+					</tr>
+				</thead>
+				<tbody>
+					 %{course.teeSets.eachWithIndex() { teeSet, k -> }%
+				    <tr class="${k % 2 ? 'even' : 'odd'}">
+				    	<td>${teeSet.teeType}</td>
+				      <td>
+				        <input type="text" name="courseRating" size="16" value="${teeSet?.courseRating}" disabled="true">
+				      </td>
+				      <td>
+		            	<input type="text" name="slopeRating" size="16" value="${teeSet?.slopeRating}" disabled="true">
+				      </td>
+				    </tr>
+				    %{ } }%
+				</tbody>
+			</table>
+    	
+    	</fieldset>
 		</form>
 	</div>
 	<div class="section">

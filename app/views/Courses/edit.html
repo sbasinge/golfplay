@@ -18,32 +18,90 @@
     #{form  @save()}
     	<fieldset>
     		<input type="hidden" name="course.id" id="course.id" value="${course?.id}"/>
-	    	#{field 'club.name'}
+	    	#{field 'course.name'}
 		        <p class="${field.errorClass}">
-			        <label for="${field.name}">&{'club.name'}</label>
-	            	<input type="text" name="${field.name}" size="16" value="${club?.name}"> *
+			        <label for="${field.name}">&{'course.name'}</label>
+	            	<input type="text" name="${field.name}" size="16" value="${course?.name}"> *
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
-	    	#{field 'club.websiteUrl'}
+	    	#{field 'course.facility.name'}
 		        <p class="${field.errorClass}">
-			        <label for="${field.name}">&{'club.websiteUrl'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${club?.websiteUrl}">
+			        <label for="${field.name}">&{'facility.name'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.name}">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
-	    	#{field 'club.rssFeedUrl'}
+	    	#{field 'course.facility.address.addressLine1'}
 		        <p class="${field.errorClass}">
-			        <label for="${field.name}">&{'club.rssFeedUrl'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${club?.rssFeedUrl}">
+			        <label for="${field.name}">&{'address.addressLine1'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.addressLine1}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.addressLine2'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.addressLine2'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.addressLine2}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.city'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.city'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.city}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.state'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.state'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.state}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.address.zipCode'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'address.zipCode'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.zipCode}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'course.facility.phone'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'facility.phone'}</label>
+	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.phone}">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
     	
+    		<table id="dataTable">
+			    <thead>
+			        <tr>
+			        	<th>Type</th>
+			        	<th>Rating</th>
+			        	<th>Slope</th>
+					</tr>
+				</thead>
+				<tbody>
+					 %{course.teeSets.eachWithIndex() { teeSet, k -> }%
+				    <tr class="${k % 2 ? 'even' : 'odd'}">
+				    	<td>${teeSet.teeType}</td>
+				      <td>
+				        <input type="text" name="courseRating" size="16" value="${teeSet?.courseRating}">
+				      </td>
+				      <td>
+		            	<input type="text" name="slopeRating" size="16" value="${teeSet?.slopeRating}">
+				      </td>
+				    </tr>
+				    %{ } }%
+				</tbody>
+			</table>
+    	
     	</fieldset>
 		<div class="buttonBox">
-			<input type="submit" id="save" value="&{'club.save'}"  />
-			<a id="cancel" href="@{cancel}">&{'club.cancel'}</a>
+			<input type="submit" id="save" value="&{'course.save'}"  />
+			<a id="cancel" href="@{cancel}">&{'course.cancel'}</a>
 		</div>
     	
     #{/form}

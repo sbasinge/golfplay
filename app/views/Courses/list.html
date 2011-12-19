@@ -15,7 +15,7 @@
 			 %{courses.eachWithIndex() { course, k -> }%
 		    <tr class="${k % 2 ? 'even' : 'odd'}">
 		      <td>${course.name}</td>
-		      <td><a href="@{view(member._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(member._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(member._key())}">Delete</a></td>
+		      <td><a href="@{view(course._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(course._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(course._key())}">Delete</a></td>
 		    </tr>
 		    %{ } }%
 		</tbody>

@@ -52,12 +52,23 @@ account_passwordNotConfirmed=Your current password was not valid. Please try aga
 account_passwordsDoNotMatch=Passwords do not match. Please re-type the new password.
 account_usernameTaken=The username '{0}' is already taken. Please choose another username.
 
+address.addressLine1=Address
+address.addressLine2=Address
+address.city=City
+address.state=State
+address.zipCode=Zip Code
+
 club.name=Club Name
 club.websiteUrl=External Web Site URL
 club.rssFeedUrl=RSS Feed URL
 club.save=Save
 club.cancel=Cancel
 club_saved=Club Updated
+
+course.name=Name
+
+facility.name=Name
+facility.phone=Phone Number
 
 register.fullname=Full Name
 register.username=User Name
