@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.Score;
 import models.User;
+import play.data.validation.Valid;
 import play.mvc.With;
 
 
@@ -31,5 +32,29 @@ public class Scores extends Application {
 		}
 		render(scores);
 	}
+
+    public static void edit(Long id) {
+    	Score score = Score.findById(id);
+        render(score);
+    }
+
+    public static void view(Long id) {
+    	Score score = Score.findById(id);
+        render(score);
+    }
+
+    public static void delete(Long id) {
+    	Score score = Score.findById(id);
+    	score.delete();
+        list();
+    }
+
+    public static void save(@Valid Score score) {
+    	score.save();
+    }
+
+    public static void cancel() {
+    	list();
+    }
 
 }

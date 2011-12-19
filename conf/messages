@@ -65,7 +65,7 @@ club.save=Save
 club.cancel=Cancel
 club_saved=Club Updated
 
-course.name=Name
+course.name=Course Name
 
 facility.name=Name
 facility.phone=Phone Number
@@ -78,6 +78,14 @@ register.confirmpassword=Retype Password
 register.register=Register
 registration_registered=You have been successfully registered as the user {0}! You may now login.
 registration_invalid=Invalid registration. Please correct the errors and try again.
+
+score.date=Date
+score.grossScore=Gross
+score.adjustedScore=Adjusted
+score.save=Save
+score.cancel=Cancel
+
+teeSet.teeType=Tees
 
 identity_loggedOut=You have successfully ended your session.
 identity_loggedIn=You're signed in as {0}.

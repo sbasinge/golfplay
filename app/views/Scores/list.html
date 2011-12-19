@@ -27,7 +27,7 @@
 		      <td>${score.grossScore}</td>
 		      <td>${score.adjustedScore}</td>
 		      <td>${score.getDifferential()}</td>
-		      <td><a href="#">View</a>&nbsp;&nbsp;<a href="#">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a></td>
+		      <td><a href="@{view(score._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(score._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(score._key())}">Delete</a></td>
 		    </tr>
 		    %{ } }%
 		</tbody>

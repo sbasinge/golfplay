@@ -37,7 +37,7 @@ $(document).ready(function() {
 	});
 
 	$(function() {
-		$("input[type='text'],input[type='password']").addClass("ui-inputfield ui-inputtext ui-widget ui-corner-all");
+		$("input[type='text'],input[type='password'],input[type='date'],input[type='number']").addClass("ui-inputfield ui-inputtext ui-widget ui-corner-all");
 	});
 
 	$(function() {
@@ -45,9 +45,18 @@ $(document).ready(function() {
 	});
 
 	$(function() {
+		$("input[type='date']").datepicker();
+	});
+
+	$(function() {
 		$( ".buttonBox a" ).button();
 	});
 
+	$(function() {
+		$('#teeType').selectmenu();
+	});
+
+	
 });
 
 function reloadSiteMessages(id) {
