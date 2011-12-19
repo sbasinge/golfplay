@@ -15,7 +15,7 @@
 			 %{clubs.eachWithIndex() { object, k -> }%
 		    <tr class="${k % 2 ? 'even' : 'odd'}">
 		      <td>${object.name}</td>
-		      <td><a href="@{view(object._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(object._key())}">Edit</a></td>
+		      <td><a href="@{Members.listForClub(object._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(object._key())}">Edit</a></td>
 		    </tr>
 		    %{ } }%
 		</tbody>

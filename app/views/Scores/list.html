@@ -19,7 +19,7 @@
 		</thead>
 		<tbody>
 			 %{scores.eachWithIndex() { score, k -> }%
-		    <tr class="${k % 2 ? 'even' : 'odd'}">
+		    <tr class="${score.counter ? 'counter' : ''}">
 		      <td>${score.user.name}</td>
 		      <td>${score.date}</td>
 		      <td>${score.teeSet.course.name}</td>

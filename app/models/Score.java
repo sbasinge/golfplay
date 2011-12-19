@@ -33,11 +33,11 @@ public class Score extends BaseEntity {
     @ManyToOne
     public TeeTime teeTime;
 
-    @Column
+    @Column(nullable=false)
     @Required
     public Integer grossScore;
 
-    @Column
+    @Column(nullable=false)
     @Required
     public Integer adjustedScore;
 	

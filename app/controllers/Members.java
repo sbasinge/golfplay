@@ -10,10 +10,6 @@ import controllers.CRUD.ObjectType;
 @With(Secure.class)
 public class Members extends Application {
 
-    public static void index() {
-    	list();
-    }
-
 	public static void list() {
 		Club club = Club.find("byName", renderArgs.get("selectedClub")).first();
 		if (club != null) {
