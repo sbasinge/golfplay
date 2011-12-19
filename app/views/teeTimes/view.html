@@ -1,0 +1,67 @@
+#{extends 'template.html' /}
+#{set title:'Edit Club' /}
+
+#{set 'sidebar'}
+        <div class="content">
+            <h1>Edit Score</h1>
+
+            <p>
+                Change the club name, the url used to read blog posts and the url that links to your club's external web site. 
+            </p>
+
+        </div>
+#{/ set}
+
+<div class="section">
+    <h1>Edit Score</h1>
+    
+    #{form  @save()}
+    	<fieldset>
+    		<input type="hidden" name="score.id" id="score.id" value="${score?.id}"/>
+	    	#{field 'score.teeSet.course.name'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'course.name'}</label>
+	            	<input type="text" name="${field.name}" size="16" value="${score.teeSet.course.name}" disabled="disabled"> *
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'score.teeSet.teeType'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'teeSet.teeType'}</label>
+					<select name="teeType" id="teeType" disabled="disabled">
+						%{score.teeSet.course.teeSets.eachWithIndex() { teeSet, k -> }%
+							<option value="${teeSet.teeType}">${teeSet.teeType}&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						%{ } }%
+					</select>	    	
+				</p>
+		    #{/field}
+	    	#{field 'score.date'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'score.date'}</label>
+	            	<input type="date" name="${field.name}" size="16" value="${score.date}" disabled="disabled">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'score.grossScore'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'score.grossScore'}</label>
+	            	<input type="number" name="${field.name}" size="8" value="${score.grossScore}" disabled="disabled">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'score.adjustedScore'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'score.adjustedScore'}</label>
+	            	<input type="text" name="${field.name}" size="8" value="${score.adjustedScore}" disabled="disabled">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+    	
+    	</fieldset>
+		<div class="buttonBox">
+			<a id="cancel" href="@{cancel}">Return to List</a>
+		</div>
+    	
+    #{/form}
+    
+</div>

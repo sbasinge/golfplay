@@ -1,0 +1,27 @@
+#{extends 'template.html' /}
+#{set title:'Scores' /}
+
+<div class="section">
+    <h1>Tee Times</h1>
+	<br/>
+	<table id="dataTable">
+	    <thead>
+	        <tr>
+	        	<th>Course</th>
+	        	<th>Date</th>
+	        	<th>Open Spots</th>
+	        	<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			 %{teeTimes.eachWithIndex() { teeTime, k -> }%
+		    <tr class="${k % 2 ? 'even' : 'odd'}">
+		      <td>${teeTime.course.name}</td>
+		      <td>${teeTime.date.format('MM/dd/yyyy hh:mm')}</td>
+		      <td>${teeTime.getNumOpenSpots()}</td>
+		      <td><a href="@{view(teeTime._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(teeTime._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(teeTime._key())}">Delete</a></td>
+		    </tr>
+		    %{ } }%
+		</tbody>
+	</table>
+</div>

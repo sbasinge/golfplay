@@ -540,4 +540,9 @@
     
   SiteMessage(sm1):
    user: scott
-   messageText: Welcome to the CMGC                    
+   messageText: Welcome to the CMGC    
+
+  TeeTime(teetime1):
+   date: 2011-08-20
+   course: ChampionsCourse
+   numPlayers: 4                
