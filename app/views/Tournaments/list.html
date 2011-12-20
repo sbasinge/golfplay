@@ -1,0 +1,23 @@
+#{extends 'template.html' /}
+#{set title:'Scores' /}
+
+<div class="section">
+    <h1>Tee Times</h1>
+	<br/>
+	<table id="dataTable">
+	    <thead>
+	        <tr>
+	        	<th>Name</th>
+	        	<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			 %{tournaments.eachWithIndex() { tournament, k -> }%
+		    <tr class="${k % 2 ? 'even' : 'odd'}">
+		      <td>${tournament.name}</td>
+		      <td><a href="@{view(tournament._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(tournament._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(tournament._key())}">Delete</a></td>
+		    </tr>
+		    %{ } }%
+		</tbody>
+	</table>
+</div>
