@@ -23,6 +23,7 @@
 				</div>
 					<nav id="status">
 						#{loggedIn}<span>(${user})&nbsp;</span>#{/loggedIn}
+						<a href="@{Application.index()}">Home</a>&nbsp;|&nbsp;
 						#{secure.check 'ClubListVisible'}<a href="@{Clubs.list()}">Clubs</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'MemberListVisible'}<a href="@{Members.list()}">Members</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'CourseListVisible'}<a href="@{Courses.list()}">Courses</a>&nbsp;|&nbsp;#{/secure.check}

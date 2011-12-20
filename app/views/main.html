@@ -11,6 +11,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/jquery.dataTables.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/jquery-ui-1.8.16.custom.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/jquery.ui.selectmenu.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/setupControls.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         #{get 'moreScripts' /}
     </head>
@@ -22,6 +23,7 @@
 				</div>
 					<nav id="status">
 						#{loggedIn}<span>(${user})&nbsp;</span>#{/loggedIn}
+						<a href="@{Application.index()}">Home</a>&nbsp;|&nbsp;
 						#{secure.check 'ClubListVisible'}<a href="@{Clubs.list()}">Clubs</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'MemberListVisible'}<a href="@{Members.list()}">Members</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'CourseListVisible'}<a href="@{Courses.list()}">Courses</a>&nbsp;|&nbsp;#{/secure.check}

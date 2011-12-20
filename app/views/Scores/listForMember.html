@@ -7,7 +7,6 @@
 	<table id="dataTable">
 	    <thead>
 	        <tr>
-	        	<th>Player</th>
 	        	<th>Date</th>
 	        	<th>Course</th>
 	        	<th>Slope</th>
@@ -20,16 +19,20 @@
 		<tbody>
 			 %{scores.eachWithIndex() { score, k -> }%
 		    <tr class="${score.counter ? 'counter' : ''}">
-		      <td>${score.user.name}</td>
 		      <td>${score.date}</td>
 		      <td>${score.teeSet.course.name}</td>
 		      <td>${score.teeSet.slopeRating}</td>
 		      <td>${score.grossScore}</td>
 		      <td>${score.adjustedScore}</td>
 		      <td>${score.getDifferential()}</td>
-		      <td><a href="#">View</a>&nbsp;&nbsp;<a href="#">Edit</a>&nbsp;&nbsp;<a href="#">Delete</a></td>
+		      <td><a href="@{view(score._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(score._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(score._key())}">Delete</a></td>
 		    </tr>
 		    %{ } }%
 		</tbody>
 	</table>
+	<br/>
+	<div class="buttonBox">
+		<a id="cancel" href="@{Members.list()}">&{'scores.return'}</a>
+	</div>
+	
 </div>

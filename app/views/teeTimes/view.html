@@ -40,6 +40,7 @@
     		<table id="dataTable">
 			    <thead>
 			        <tr>
+			        	<th>Member</th>
 			        	<th>Gross Score</th>
 			        	<th>Adjusted Score</th>
 					</tr>
@@ -47,7 +48,7 @@
 				<tbody>
 					 %{teeTime.participants.eachWithIndex() { participant, k -> }%
 				    <tr class="${k % 2 ? 'even' : 'odd'}">
-				    	<input type="text" name="participant.id" id="teeTime.teeSet.id" value="${participant?.id}" size=4 disabled="disabled"/>
+				    	<input type="hidden" name="participant.id" id="teeTime.teeSet.id" value="${participant?.id}" size=4 disabled="disabled"/>
 				    	<td>${participant.user.name}</td>
 						<td>
 				        	<input type="number" id="grossScore" name="grossScore" size="16" value="${participant?.score?.grossScore}" disabled="disabled">
@@ -62,8 +63,7 @@
     	
     	</fieldset>
 		<div class="buttonBox">
-			<input type="submit" id="save" value="&{'score.save'}"  />
-			<a id="cancel" href="@{cancel}">&{'score.cancel'}</a>
+			<a id="cancel" href="@{cancel}">&{'score.return'}</a>
 		</div>
     	
     #{/form}

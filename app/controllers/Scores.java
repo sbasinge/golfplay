@@ -57,4 +57,8 @@ public class Scores extends Application {
     	list();
     }
 
+    public static void cancel(String clubId) {
+    	list();
+    }
+
 }

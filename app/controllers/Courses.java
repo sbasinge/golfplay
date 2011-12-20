@@ -38,4 +38,10 @@ public class Courses extends Application {
     public static void save(@Valid Course course) {
     	course.save();
     }
+    
+    public static void add() {
+    	Course course = new Course();
+    	render(course);
+    }
+
 }

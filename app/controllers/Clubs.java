@@ -32,6 +32,12 @@ public class Clubs extends Application {
         render(type, club);
     }
 
+    public static void delete(Long id) {
+    	Club club = Club.findById(id);
+    	club.delete();
+        list();
+    }
+
     public static void save(Club club) {
     	Logger.info("Called save club with %s", club);
         if(validation.hasErrors()) {
@@ -42,6 +48,10 @@ public class Clubs extends Application {
     	list();
     }
     
+    public static void add() {
+    	Club club = new Club();
+    	render(club);
+    }
     
     public static void cancel() {
     	index();

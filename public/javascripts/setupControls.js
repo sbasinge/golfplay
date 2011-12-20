@@ -29,7 +29,7 @@ $(document).ready(function() {
 	});
 
 	$(function() {
-		$( ".crudNew a" ).button();
+		$( ".crudNew a, #addButton" ).button();
 	});
 
 	$(function() {

@@ -13,56 +13,56 @@
 	    	#{field 'course.name'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'course.name'}</label>
-	            	<input type="text" name="${field.name}" size="16" value="${course?.name}" disabled="true"> *
+	            	<input type="text" name="${field.name}" size="45" value="${course?.name}" disabled="true"> *
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
 	    	#{field 'course.facility.name'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'facility.name'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.name}" disabled="true">
+	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.name}" disabled="true">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
 	    	#{field 'course.facility.address.addressLine1'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'address.addressLine1'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.addressLine1}" disabled="true">
+	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.address?.addressLine1}" disabled="true">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
 	    	#{field 'course.facility.address.addressLine2'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'address.addressLine2'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.addressLine2}" disabled="true">
+	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.address?.addressLine2}" disabled="true">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
 	    	#{field 'course.facility.address.city'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'address.city'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.city}" disabled="true">
+	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.address?.city}" disabled="true">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
 	    	#{field 'course.facility.address.state'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'address.state'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.state}" disabled="true">
+	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.address?.state}" disabled="true">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
 	    	#{field 'course.facility.address.zipCode'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'address.zipCode'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.address?.zipCode}" disabled="true">
+	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.address?.zipCode}" disabled="true">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
 	    	#{field 'course.facility.phone'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'facility.phone'}</label>
-	            	<input type="text" name="${field.name}" size="62" value="${course?.facility?.phone}" disabled="true">
+	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.phone}" disabled="true">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
@@ -92,13 +92,8 @@
     	
     	</fieldset>
 		</form>
+		<div class="buttonBox">
+			<a id="cancel" href="@{cancel}">&{'course.return'}</a>
+		</div>
 	</div>
-	<div class="section">
-		<h1>Pending Memberships</h1>
-	</div>
-	<div class="section">
-		<span id="noMembershipMsg">No Membership Requests Found</span>
-		<form id="membershipSelectionForm" name="membershipSelectionForm" method="post" action="/clubs/club.jsf?cid=1" enctype="application/x-www-form-urlencoded">
-		</form>
-    </div>	
 </div>

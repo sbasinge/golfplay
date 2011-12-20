@@ -4,6 +4,9 @@
 <div class="section">
     <h1>List of Clubs</h1>
 	<br/>
+	<a id="addButton" href="@{add()}" >&{'club.add'}</a>
+	<br/>
+	<br/>
 	<table id="dataTable">
 	    <thead>
 	        <tr>
@@ -15,9 +18,10 @@
 			 %{clubs.eachWithIndex() { object, k -> }%
 		    <tr class="${k % 2 ? 'even' : 'odd'}">
 		      <td>${object.name}</td>
-		      <td><a href="@{Members.listForClub(object._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(object._key())}">Edit</a></td>
+		      <td><a href="@{Members.listForClub(object._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(object._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(object._key())}">Delete</a></td>
 		    </tr>
 		    %{ } }%
 		</tbody>
 	</table>
+	
 </div>

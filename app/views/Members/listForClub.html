@@ -17,9 +17,31 @@
 		    <tr class="${k % 2 ? 'even' : 'odd'}">
 		      <td>${member.name}</td>
 		      <td>${member.handicap}</td>
-		      <td><a href="@{view(member._key())}">View</a>&nbsp;&nbsp;<a href="@{calculateHandicap(member._key())}">Calculate</a></td>
+		      <td><a href="@{Scores.listForMember(member._key())}">View</a>&nbsp;&nbsp;<a href="@{calculateHandicap(member._key())}">Calculate</a></td>
 		    </tr>
 		    %{ } }%
 		</tbody>
 	</table>
+	<br/>
+	<br/>
+	<h1>Membership Requests</h1>
+	<br/>
+	<table id="dataTable">
+	    <thead>
+	        <tr>
+	        	<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			 %{membershipRequests.eachWithIndex() { membershipRequest, k -> }%
+		    <tr class="${k % 2 ? 'even' : 'odd'}">
+		      <td>${membershipRequest.user.username}</td>
+		      <td><a href="@{accept(membershipRequest._key())}">Accept</a>&nbsp;&nbsp;<a href="@{reject(membershipRequest._key())}">Reject</a></td>
+		    </tr>
+		    %{ } }%
+		</tbody>
+	</table>
+	<div class="buttonBox">
+		<a id="cancel" href="@{cancel()}">&{'members.return'}</a>
+	</div>
 </div>

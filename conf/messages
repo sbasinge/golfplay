@@ -61,14 +61,21 @@ address.zipCode=Zip Code
 club.name=Club Name
 club.websiteUrl=External Web Site URL
 club.rssFeedUrl=RSS Feed URL
+club.add=New Club
 club.save=Save
 club.cancel=Cancel
 club_saved=Club Updated
 
 course.name=Course Name
+course.save=Save
+course.cancel=Cancel
+course.add=New Course
+course.return=Return to List
 
 facility.name=Name
 facility.phone=Phone Number
+
+members.return=Return to Club
 
 register.fullname=Full Name
 register.username=User Name
@@ -84,6 +91,8 @@ score.grossScore=Gross
 score.adjustedScore=Adjusted
 score.save=Save
 score.cancel=Cancel
+score.return=Return To List
+scores.return=Return To Members
 
 teeSet.teeType=Tees
 
