@@ -40,6 +40,6 @@ public class Course extends BaseEntity {
 	}
 	@Override
 	public String toString() {
-		return "Course [name=" + name + "]";
+		return "Course [id="+id+", name=" + name + "]";
 	}
 }

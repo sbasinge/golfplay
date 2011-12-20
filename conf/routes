@@ -5,7 +5,9 @@
 # Home page
 *     /                                       	Application.index
 POST     /login									Application.authenticate
+GET     /login									Application.index
 *		/register								Application.register
+*		/secure/login							Application.index
 
 # Import Secure routes
 #*       /                                       module:secure

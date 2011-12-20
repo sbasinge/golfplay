@@ -545,4 +545,15 @@
   TeeTime(teetime1):
    date: 2011-08-20
    course: ChampionsCourse
-   numPlayers: 4                
+   teeSet: ChampionsWhite
+   numPlayers: 4       
+   
+  TeeTimeParticipant(scott1tt1):
+   user: scott
+   teetime: teetime1
+
+  TeeTimeParticipant(jeff1tt1):
+   user: jeff
+   teetime: teetime1
+   
+         

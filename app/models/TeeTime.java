@@ -28,7 +28,7 @@ public class TeeTime extends BaseEntity {
 	@ManyToOne
 	public TeeSet teeSet;
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="teetime")
 	public List<TeeTimeParticipant> participants = new ArrayList<TeeTimeParticipant>();
 
     @ManyToOne

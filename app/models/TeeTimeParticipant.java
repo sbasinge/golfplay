@@ -5,12 +5,13 @@ import java.math.MathContext;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class TeeTimeParticipant extends BaseEntity {
 
-	@OneToOne public TeeTime teetime;
+	@ManyToOne public TeeTime teetime;
 	@OneToOne public User user;
 	@OneToOne(cascade=CascadeType.ALL, orphanRemoval=true) public Score score;
 	

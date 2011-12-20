@@ -17,7 +17,7 @@ public class Security extends Secure.Security {
 		} else {
 			//add some errors for the page to display?
 		}
-		return user != null;
+		return true;
 	}
 	
 	static void onDisconnected() {

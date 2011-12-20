@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.TeeTime;
+import play.Logger;
 import play.data.validation.Valid;
 import play.mvc.With;
 
@@ -12,7 +13,7 @@ import play.mvc.With;
 public class TeeTimes extends Application {
 
 	public static void list() {
-		String selectedClub = (String) renderArgs.get("selectedClub");
+//		String selectedClub = (String) renderArgs.get("selectedClub");
 		//TODO should get teetimes for current club only.
 		List<TeeTime> teeTimes = new ArrayList<TeeTime>();
 		teeTimes = TeeTime.all().fetch();
@@ -26,6 +27,7 @@ public class TeeTimes extends Application {
 
     public static void view(Long id) {
     	TeeTime teeTime = TeeTime.findById(id);
+    	Logger.info("Found teeTime %s for %s", teeTime, id);
         render(teeTime);
     }
 
@@ -36,6 +38,7 @@ public class TeeTimes extends Application {
     }
 
     public static void save(@Valid TeeTime teeTime) {
+    	Logger.info("TeeTime to save is %s",teeTime);
     	teeTime.save();
     }
 
