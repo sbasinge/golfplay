@@ -3,7 +3,7 @@
 
 #{set 'sidebar'}
         <div class="content">
-            <h1>Edit Score</h1>
+            <h1>Edit TeeTime</h1>
 
             <p>
                 Change the club name, the url used to read blog posts and the url that links to your club's external web site. 
@@ -13,53 +13,57 @@
 #{/ set}
 
 <div class="section">
-    <h1>Edit Score</h1>
+    <h1>Edit Tee Time</h1>
     
     #{form  @save()}
     	<fieldset>
-    		<input type="hidden" name="score.id" id="score.id" value="${score?.id}"/>
-	    	#{field 'score.teeSet.course.name'}
+    		<input type="hidden" name="teeTime.id" id="teeTime.id" value="${teeTime?.id}"/>
+    		<input type="hidden" name="teeTime.course.id" id="teeTime.course.id" value="${teeTime?.course?.id}"/>
+    		<input type="hidden" name="teeTime.teeSet.id" id="teeTime.teeSet.id" value="${teeTime?.teeSet?.id}"/>
+	    	#{field 'teeTime.course.name'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'course.name'}</label>
-	            	<input type="text" name="${field.name}" size="16" value="${score.teeSet.course.name}" disabled="disabled"> *
+	            	<input type="text" name="${field.name}" size="16" value="${teeTime.course.name}" disabled="disabled"> *
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
-	    	#{field 'score.teeSet.teeType'}
+	    	#{field 'teeTime.teeSet.teeType'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'teeSet.teeType'}</label>
-					<select name="teeType" id="teeType" disabled="disabled">
-						%{score.teeSet.course.teeSets.eachWithIndex() { teeSet, k -> }%
+					<select name="${field.name}" id="${field.name}" disabled="disabled">
+						%{teeTime.course.teeSets.eachWithIndex() { teeSet, k -> }%
 							<option value="${teeSet.teeType}">${teeSet.teeType}&nbsp;&nbsp;&nbsp;&nbsp;</option>
 						%{ } }%
 					</select>	    	
 				</p>
 		    #{/field}
-	    	#{field 'score.date'}
-		        <p class="${field.errorClass}">
-			        <label for="${field.name}">&{'score.date'}</label>
-	            	<input type="date" name="${field.name}" size="16" value="${score.date}" disabled="disabled">
-	        	    <span class="error">${field.error}</span>
-	    	    </p>
-		    #{/field}
-	    	#{field 'score.grossScore'}
-		        <p class="${field.errorClass}">
-			        <label for="${field.name}">&{'score.grossScore'}</label>
-	            	<input type="number" name="${field.name}" size="8" value="${score.grossScore}" disabled="disabled">
-	        	    <span class="error">${field.error}</span>
-	    	    </p>
-		    #{/field}
-	    	#{field 'score.adjustedScore'}
-		        <p class="${field.errorClass}">
-			        <label for="${field.name}">&{'score.adjustedScore'}</label>
-	            	<input type="text" name="${field.name}" size="8" value="${score.adjustedScore}" disabled="disabled">
-	        	    <span class="error">${field.error}</span>
-	    	    </p>
-		    #{/field}
+    		<table id="dataTable">
+			    <thead>
+			        <tr>
+			        	<th>Gross Score</th>
+			        	<th>Adjusted Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					 %{teeTime.participants.eachWithIndex() { participant, k -> }%
+				    <tr class="${k % 2 ? 'even' : 'odd'}">
+				    	<input type="text" name="participant.id" id="teeTime.teeSet.id" value="${participant?.id}" size=4 disabled="disabled"/>
+				    	<td>${participant.user.name}</td>
+						<td>
+				        	<input type="number" id="grossScore" name="grossScore" size="16" value="${participant?.score?.grossScore}" disabled="disabled">
+						</td>
+						<td>
+		            		<input type="number" id="adjustedScore" name="adjustedScore" size="16" value="${participant?.score?.adjustedScore}" disabled="disabled">
+						</td>
+				    </tr>
+				    %{ } }%
+				</tbody>
+			</table>
     	
     	</fieldset>
 		<div class="buttonBox">
-			<a id="cancel" href="@{cancel}">Return to List</a>
+			<input type="submit" id="save" value="&{'score.save'}"  />
+			<a id="cancel" href="@{cancel}">&{'score.cancel'}</a>
 		</div>
     	
     #{/form}
