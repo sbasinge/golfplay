@@ -40,7 +40,7 @@
     		<table id="dataTable">
 			    <thead>
 			        <tr>
-			        	<th>Name</th>
+			        	<th>ID</th>
 			        	<th>Gross Score</th>
 			        	<th>Adjusted Score</th>
 					</tr>
@@ -48,12 +48,13 @@
 				<tbody>
 					 %{teeTime.participants.eachWithIndex() { participant, k -> }%
 				    <tr class="${k % 2 ? 'even' : 'odd'}">
+				    	<td><input type="text" name="participant.id" id="teeTime.teeSet.id" value="${participant?.id}" size=4 disabled="disabled"/></td>
 				    	<td>${participant.user.name}</td>
 						<td>
-				        	<input type="number" id="teeTime.participants.score.courseRating" name="teeTime.participants.score.courseRating" size="16" value="${participant?.score?.grossScore}">
+				        	<input type="number" id="score.courseRating" name="score.courseRating" size="16" value="${participant?.score?.grossScore}">
 						</td>
 						<td>
-		            		<input type="number" id="teeTime.participants.score.slopeRating" name="teeTime.participants.score.slopeRating" size="16" value="${participant?.score?.adjustedScore}">
+		            		<input type="number" id="score.slopeRating" name="score.slopeRating" size="16" value="${participant?.score?.adjustedScore}">
 						</td>
 				    </tr>
 				    %{ } }%

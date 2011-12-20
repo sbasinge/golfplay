@@ -38,6 +38,7 @@ public class TeeTimes extends Application {
     }
 
     public static void save(@Valid TeeTime teeTime) {
+    	String[] grossScores = params.getAll("grossScore");
     	Logger.info("TeeTime to save is %s",teeTime);
     	teeTime.save();
     }
