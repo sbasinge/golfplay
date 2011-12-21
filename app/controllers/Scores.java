@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Course;
 import models.Score;
 import models.User;
 import play.data.validation.Valid;
@@ -61,4 +62,9 @@ public class Scores extends Application {
     	list();
     }
 
+    public static void add() {
+    	List<Course> courses = Course.findAll();
+    	Score score = new Score();
+    	render(score, courses);
+    }
 }

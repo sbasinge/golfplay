@@ -52,9 +52,9 @@ $(document).ready(function() {
 		$( ".buttonBox a" ).button();
 	});
 
-	$(function() {
-		$('#teeType').selectmenu();
-	});
+//	$(function() {
+//		$('#teeType').selectmenu();
+//	});
 
 	
 });

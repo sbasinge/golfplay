@@ -93,6 +93,7 @@ score.save=Save
 score.cancel=Cancel
 score.return=Return To List
 scores.return=Return To Members
+score.add=New Score
 
 teeSet.teeType=Tees
 
