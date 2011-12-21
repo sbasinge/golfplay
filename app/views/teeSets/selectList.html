@@ -1,0 +1,5 @@
+<select name="teeType" id="teeType">
+	%{teeSets.eachWithIndex() { teeSet, k -> }%
+			<option value="${teeSet.id}">${teeSet.teeType}&nbsp;&nbsp;&nbsp;&nbsp;</option>
+	%{ } }%
+</select>

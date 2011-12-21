@@ -23,10 +23,10 @@
 		<tbody>
 			 %{scores.eachWithIndex() { score, k -> }%
 		    <tr class="${score.counter ? 'counter' : ''}">
-		      <td>${score.user.name}</td>
+		      <td>${score.user?.name}</td>
 		      <td>${score.date}</td>
-		      <td>${score.teeSet.course.name}</td>
-		      <td>${score.teeSet.slopeRating}</td>
+		      <td>${score.teeSet?.course?.name}</td>
+		      <td>${score.teeSet?.slopeRating}</td>
 		      <td>${score.grossScore}</td>
 		      <td>${score.adjustedScore}</td>
 		      <td>${score.getDifferential()}</td>

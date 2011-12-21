@@ -21,6 +21,7 @@ public class Score extends BaseEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "TEESET_ID", nullable = false)
+	@Required
 	public TeeSet teeSet;
 	
     @Temporal(TemporalType.DATE)
@@ -28,6 +29,7 @@ public class Score extends BaseEntity {
     public Date date;
 
     @ManyToOne
+	@Required
     public User user;
 
     @ManyToOne
