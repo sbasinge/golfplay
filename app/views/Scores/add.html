@@ -1,5 +1,5 @@
 #{extends 'template.html' /}
-#{set title:'Add Club' /}
+#{set title:'Add Score' /}
 
 #{set 'sidebar'}
         <div class="content">
@@ -18,10 +18,24 @@
     #{form  @save()}
     	<fieldset>
     		<input type="hidden" name="score.id" id="score.id" value="${score?.id}"/>
+    		
+	    	#{field 'score.user.username'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'user.username'}</label>
+					<select name="${field.name}" id="${field.name}">
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						%{members.eachWithIndex() { member, k -> }%
+							<option value="${member.username}">${member.name}&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						%{ } }%
+					</select>	    	
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
 	    	#{field 'score.teeSet.course.name'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'course.name'}</label>
-					<select name="course" id="course" onchange="reloadTeeSets(this)">
+					<select name="score.course.id" onchange="reloadTeeSets(this);">
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
 						%{courses.eachWithIndex() { course, k -> }%
 							<option value="${course.id}">${course.name}&nbsp;&nbsp;&nbsp;&nbsp;</option>
 						%{ } }%
@@ -29,20 +43,18 @@
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
-	    	#{field 'score.teeSet.teeType'}
+	    	#{field 'score.teeSet.id'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'teeSet.teeType'}</label>
-					<select name="teeType" id="teeType">
-						%{score?.teeSet?.course?.teeSets.eachWithIndex() { teeSet, k -> }%
-							<option value="${teeSet.teeType}">${teeSet.teeType}&nbsp;&nbsp;&nbsp;&nbsp;</option>
-						%{ } }%
+					<select name="${field.name}" id="${field.name}" >
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
 					</select>	    	
 				</p>
 		    #{/field}
 	    	#{field 'score.date'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'score.date'}</label>
-	            	<input type="date" name="${field.name}" size="16" value="${score.date}">
+	            	<input type="date" name="${field.name}" size="16" value="${score?.date}">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
@@ -74,10 +86,11 @@
 <script type="text/javascript">
 function reloadTeeSets(selectObj) {
 	var idx = selectObj.selectedIndex; 
-	 // get the value of the selected option 
-	 var which = selectObj.options[idx].value; 
-	 
-	$('#teeType').load('/teeSets/selectList?id='+which);
+	// get the value of the selected option 
+	var which = selectObj.options[idx].value; 
+	$('#score\\.teeSet\\.id').load('/teeSets/selectList?id='+which, function() {
+		$('#score\\.teeSet\\.id').selectmenu();
+	});
 };
-  
+
 </script>

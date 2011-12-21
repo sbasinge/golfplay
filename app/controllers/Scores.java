@@ -52,6 +52,7 @@ public class Scores extends Application {
 
     public static void save(@Valid Score score) {
     	score.save();
+    	list();
     }
 
     public static void cancel() {
@@ -63,8 +64,9 @@ public class Scores extends Application {
     }
 
     public static void add() {
+    	List<User> members = User.findAll(); //TODO should be for the current club
     	List<Course> courses = Course.findAll();
     	Score score = new Score();
-    	render(score, courses);
+    	render(score, courses, members);
     }
 }

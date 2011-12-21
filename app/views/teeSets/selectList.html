@@ -1,0 +1,6 @@
+<select name="teeType" id="teeType">
+	<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
+	%{teeSets.eachWithIndex() { teeSet, k -> }%
+			<option value="${teeSet.id}">${teeSet.teeType}&nbsp;&nbsp;&nbsp;&nbsp;</option>
+	%{ } }%
+</select>
