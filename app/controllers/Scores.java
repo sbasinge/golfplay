@@ -51,6 +51,16 @@ public class Scores extends Application {
     }
 
     public static void save(@Valid Score score) {
+    	if (score.user==null)
+    		validation.addError("score.user.username","Required");
+    	if (score.teeSet==null)
+    		validation.addError("score.teeSet.id","Required");
+        if(validation.hasErrors()) {
+        	List<User> members = User.findAll(); //TODO should be for the current club
+        	List<Course> courses = Course.findAll();
+            render("@add", score, courses, members);
+        }
+    	flash.success("score_saved");
     	score.save();
     	list();
     }

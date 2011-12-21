@@ -94,8 +94,11 @@ score.cancel=Cancel
 score.return=Return To List
 scores.return=Return To Members
 score.add=New Score
+score_saved=Save Successful
 
 teeSet.teeType=Tees
+
+user.username=Member
 
 identity_loggedOut=You have successfully ended your session.
 identity_loggedIn=You're signed in as {0}.

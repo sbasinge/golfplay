@@ -13,6 +13,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import play.data.binding.As;
 import play.data.validation.Required;
 import util.Constants;
 
@@ -25,6 +26,7 @@ public class Score extends BaseEntity {
 	
     @Temporal(TemporalType.DATE)
     @Required
+    @As(lang={"*"}, value={"MM/dd/yyyy"}) 
     public Date date;
 
     @ManyToOne
