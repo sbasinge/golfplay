@@ -62,6 +62,7 @@ public class Scores extends Application {
         }
     	flash.success("score_saved");
     	score.save();
+    	flash.success("score_saved");
     	list();
     }
 
@@ -74,6 +75,7 @@ public class Scores extends Application {
     }
 
     public static void add() {
+    	//TODO need to sort members and courses so they are easier to find.
     	List<User> members = User.findAll(); //TODO should be for the current club
     	List<Course> courses = Course.findAll();
     	Score score = new Score();
