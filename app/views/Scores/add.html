@@ -23,7 +23,7 @@
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'user.username'}</label>
 					<select name="${field.name}" id="${field.name}">
-						<option value=>Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
 						%{members.eachWithIndex() { member, k -> }%
 							<option value="${member.username}">${member.name}&nbsp;&nbsp;&nbsp;&nbsp;</option>
 						%{ } }%
@@ -34,8 +34,8 @@
 	    	#{field 'score.teeSet.course.name'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'course.name'}</label>
-					<select name="${field.name}" onchange="reloadTeeSets(this);">
-						<option value=>Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
+					<select name="score.course.id" onchange="reloadTeeSets(this);">
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
 						%{courses.eachWithIndex() { course, k -> }%
 							<option value="${course.id}">${course.name}&nbsp;&nbsp;&nbsp;&nbsp;</option>
 						%{ } }%
@@ -47,7 +47,7 @@
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'teeSet.teeType'}</label>
 					<select name="${field.name}" id="${field.name}" >
-						<option value=>Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
 					</select>	    	
 	        	    <span class="error">${field.error}</span>
 				</p>
