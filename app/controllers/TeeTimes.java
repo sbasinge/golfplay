@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Course;
 import models.Score;
 import models.TeeTime;
 import models.TeeTimeParticipant;
@@ -45,28 +46,30 @@ public class TeeTimes extends Application {
     	String[] participants = params.getAll("participant");
     	Logger.info("TeeTime to save is %s",teeTime);
     	int i=0;
-    	for (String participantId: participants) {
-    		TeeTimeParticipant participant = TeeTimeParticipant.findById(Long.parseLong(participants[i]));
-    		if (participant != null) {
-    			if (participant.score == null) {
-    				Score score = new Score();
-    				score.adjustedScore = Integer.parseInt(adjustedScores[i]);
-    				score.date = teeTime.date;
-    				score.grossScore = Integer.parseInt(grossScores[i]);
-    				score.teeSet = teeTime.teeSet;
-    				score.teeTime = teeTime;
-    				score.user = participant.user;
-    				participant.score = score;
-    				score.save();
-    			} else {
-    				Score score = participant.score;
-    				score.adjustedScore = Integer.parseInt(adjustedScores[i]);
-    				score.date = teeTime.date;
-    				score.grossScore = Integer.parseInt(grossScores[i]);
-    				score.save();
+    	if (participants != null) {
+    		for (String participantId: participants) {
+    			TeeTimeParticipant participant = TeeTimeParticipant.findById(Long.parseLong(participants[i]));
+    			if (participant != null) {
+    				if (participant.score == null) {
+    					Score score = new Score();
+    					score.adjustedScore = Integer.parseInt(adjustedScores[i]);
+    					score.date = teeTime.date;
+    					score.grossScore = Integer.parseInt(grossScores[i]);
+    					score.teeSet = teeTime.teeSet;
+    					score.teeTime = teeTime;
+    					score.user = participant.user;
+    					participant.score = score;
+    					score.save();
+    				} else {
+    					Score score = participant.score;
+    					score.adjustedScore = Integer.parseInt(adjustedScores[i]);
+    					score.date = teeTime.date;
+    					score.grossScore = Integer.parseInt(grossScores[i]);
+    					score.save();
+    				}
     			}
+    			i++;
     		}
-    		i++;
     	}
     	teeTime.save();
     	list();
@@ -74,6 +77,12 @@ public class TeeTimes extends Application {
 
     public static void cancel() {
     	list();
+    }
+
+    public static void add() {
+    	TeeTime teeTime = new TeeTime();
+    	List<Course> courses = Course.findAll();
+    	render(teeTime, courses);
     }
 
 }

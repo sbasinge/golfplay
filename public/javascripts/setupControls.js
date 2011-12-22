@@ -37,7 +37,7 @@ $(document).ready(function() {
 	});
 
 	$(function() {
-		$("input[type='text'],input[type='password'],input[type='date'],input[type='number']").addClass("ui-inputfield ui-inputtext ui-widget ui-corner-all");
+		$("input[type='text'],input[type='password'],input[type='date'],input[type='datetime'],input[type='number']").addClass("ui-inputfield ui-inputtext ui-widget ui-corner-all");
 	});
 
 	$(function() {
@@ -46,6 +46,12 @@ $(document).ready(function() {
 
 	$(function() {
 		$("input[type='date']").datepicker();
+	});
+
+	$(function() {
+		$("input[type='datetime']").datetimepicker({
+			ampm: true
+		});
 	});
 
 	$(function() {

@@ -1,6 +1,8 @@
 # Application dependencies
 
 require:
-    - play
+    - play 1.2.4
     - com.kenai.nbpwr -> com-sun-syndication-feed 1.0-201002241208
     - play -> cobertura 2.4
+    - play -> secure
+    - play -> crud

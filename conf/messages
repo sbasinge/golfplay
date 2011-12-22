@@ -98,6 +98,9 @@ score_saved=Save Successful
 
 teeSet.teeType=Tees
 
+teeTime.date=Date
+teeTime.add=New Tee Time
+
 user.username=Member
 
 identity_loggedOut=You have successfully ended your session.

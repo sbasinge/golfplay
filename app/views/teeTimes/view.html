@@ -37,6 +37,13 @@
 					</select>	    	
 				</p>
 		    #{/field}
+	    	#{field 'teeTime.date'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'teeTime.date'}</label>
+	            	<input type="datetime" name="${field.name}" size="16" value="${teeTime?.date}" disabled="disabled">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
     		<table id="dataTable">
 			    <thead>
 			        <tr>

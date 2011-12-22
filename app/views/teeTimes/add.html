@@ -1,0 +1,82 @@
+#{extends 'template.html' /}
+#{set title:'Add TeeTime' /}
+
+#{set 'sidebar'}
+        <div class="content">
+            <h1>Add TeeTime</h1>
+
+            <p>
+                Change the club name, the url used to read blog posts and the url that links to your club's external web site. 
+            </p>
+
+        </div>
+#{/ set}
+
+<div class="section">
+    <h1>Add Tee Time</h1>
+    
+    #{form  @save()}
+    	<fieldset>
+    		<input type="hidden" name="teeTime.id" id="teeTime.id" value="${teeTime?.id}"/>
+    		#{field 'teeTime.course.id'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'course.name'}</label>
+					<select name="${field.name}" id="${field.name}" onchange="reloadTeeSets(this);">
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						%{courses.eachWithIndex() { course, k -> }%
+							<option value="${course.id}">${course.name}&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						%{ } }%
+					</select>	    	
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'teeTime.teeSet.id'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'teeSet.teeType'}</label>
+					<select name="${field.name}" id="${field.name}">
+						<option value="">Please Select ...&nbsp;&nbsp;&nbsp;&nbsp;</option>
+					</select>	    	
+				</p>
+		    #{/field}
+	    	#{field 'teeTime.date'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'teeTime.date'}</label>
+	            	<input type="datetime" name="${field.name}" size="16" value="${teeTime?.date}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'teeTime.numPlayers'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'teeTime.numPlayers'}</label>
+	            	<input type="number" name="${field.name}" size="16" value="${teeTime?.numPlayers}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'teeTime.notificationOn'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'teeTime.notificationOn'}</label>
+	            	<input type="checkbox" name="${field.name}" id="${field.name}" size="16" value="${teeTime?.notificationOn}">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+			<div class="buttonBox">
+				<input type="submit" id="save" value="&{'score.save'}"  />
+				<a id="cancel" href="@{cancel}">&{'score.cancel'}</a>
+			</div>
+    	
+    	</fieldset>
+    	
+    #{/form}
+    
+</div>
+<script type="text/javascript">
+function reloadTeeSets(selectObj) {
+	var idx = selectObj.selectedIndex; 
+	// get the value of the selected option 
+	var which = selectObj.options[idx].value; 
+	var element = $('teeTime\\.teeSet\\.id;')
+	$('#teeTime\\.teeSet\\.id').load('/teeSets/selectList?id='+which, function() {
+		$('#teeTime\\.teeSet\\.id').selectmenu();
+	});
+};
+</script>
