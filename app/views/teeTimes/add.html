@@ -55,7 +55,7 @@
 	    	#{field 'teeTime.notificationOn'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'teeTime.notificationOn'}</label>
-	            	<input type="checkbox" name="${field.name}" id="${field.name}" size="16" value="${teeTime?.notificationOn}">
+	            	<input type="checkbox" name="${field.name}" id="${field.name}" size="16" value="true" ${teeTime.notificationOn ? 'checked="true"' : ''}>
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
