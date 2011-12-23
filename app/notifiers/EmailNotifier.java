@@ -10,6 +10,7 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import models.Club;
 import models.MembershipRequest;
 import models.Score;
 import models.TeeTime;
@@ -96,17 +97,17 @@ public class EmailNotifier implements MessageNotifier {
 		
 	}
 
-	public void teetimeAdded(TeeTime teetime) {
+	public void teetimeAdded(TeeTime teetime, Club club) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void teetimeUpdated(TeeTimeParticipant participant) {
+	public void teetimeUpdated(TeeTimeParticipant participant, Club club) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void teetimeDeleted(TeeTime teetime) {
+	public void teetimeDeleted(TeeTime teetime, Club club) {
 		// TODO Auto-generated method stub
 		
 	}

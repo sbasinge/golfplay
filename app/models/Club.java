@@ -32,7 +32,7 @@ public class Club extends BaseEntity {
     @ManyToMany(mappedBy="clubs")
     public List<User> members = new ArrayList<User>();
 
-    @OneToMany(cascade={CascadeType.ALL})
+    @OneToMany(cascade={CascadeType.ALL}, mappedBy="club")
     public List<MembershipRequest> membershipRequests = new ArrayList<MembershipRequest>();
 
 	public void addMemberShipRequest(MembershipRequest membershipRequest) {

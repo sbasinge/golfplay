@@ -2,6 +2,7 @@ package notifiers;
 
 import java.io.Serializable;
 
+import models.Club;
 import models.MembershipRequest;
 import models.Role;
 import models.Score;
@@ -9,21 +10,10 @@ import models.SiteMessage;
 import models.TeeTime;
 import models.TeeTimeParticipant;
 import models.User;
-import play.mvc.With;
-import controllers.Secure;
 
-@With(Secure.class)
 public class SiteMessageNotifier implements MessageNotifier, Serializable {
 	private static final long serialVersionUID = -1186513111105203298L;
-	private User user;
 	
-//    @Before
-//    private void something() {
-//        if(Security.isConnected()) {
-//            user = User.find("byUsername", session.get("username")).first();
-//        }
-//    }
-    
 	public void registrationCompleted(MembershipRequest membershipRequest) {
 		SiteMessage message = new SiteMessage(membershipRequest.user,"Registration has been completed.");
 		message.save();
@@ -57,39 +47,36 @@ public class SiteMessageNotifier implements MessageNotifier, Serializable {
 		
 	}
 
-	public void teetimeAdded(TeeTime teetime) {
-		if (teetime.notificationOn) {
-//			for (User user : identity.getSelectedClub().getMembers()) {
-//				if (user.getNewTeeTimeNotificationType().isNotifyOnSite()) {
-//					SiteMessage message = new SiteMessage(user,"Tee Time has been added at "+teetime.getCourse().getName()+" on "+sdf.format(teetime.getDate()));
-//					entityManager.persist(message);
-//				}
-//			}
-//			entityManager.flush();
+	public void teetimeAdded(TeeTime teetime, Club club) {
+		if (teetime.notificationOn && club != null) {
+			for (User user : club.members) {
+				if (user.newTeeTimeNotificationType.notifyOnSite) {
+					SiteMessage message = new SiteMessage(user,"Tee Time has been added at "+teetime.course.name+" on "+teetime.date);
+					message.save();
+				}
+			}
 		}
 	}
 
-	public void teetimeUpdated(TeeTimeParticipant participant) {
-		if (participant.teetime.notificationOn) {
-//			for (User user : identity.getSelectedClub().getMembers()) {
-//				if (!user.getUsername().equals(participant.user.getUsername()) && user.getTeeTimeFullNotificationType().isNotifyOnSite()) {
-//					SiteMessage message = new SiteMessage(user,participant.user.name+" has reserved a spot on the Tee Time at "+participant.getTeetime().getCourse().getName()+" on "+sdf.format(participant.getTeetime().getDate())+". There are now "+participant.getTeetime().getNumOpenSpots()+" spots left.");
-//					entityManager.persist(message);
-//				}
-//			}
-//			entityManager.flush();
+	public void teetimeUpdated(TeeTimeParticipant participant, Club club) {
+		if (participant.teetime.notificationOn && club != null) {
+			for (User user : club.members) {
+				if (!user.username.equals(participant.user.username) && user.teeTimeFullNotificationType.notifyOnSite) {
+					SiteMessage message = new SiteMessage(user,participant.user.name+" has reserved a spot on the Tee Time at "+participant.teetime.course.name+" on "+participant.teetime.date+". There are now "+participant.teetime.getNumOpenSpots()+" spots left.");
+					message.save();
+				}
+			}
 		}
 	}
 
-	public void teetimeDeleted(TeeTime teetime) {
-		if (teetime.notificationOn) {
-//			for (User user : identity.getSelectedClub().getMembers()) {
-//				if (user.getTeeTimeFullNotificationType().isNotifyOnSite()) {
-//					SiteMessage message = new SiteMessage(user,"Tee Time has been deleted for "+teetime.getCourse().getName()+" on "+sdf.format(teetime.getDate()));
-//					entityManager.persist(message);
-//				}
-//			}
-//			entityManager.flush();
+	public void teetimeDeleted(TeeTime teetime, Club club) {
+		if (teetime.notificationOn && club != null) {
+			for (User user : club.members) {
+				if (user.teeTimeFullNotificationType.notifyOnSite) {
+					SiteMessage message = new SiteMessage(user,"Tee Time has been deleted for "+teetime.course.name+" on "+teetime.date);
+					message.save();
+				}
+			}
 		}
 	}
 

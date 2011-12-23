@@ -1,8 +1,8 @@
 # you describe your data using the YAML notation here
 # and then load them using Fixtures.load("data.yml")
 
-  Club(test):
-    name: Test
+  Club(cmgc):
+    name: CMGC
     websiteUrl: http://columbusmetrogolfclub.blogspot.com/
     rssFeedUrl: http://columbusmetrogolfclub.blogspot.com/feeds/posts/default
 
@@ -20,19 +20,19 @@
 
   ClubRole(TestAdmin):
     role: Admin
-    club: test
+    club: cmgc
 
   ClubRole(TestClubAdmin):
     role: ClubAdmin
-    club: test
+    club: cmgc
 
   ClubRole(TestMember):
     role: Member
-    club: test
+    club: cmgc
    
   ClubRole(TestTeeTimeChair):
     role: TeeTimeChair
-    club: test
+    club: cmgc
 
   Address(OHAddress):
     addressLine1: 123 Main St
@@ -322,7 +322,7 @@
    password: password
    name: Scott Basinger
    email: sbasinge@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestAdmin]
 
   User(jeff):
@@ -330,7 +330,7 @@
    password: password
    name: Jeff McCorkle
    email: jmccorkle@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestClubAdmin]
 
   User(steve):
@@ -338,7 +338,7 @@
    password: password
    name: Steve Hawley
    email: shawley@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestTeeTimeChair]
 
   User(vince):
@@ -346,7 +346,7 @@
    password: password
    name: Vince Resor
    email: vresor@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestMember]
 
   User(skern):
@@ -354,7 +354,7 @@
    password: password
    name: Scott Kern
    email: skern@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestMember]
 
   User(ehawley):
@@ -362,7 +362,7 @@
    password: password
    name: Ed Hawley
    email: ehawley@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestMember]
 
   User(rich):
@@ -370,7 +370,7 @@
    password: password
    name: Rich Jenks
    email: rjenks@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestMember]
 
   User(tom):
@@ -378,7 +378,7 @@
    password: password
    name: Tom Kirk
    email: tkirk@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestMember]
 
   User(jkempton):
@@ -386,7 +386,7 @@
    password: password
    name: John Kempton
    email: jkempton@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestMember]
 
   User(jomccorkle):
@@ -394,7 +394,7 @@
    password: password
    name: John McCorkle
    email: jomccorkle@gmail.com
-   clubs: [test]
+   clubs: [cmgc]
    clubRoles: [TestMember]
 
   Score(scott1):

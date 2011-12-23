@@ -3,12 +3,15 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Club;
 import models.Course;
 import models.Score;
 import models.TeeTime;
 import models.TeeTimeParticipant;
+import notifiers.Notifier;
 import play.Logger;
 import play.data.validation.Valid;
+import play.libs.F.Promise;
 import play.mvc.With;
 
 
@@ -63,12 +66,14 @@ public class TeeTimes extends Application {
     					score.teeTime = teeTime;
     					score.user = participant.user;
     					participant.score = score;
+    					sendScoreUpdatedMessage(score);
     					score.save();
     				} else {
     					Score score = participant.score;
     					score.adjustedScore = Integer.parseInt(adjustedScores[i]);
     					score.date = teeTime.date;
     					score.grossScore = Integer.parseInt(grossScores[i]);
+    					sendScoreUpdatedMessage(score);
     					score.save();
     				}
     			}
@@ -77,6 +82,7 @@ public class TeeTimes extends Application {
     	}
     	teeTime.save();
     	if (adding) {
+    		sendTeeTimeAdddedMessage(teeTime, null);	//TODO figure out where to get current selected club and/or assign all teetimes to a club
     	}
     	list();
     }
@@ -85,10 +91,30 @@ public class TeeTimes extends Application {
     	list();
     }
 
+    public static void reserveSpot() {
+    	//sendTeeTimeUpdatedMessage
+    }
+    
+    
     public static void add() {
     	TeeTime teeTime = new TeeTime();
     	List<Course> courses = Course.findAll();
     	render(teeTime, courses);
+    }
+
+    private static Promise sendTeeTimeAdddedMessage(TeeTime teeTime, Club club) {
+    	Notifier.instance().teetimeAdded(teeTime, club);
+		return null;
+    }
+
+    private static Promise sendTeeTimeUpdatedMessage(TeeTimeParticipant participant, Club club) {
+    	Notifier.instance().teetimeUpdated(participant, club);
+		return null;
+    }
+
+    private static Promise sendScoreUpdatedMessage(Score score) {
+    	Notifier.instance().scoreUpdated(score);
+		return null;
     }
 
 }

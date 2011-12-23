@@ -6,6 +6,7 @@ import java.util.List;
 import models.Course;
 import models.Score;
 import models.User;
+import notifiers.Notifier;
 import play.data.validation.Valid;
 import play.mvc.With;
 
@@ -47,6 +48,7 @@ public class Scores extends Application {
     public static void delete(Long id) {
     	Score score = Score.findById(id);
     	score.delete();
+    	Notifier.instance().scoreUpdated(score);
         list();
     }
 
@@ -62,6 +64,7 @@ public class Scores extends Application {
         }
     	flash.success("score_saved");
     	score.save();
+    	sendScoreUpdatedMessage(score);
     	flash.success("score_saved");
     	list();
     }
@@ -80,5 +83,9 @@ public class Scores extends Application {
     	List<Course> courses = Course.findAll();
     	Score score = new Score();
     	render(score, courses, members);
+    }
+    
+    private static void sendScoreUpdatedMessage(Score score) {
+    	Notifier.instance().scoreUpdated(score);
     }
 }

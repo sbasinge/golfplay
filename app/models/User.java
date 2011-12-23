@@ -68,7 +68,7 @@ public class User extends GenericModel {
     @ManyToMany
     public List<Club> clubs = new ArrayList<Club>();
 
-    @OneToMany
+    @OneToMany(mappedBy="user")
     public List<MembershipRequest> membershipRequests = new ArrayList<MembershipRequest>();
 
     @ManyToMany

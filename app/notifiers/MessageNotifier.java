@@ -1,5 +1,6 @@
 package notifiers;
 
+import models.Club;
 import models.MembershipRequest;
 import models.Score;
 import models.TeeTime;
@@ -19,10 +20,10 @@ public interface MessageNotifier {
 	
 	public abstract void scoreUpdated(Score score);
 
-	public abstract void teetimeAdded(TeeTime teetime);
+	public abstract void teetimeAdded(TeeTime teetime, Club club);
 
-	public abstract void teetimeUpdated(TeeTimeParticipant participant);
+	public abstract void teetimeUpdated(TeeTimeParticipant participant, Club club);
 
-	public abstract void teetimeDeleted(TeeTime teetime);
+	public abstract void teetimeDeleted(TeeTime teetime, Club club);
 
 }

@@ -1,6 +1,9 @@
 package controllers;
 
+import models.Club;
+import models.MembershipRequest;
 import models.User;
+import notifiers.Notifier;
 import play.Logger;
 import play.data.validation.Valid;
 import play.mvc.Controller;
@@ -18,10 +21,28 @@ public class Register extends Controller {
         if(validation.hasErrors()) {
             render("@index", user, confirmpassword);
         }
-    	flash.success("registration_registered");
+    	
+    	//TODO when and where does the newly registered user join clubs?
+    	Club defaultClub = Club.find("byName", "CMGC").first();
+    	user.selectedClub = defaultClub;
     	user.create();
+    	sendRegistrationRequest(user);
         session.put("user", user.username);
+        flash.success("registration_registered");
         Application.index();
+    }
+    
+    private static void sendRegistrationRequest(User user) {
+    	Club club = user.selectedClub;
+    	Logger.info("Newly registered user asking for membership into club %s", club.name);
+    	if (club != null) {
+    		MembershipRequest membershipRequest = new MembershipRequest();
+    		membershipRequest.user = user;
+    		membershipRequest.club = club;
+    		membershipRequest.save();
+    		club.membershipRequests.add(membershipRequest);
+    		Notifier.instance().registrationCompleted(membershipRequest);
+    	}
     }
 
 }

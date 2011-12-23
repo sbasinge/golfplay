@@ -31,7 +31,7 @@ public class Security extends Secure.Security {
 	
 	static boolean check(String profile) {
 		String connected = connected();
-		Logger.info("Connected is %s", connected);
+		Logger.trace("Connected is %s", connected);
 		User user =  User.find("byUsername", connected).first();
 		if (user == null) {
 			return false;
