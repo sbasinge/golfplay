@@ -20,7 +20,7 @@ public class Course extends BaseEntity {
 	@Required
 	public String name;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FACILITY_ID", nullable = true)
 	public Facility facility;
 

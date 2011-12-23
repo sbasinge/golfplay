@@ -27,7 +27,7 @@ import enums.TeeType;
 )
 public class TeeSet extends BaseEntity implements Comparable<TeeSet> {
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn(name = "COURSE_ID", nullable = true)
 	public Course course;
 	

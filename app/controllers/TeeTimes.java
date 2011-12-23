@@ -44,6 +44,10 @@ public class TeeTimes extends Application {
     	String[] grossScores = params.getAll("grossScore");
     	String[] adjustedScores = params.getAll("adjustedScore");
     	String[] participants = params.getAll("participant");
+    	boolean adding = false;
+    	if (teeTime.id == null) {
+    		adding = true;
+    	}
     	Logger.info("TeeTime to save is %s",teeTime);
     	int i=0;
     	if (participants != null) {
@@ -72,6 +76,8 @@ public class TeeTimes extends Application {
     		}
     	}
     	teeTime.save();
+    	if (adding) {
+    	}
     	list();
     }
 

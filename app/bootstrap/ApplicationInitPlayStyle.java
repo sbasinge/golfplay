@@ -1,10 +1,13 @@
 package bootstrap;
 
 import models.User;
+import notifiers.EmailNotifier;
+import notifiers.SiteMessageNotifier;
 import play.Logger;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.test.Fixtures;
+import service.NotifierRegistration;
 
 @OnApplicationStart
 public class ApplicationInitPlayStyle extends Job {
@@ -17,6 +20,8 @@ public class ApplicationInitPlayStyle extends Job {
         } else {
         	Logger.info("Seed data already loaded... skipping.");
         }
+        NotifierRegistration.registrants.add(new EmailNotifier()); 
+        NotifierRegistration.registrants.add(new SiteMessageNotifier()); 
     }
 
 }

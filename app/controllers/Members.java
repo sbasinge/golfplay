@@ -6,6 +6,7 @@ import models.Club;
 import models.MembershipRequest;
 import models.User;
 import play.mvc.With;
+import service.NotifierRegistration;
 import controllers.CRUD.ObjectType;
 
 @With(Secure.class)
@@ -31,6 +32,7 @@ public class Members extends Application {
     public static void calculateHandicap(String id) {
     	User member = User.findById(id);
     	member.calculateHandicap();
+    	NotifierRegistration.handicapCalculated(member);
         list();
     }
 

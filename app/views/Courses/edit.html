@@ -86,7 +86,7 @@
 				<tbody>
 					 %{course.teeSets.eachWithIndex() { teeSet, k -> }%
 				    <tr class="${k % 2 ? 'even' : 'odd'}">
-				    	<td>${teeSet.teeType}</td>
+				    	<td><input type="text" name="teeType" id="teeType" value="${teeSet?.teeType}" size=4 /></td>
 				      <td>
 				        <input type="text" name="courseRating" size="16" value="${teeSet?.courseRating}">
 				      </td>
