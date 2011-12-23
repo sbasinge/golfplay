@@ -53,8 +53,9 @@ public class Members extends Application {
         ClubRole clubRole = JPA.em().createNamedQuery("findClubRoleByNameAndClub",ClubRole.class).setParameter("roleName", Role.MEMBER_ROLE_NAME).setParameter("clubName", clubSelection.name).getSingleResult();
         membershipRequest.user.addClubRole(clubRole);
         membershipRequest.delete();
+        clubSelection.save();
         Notifier.instance().membershipAccepted(membershipRequest);
-    	
+    	list();
     }
 
     public static void reject(Long requestId) {
@@ -63,6 +64,7 @@ public class Members extends Application {
         clubSelection.removeMemberShipRequest(membershipRequest);
         membershipRequest.delete();
         Notifier.instance().membershipRejected(membershipRequest);
+    	list();
     }
 
     public static void cancel() {

@@ -22,4 +22,24 @@
 		    %{ } }%
 		</tbody>
 	</table>
+	<br/>
+	<br/>
+	<h1>Membership Requests</h1>
+	<br/>
+	<table id="dataTable">
+	    <thead>
+	        <tr>
+	        	<th>Name</th>
+	        	<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			 %{membershipRequests.eachWithIndex() { membershipRequest, k -> }%
+		    <tr class="${k % 2 ? 'even' : 'odd'}">
+		      <td>${membershipRequest.user.username}</td>
+		      <td><a href="@{accept(membershipRequest._key())}">Accept</a>&nbsp;&nbsp;<a href="@{reject(membershipRequest._key())}">Reject</a></td>
+		    </tr>
+		    %{ } }%
+		</tbody>
+	</table>
 </div>
