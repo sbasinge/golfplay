@@ -10,44 +10,48 @@ import models.SiteMessage;
 import models.TeeTime;
 import models.TeeTimeParticipant;
 import models.User;
+import play.libs.F.Promise;
 
 public class SiteMessageNotifier implements MessageNotifier, Serializable {
 	private static final long serialVersionUID = -1186513111105203298L;
 	
-	public void registrationCompleted(MembershipRequest membershipRequest) {
+	public Promise registrationCompleted(MembershipRequest membershipRequest) {
 		SiteMessage message = new SiteMessage(membershipRequest.user,"Registration has been completed.");
 		message.create();
 		for (User user : membershipRequest.club.locateMembersWithRole(Role.CLUBADMIN_ROLE_NAME)) {
 			SiteMessage adminMessage = new SiteMessage(user,membershipRequest.user.name+" has registered to join your club.  Please accept/reject their membership using the Members page.");
 			adminMessage.create();
 		}
+		return null;
 	}
 
-	public void membershipRejected(MembershipRequest membershipRequest) {
+	public Promise membershipRejected(MembershipRequest membershipRequest) {
 		SiteMessage message = new SiteMessage(membershipRequest.user,"Membership to club "+membershipRequest.club.name+" has been rejected.");
 		message.create();
-
+		return null;
 	}
 
-	public void membershipAccepted(MembershipRequest membershipRequest) {
+	public Promise membershipAccepted(MembershipRequest membershipRequest) {
 		SiteMessage message = new SiteMessage(membershipRequest.user,"Membership to club "+membershipRequest.club.name+" has been accepted.");
 		message.create();
+		return null;
 	}
 
-	public void handicapCalculated(User user) {
+	public Promise handicapCalculated(User user) {
 		if (user.handicapCalculateNotificationType.notifyOnSite) {
 			SiteMessage message = new SiteMessage(user,"Handicap recalculated to "+user.getHandicap());
 			message.create();
 		}
+		return null;
 	}
 
-	public void scoreUpdated(Score score) {
+	public Promise scoreUpdated(Score score) {
 		SiteMessage message = new SiteMessage(score.user,"A new score has been added for "+score.teeSet.course.name+" on "+ score.date);
 		message.create();
-		
+		return null;
 	}
 
-	public void teetimeAdded(TeeTime teetime, Club club) {
+	public Promise teetimeAdded(TeeTime teetime, Club club) {
 		if (teetime.notificationOn && club != null) {
 			for (User user : club.members) {
 				if (user.newTeeTimeNotificationType.notifyOnSite) {
@@ -56,9 +60,10 @@ public class SiteMessageNotifier implements MessageNotifier, Serializable {
 				}
 			}
 		}
+		return null;
 	}
 
-	public void teetimeUpdated(TeeTimeParticipant participant, Club club) {
+	public Promise teetimeUpdated(TeeTimeParticipant participant, Club club) {
 		if (participant.teetime.notificationOn && club != null) {
 			for (User user : club.members) {
 				if (!user.username.equals(participant.user.username) && user.teeTimeFullNotificationType.notifyOnSite) {
@@ -67,9 +72,10 @@ public class SiteMessageNotifier implements MessageNotifier, Serializable {
 				}
 			}
 		}
+		return null;
 	}
 
-	public void teetimeDeleted(TeeTime teetime, Club club) {
+	public Promise teetimeDeleted(TeeTime teetime, Club club) {
 		if (teetime.notificationOn && club != null) {
 			for (User user : club.members) {
 				if (user.teeTimeFullNotificationType.notifyOnSite) {
@@ -78,6 +84,7 @@ public class SiteMessageNotifier implements MessageNotifier, Serializable {
 				}
 			}
 		}
+		return null;
 	}
 
 }

@@ -6,6 +6,7 @@ import models.User;
 import notifiers.Notifier;
 import play.Logger;
 import play.data.validation.Valid;
+import play.libs.F.Promise;
 import play.mvc.Controller;
 
 public class Register extends Controller {
@@ -41,7 +42,7 @@ public class Register extends Controller {
     		membershipRequest.club = club;
     		membershipRequest.save();
     		club.membershipRequests.add(membershipRequest);
-    		Notifier.instance().registrationCompleted(membershipRequest);
+    		Promise promise = Notifier.instance().registrationCompleted(membershipRequest);
     	}
     }
 

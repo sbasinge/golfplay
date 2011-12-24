@@ -1,0 +1,5 @@
+#{extends 'emailTemplate.html' /}
+<div class="section">
+	<h1>The teetime for ${teetime.date} at ${teetime.teeSet?.course?.name} has been updated.</h1>
+	<p>${participant.user.name} has reserved a spot on the Tee Time at ${participant.teetime.course.name} on ${participant.teetime.date}. There are now ${participant.teetime.getNumOpenSpots()} spots left.</p>
+</div>

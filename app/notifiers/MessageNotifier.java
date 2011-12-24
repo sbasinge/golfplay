@@ -6,24 +6,25 @@ import models.Score;
 import models.TeeTime;
 import models.TeeTimeParticipant;
 import models.User;
+import play.libs.F.Promise;
 
 
 public interface MessageNotifier {
 
-	public abstract void registrationCompleted(MembershipRequest membershipRequest);
+	public abstract Promise registrationCompleted(MembershipRequest membershipRequest);
 
-	public abstract void membershipRejected(MembershipRequest membershipRequest);
+	public abstract Promise membershipRejected(MembershipRequest membershipRequest);
 
-	public abstract void membershipAccepted(MembershipRequest membershipRequest);
+	public abstract Promise membershipAccepted(MembershipRequest membershipRequest);
 
-	public abstract void handicapCalculated(User user);
+	public abstract Promise handicapCalculated(User user);
 	
-	public abstract void scoreUpdated(Score score);
+	public abstract Promise scoreUpdated(Score score);
 
-	public abstract void teetimeAdded(TeeTime teetime, Club club);
+	public abstract Promise teetimeAdded(TeeTime teetime, Club club);
 
-	public abstract void teetimeUpdated(TeeTimeParticipant participant, Club club);
+	public abstract Promise teetimeUpdated(TeeTimeParticipant participant, Club club);
 
-	public abstract void teetimeDeleted(TeeTime teetime, Club club);
+	public abstract Promise teetimeDeleted(TeeTime teetime, Club club);
 
 }

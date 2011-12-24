@@ -48,12 +48,11 @@ public class Members extends Application {
     public static void accept(Long requestId) {
     	MembershipRequest membershipRequest = MembershipRequest.findById(requestId);
     	Club clubSelection = membershipRequest.club;
-    	clubSelection.addMember(membershipRequest.user);
-        clubSelection.removeMemberShipRequest(membershipRequest);
+    	membershipRequest.user.clubs.add(membershipRequest.club);
         ClubRole clubRole = JPA.em().createNamedQuery("findClubRoleByNameAndClub",ClubRole.class).setParameter("roleName", Role.MEMBER_ROLE_NAME).setParameter("clubName", clubSelection.name).getSingleResult();
         membershipRequest.user.addClubRole(clubRole);
+        membershipRequest.user.save();
         membershipRequest.delete();
-        clubSelection.save();
         Notifier.instance().membershipAccepted(membershipRequest);
     	list();
     }

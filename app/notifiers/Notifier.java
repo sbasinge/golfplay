@@ -9,6 +9,7 @@ import models.Score;
 import models.TeeTime;
 import models.TeeTimeParticipant;
 import models.User;
+import play.libs.F.Promise;
 
 public class Notifier implements MessageNotifier {
 
@@ -28,59 +29,60 @@ public class Notifier implements MessageNotifier {
 		registrants.add(registrant);
 	}
 	
-	public void registrationCompleted(MembershipRequest membershipRequest) {
+	public Promise registrationCompleted(MembershipRequest membershipRequest) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.registrationCompleted(membershipRequest);
 		}
+		return null;
 	}
 
-	public void membershipRejected(MembershipRequest membershipRequest) {
+	public Promise membershipRejected(MembershipRequest membershipRequest) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.membershipRejected(membershipRequest);
 		}
-		
+		return null;
 	}
 
-	public void membershipAccepted(MembershipRequest membershipRequest) {
+	public Promise membershipAccepted(MembershipRequest membershipRequest) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.membershipAccepted(membershipRequest);
 		}
-		
+		return null;
 	}
 
-	public void handicapCalculated(User user) {
+	public Promise handicapCalculated(User user) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.handicapCalculated(user);
 		}
-		
+		return null;
 	}
 	
-	public void scoreUpdated(Score score) {
+	public Promise scoreUpdated(Score score) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.scoreUpdated(score);
 		}
-		
+		return null;
 	}
 
-	public void teetimeAdded(TeeTime teetime, Club club) {
+	public Promise teetimeAdded(TeeTime teetime, Club club) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.teetimeAdded(teetime, club);
 		}
-		
+		return null;
 	}
 
-	public void teetimeUpdated(TeeTimeParticipant participant, Club club) {
+	public Promise teetimeUpdated(TeeTimeParticipant participant, Club club) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.teetimeUpdated(participant, club);
 		}
-		
+		return null;
 	}
 
-	public void teetimeDeleted(TeeTime teetime, Club club) {
+	public Promise teetimeDeleted(TeeTime teetime, Club club) {
 		for (MessageNotifier notifier : registrants) {
 			notifier.teetimeDeleted(teetime, club);
 		}
-		
+		return null;
 	}
 
 }
