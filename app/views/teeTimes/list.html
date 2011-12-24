@@ -1,5 +1,5 @@
 #{extends 'template.html' /}
-#{set title:'Scores' /}
+#{set title:'Tee Times' /}
 
 <div class="section">
     <h1>Tee Times</h1>
@@ -22,7 +22,18 @@
 		      <td>${teeTime.course?.name}</td>
 		      <td>${teeTime.date?.format('MM/dd/yyyy hh:mm a')}</td>
 		      <td>${teeTime.getNumOpenSpots()}</td>
-		      <td><a href="@{view(teeTime._key())}">View</a>&nbsp;&nbsp;<a href="@{edit(teeTime._key())}">Edit</a>&nbsp;&nbsp;<a href="@{delete(teeTime._key())}">Delete</a></td>
+		      <td>
+		      	<a href="@{view(teeTime._key())}">View</a>&nbsp;&nbsp;
+		      	#{if user.canSignUp(teeTime) }
+			      	<a href="@{signUp(teeTime._key())}">SignUp</a>&nbsp;&nbsp;
+			    #{/if}
+		      	#{if user.isTeeTimeListUpdateable() }
+			      	<a href="@{edit(teeTime._key())}">Enter Scores</a>&nbsp;&nbsp;
+			    #{/if}
+		      	#{if user.isTeeTimeListDeleteable() }
+			      	<a href="@{delete(teeTime._key())}">Delete</a>
+			    #{/if}
+		      </td>
 		    </tr>
 		    %{ } }%
 		</tbody>

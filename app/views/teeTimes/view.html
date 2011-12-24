@@ -1,9 +1,9 @@
 #{extends 'template.html' /}
-#{set title:'Edit Club' /}
+#{set title:'View Teetime' /}
 
 #{set 'sidebar'}
         <div class="content">
-            <h1>Edit TeeTime</h1>
+            <h1>View TeeTime</h1>
 
             <p>
                 Change the club name, the url used to read blog posts and the url that links to your club's external web site. 
@@ -13,7 +13,7 @@
 #{/ set}
 
 <div class="section">
-    <h1>Edit Tee Time</h1>
+    <h1>View TeeTime</h1>
     
     #{form  @save()}
     	<fieldset>
@@ -56,8 +56,9 @@
 			    <thead>
 			        <tr>
 			        	<th>Member</th>
-			        	<th>Gross Score</th>
-			        	<th>Adjusted Score</th>
+			        	<th>Handicap</th>
+			        	<th>Course Index</th>
+			        	<th>BestBall Index</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -66,10 +67,13 @@
 				    	<input type="hidden" name="participant.id" id="teeTime.teeSet.id" value="${participant?.id}" size=4 disabled="disabled"/>
 				    	<td>${participant.user.name}</td>
 						<td>
-				        	<input type="number" id="grossScore" name="grossScore" size="16" value="${participant?.score?.grossScore}" disabled="disabled">
+				        	<input type="text" id="handicap" name="handicap" size="16" value="${participant?.user?.getHandicap()}" disabled="disabled">
 						</td>
 						<td>
-		            		<input type="number" id="adjustedScore" name="adjustedScore" size="16" value="${participant?.score?.adjustedScore}" disabled="disabled">
+				        	<input type="number" id="courseIndex" name="courseIndex" size="16" value="${participant?.courseIndex}" disabled="disabled">
+						</td>
+						<td>
+		            		<input type="number" id="bestBallIndex" name="bestBallIndex" size="16" value="${participant?.bestBallIndex}" disabled="disabled">
 						</td>
 				    </tr>
 				    %{ } }%

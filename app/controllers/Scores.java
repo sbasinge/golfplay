@@ -16,12 +16,14 @@ public class Scores extends Application {
 
 	
 	public static void list() {
-		User member = (User) renderArgs.get("member");
+		User member = (User) renderArgs.get("user");
 		List<Score> scores = new ArrayList<Score>();
 		if (member != null) {
-			scores = member.scores;
-		} else {
-			scores = Score.all().fetch();
+			if (member.isAbleToModifyOthersScores()) {
+				scores = Score.all().fetch();
+			} else {
+				scores = member.scores;
+			}
 		}
 		render(scores);
 	}
@@ -78,8 +80,16 @@ public class Scores extends Application {
     }
 
     public static void add() {
+		User member = (User) renderArgs.get("user");
+		List<User> members = new ArrayList<User>();
+		if (member != null) {
+			if (member.isAbleToModifyOthersScores()) {
+				members = User.findAll(); //TODO should be for the current club
+			} else {
+				members.add(member);
+			}
+		}
     	//TODO need to sort members and courses so they are easier to find.
-    	List<User> members = User.findAll(); //TODO should be for the current club
     	List<Course> courses = Course.findAll();
     	Score score = new Score();
     	render(score, courses, members);

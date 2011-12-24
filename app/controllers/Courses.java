@@ -25,7 +25,8 @@ public class Courses extends Application {
 
     public static void edit(Long id) {
     	Course course = Course.findById(id);
-        render(course);
+    	State[] states = State.values();
+    	render(course, states);
     }
 
     public static void view(Long id) {

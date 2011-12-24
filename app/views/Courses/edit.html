@@ -1,5 +1,5 @@
 #{extends 'template.html' /}
-#{set title:'Edit Club' /}
+#{set title:'Edit Course' /}
 
 #{set 'sidebar'}
         <div class="content">
@@ -56,7 +56,16 @@
 	    	#{field 'course.facility.address.state'}
 		        <p class="${field.errorClass}">
 			        <label for="${field.name}">&{'address.state'}</label>
-	            	<input type="text" name="${field.name}" size="45" value="${course?.facility?.address?.state}">
+			        <select name="${field.name}" id="${field.name}" value="${course?.facility?.address?.state}">
+						%{states.eachWithIndex() { state, k -> }%
+							#{if state.equals(course?.facility?.address?.state) }
+								<option value="${state}" selected="true">${state}&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						    #{/if}
+						    #{else}
+								<option value="${state}">${state}&nbsp;&nbsp;&nbsp;&nbsp;</option>
+						    #{/else}
+						%{ } }%
+					</select>	    	
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}

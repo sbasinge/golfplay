@@ -287,7 +287,7 @@ public class User extends GenericModel {
 	}
 	
     public boolean hasRole(String roleName) {
-    	log.info("Checking for role "+roleName + " in "+clubRoles);
+    	log.trace("Checking for role "+roleName + " in "+clubRoles);
     	boolean retVal = false;
     	for (ClubRole clubRole: clubRoles) {
     		if (roleName.equalsIgnoreCase(clubRole.role.name)) {
@@ -295,7 +295,7 @@ public class User extends GenericModel {
     			break;
     		}
     	}
-    	log.info("Checking for role "+roleName+", returning "+retVal);
+    	log.trace("Checking for role "+roleName+", returning "+retVal);
     	return retVal;
     }
     
@@ -348,9 +348,19 @@ public class User extends GenericModel {
 		this.handicap = handicap;
 	}
 
-//    public boolean isAbleToModifyOthersScores() {
-//    	boolean retVal = isClubSelected() && (hasRole("Admin") || hasRole("ClubAdmin"));
-//    	return retVal;
-//    }
+    public boolean isAbleToModifyOthersScores() {
+    	boolean retVal = (hasRole("Admin") || hasRole("ClubAdmin"));
+    	return retVal;
+    }
 
+    public boolean isSignedUp(TeeTime teetime) {
+    	log.info("Checking to see if {} is signed up for {}",username,teetime.id);
+    	return teeTimes.contains(teetime); 
+    }
+    
+    public boolean canSignUp(TeeTime teetime) {
+    	if (teetime.getNumOpenSpots() > 0 && !isSignedUp(teetime))
+    		return true;
+    	return false;
+    }
 }

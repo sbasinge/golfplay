@@ -21,7 +21,7 @@ public class Application extends Controller {
     			user.selectedClub = user.clubs.get(0);
     			renderArgs.put("selectedClub", user.selectedClub.name);
     		}
-            renderArgs.put("user", user.name);
+            renderArgs.put("user", user);
             List<SiteMessage> siteMessages = SiteMessage.find("select m from SiteMessage m join fetch m.user u where m.messageRead=false and u.username=?", user.username).fetch();
             Logger.trace("Found %d unread site messages for %s.", siteMessages.size(), user.username);
             renderArgs.put("siteMessages", siteMessages);

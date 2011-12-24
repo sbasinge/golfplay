@@ -100,6 +100,8 @@ teeSet.teeType=Tees
 
 teeTime.date=Date
 teeTime.add=New Tee Time
+teeTime.numPlayers=Number of Players
+teeTime.notificationOn=Send Notifications?
 
 user.username=Member
 
