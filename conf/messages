@@ -38,9 +38,6 @@ score=Score
 courseIndex=Course Index
 bestBallIndex=Best Ball Index
 type=Type
-username=User Name
-password=Password
-email=E-Mail Address
 phone=Phone #
 clubs=Clubs
 clubRoles=Roles
@@ -104,6 +101,13 @@ teeTime.numPlayers=Number of Players
 teeTime.notificationOn=Send Notifications?
 
 user.username=Member
+user.name=Full Name
+user.password=Password
+user.email=E-Mail Address
+user.phone=Phone Number
+user.save=Save
+user.cancel=Cancel
+user.changePassword=Change Password
 
 identity_loggedOut=You have successfully ended your session.
 identity_loggedIn=You're signed in as {0}.

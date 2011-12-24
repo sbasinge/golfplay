@@ -546,7 +546,8 @@
    date: 2011-08-20
    course: ChampionsCourse
    teeSet: ChampionsWhite
-   numPlayers: 4       
+   numPlayers: 4   
+   club: cmgc 
    
   TeeTimeParticipant(scott1tt1):
    user: scott

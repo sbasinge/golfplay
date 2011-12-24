@@ -1,0 +1,84 @@
+#{extends 'main.html' /}
+#{set title:'GolfPlus Main' /}
+
+<div class="section">
+	#{form  @save()}
+    	<fieldset>
+    		<legend class="ui-fieldset-legend ui-corner-all ui-state-default">Personal Info</legend>
+           	<input type="hidden" name="user.username" id="user.username" value="${user.username}">
+	    	#{field 'username'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'user.username'}</label>
+	            	<input type="text" name="${field.name}" size="45" value="${user.username}" disabled="disabled">
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'user.name'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'user.name'}</label>
+	            	<input type="text" name="${field.name}" size="45" value="${user.name}" >
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'user.email'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'user.email'}</label>
+	            	<input type="text" name="${field.name}" size="45" value="${user.email}" >
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+	    	#{field 'user.phone'}
+		        <p class="${field.errorClass}">
+			        <label for="${field.name}">&{'user.phone'}</label>
+	            	<input type="text" name="${field.name}" size="45" value="${user.phone}" >
+	        	    <span class="error">${field.error}</span>
+	    	    </p>
+		    #{/field}
+    		
+		</fieldset>
+    	<fieldset>
+    		<legend class="ui-fieldset-legend ui-corner-all ui-state-default">Notifications</legend>
+			<div style="clear:both;">
+				<label dir="ltr">Handicap</label>
+				<span dir="ltr">Email?
+					<input type="checkbox" name="user.handicapCalculateNotificationType.notifyByEmail" id="user.handicapCalculateNotificationType.notifyByEmail" value="true" ${user.handicapCalculateNotificationType.notifyByEmail ? 'checked="true"' : ''}>
+				</span>
+				<span dir="ltr">Text?
+					<input type="checkbox" name="user.handicapCalculateNotificationType.notifyByText" id="user.handicapCalculateNotificationType.notifyByText" value="true" ${user.handicapCalculateNotificationType.notifyByText ? 'checked="true"' : ''}>
+				</span>
+				<span dir="ltr">OnSite?
+					<input type="checkbox" name="user.handicapCalculateNotificationType.notifyOnSite" id="user.handicapCalculateNotificationType.notifyOnSite" value="true" ${user.handicapCalculateNotificationType.notifyOnSite ? 'checked="true"' : ''}>
+				</span>
+			</div>    		
+			<div style="clear:both;">
+				<label dir="ltr">Tee Times</label>
+				<span dir="ltr">Email?
+					<input type="checkbox" name="user.teeTimeFullNotificationType.notifyByEmail" id="user.teeTimeFullNotificationType.notifyByEmail" value="true" ${user.teeTimeFullNotificationType.notifyByEmail ? 'checked="true"' : ''}>
+				</span>
+				<span dir="ltr">Text?
+					<input type="checkbox" name="user.teeTimeFullNotificationType.notifyByText" id="user.teeTimeFullNotificationType.notifyByText" value="true" ${user.teeTimeFullNotificationType.notifyByText ? 'checked="true"' : ''}>
+				</span>
+				<span dir="ltr">OnSite?
+					<input type="checkbox" name="user.teeTimeFullNotificationType.notifyOnSite" id="user.teeTimeFullNotificationType.notifyOnSite" value="true" ${user.teeTimeFullNotificationType.notifyOnSite ? 'checked="true"' : ''}>
+				</span>
+			</div>    		
+			<div style="clear:both;">
+				<label dir="ltr">Sign Up</label>
+				<span dir="ltr">Email?
+					<input type="checkbox" name="user.newMemberShipNotificationType.notifyByEmail" id="user.newMemberShipNotificationType.notifyByEmail" value="true" ${user.newMemberShipNotificationType.notifyByEmail ? 'checked="true"' : ''}>
+				</span>
+				<span dir="ltr">Text?
+					<input type="checkbox" name="user.newMemberShipNotificationType.notifyByText" id="user.newMemberShipNotificationType.notifyByText" value="true" ${user.newMemberShipNotificationType.notifyByText ? 'checked="true"' : ''}>
+				</span>
+				<span dir="ltr">OnSite?
+					<input type="checkbox" name="user.newMemberShipNotificationType.notifyOnSite" id="user.newMemberShipNotificationType.notifyOnSite" value="true" ${user.newMemberShipNotificationType.notifyOnSite ? 'checked="true"' : ''}>
+				</span>
+			</div>    		
+		</fieldset>
+		<div class="buttonBox">
+			<input type="submit" id="save" value="&{'user.save'}"  />
+			<a id="cancel" href="@{cancel}" class="button">&{'user.cancel'}</a>
+			<a id="changePassword" href="@{changePassword}" class="button">&{'user.changePassword'}</a>
+		</div>
+	#{/form}
+</div>

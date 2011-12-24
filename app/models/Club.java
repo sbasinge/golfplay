@@ -35,6 +35,9 @@ public class Club extends BaseEntity {
     @OneToMany(cascade={CascadeType.ALL}, mappedBy="club")
     public List<MembershipRequest> membershipRequests = new ArrayList<MembershipRequest>();
 
+    @OneToMany(cascade={CascadeType.ALL}, mappedBy="club")
+    public List<TeeTime> teetimes = new ArrayList<TeeTime>();
+
 	public void addMemberShipRequest(MembershipRequest membershipRequest) {
 		membershipRequests.add(membershipRequest);
 		membershipRequest.user.membershipRequests.add(membershipRequest);

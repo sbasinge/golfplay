@@ -34,6 +34,9 @@ public class TeeTime extends BaseEntity {
     @ManyToOne
     public Tournament tournament;
 
+    @ManyToOne
+    public Club club;
+    
 	@Column
 	public boolean notificationOn;
 

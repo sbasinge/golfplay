@@ -51,7 +51,8 @@ public class SiteMessageNotifier implements MessageNotifier, Serializable {
 		return null;
 	}
 
-	public Promise teetimeAdded(TeeTime teetime, Club club) {
+	public Promise teetimeAdded(TeeTime teetime) {
+		Club club = teetime.club;
 		if (teetime.notificationOn && club != null) {
 			for (User user : club.members) {
 				if (user.newTeeTimeNotificationType.notifyOnSite) {
@@ -63,7 +64,8 @@ public class SiteMessageNotifier implements MessageNotifier, Serializable {
 		return null;
 	}
 
-	public Promise teetimeUpdated(TeeTimeParticipant participant, Club club) {
+	public Promise teetimeUpdated(TeeTimeParticipant participant) {
+		Club club = participant.teetime.club;
 		if (participant.teetime.notificationOn && club != null) {
 			for (User user : club.members) {
 				if (!user.username.equals(participant.user.username) && user.teeTimeFullNotificationType.notifyOnSite) {
@@ -75,7 +77,8 @@ public class SiteMessageNotifier implements MessageNotifier, Serializable {
 		return null;
 	}
 
-	public Promise teetimeDeleted(TeeTime teetime, Club club) {
+	public Promise teetimeDeleted(TeeTime teetime) {
+		Club club = teetime.club;
 		if (teetime.notificationOn && club != null) {
 			for (User user : club.members) {
 				if (user.teeTimeFullNotificationType.notifyOnSite) {

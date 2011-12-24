@@ -30,7 +30,7 @@
 						#{secure.check 'ScoreListVisible'}<a href="@{Scores.list()}">Scores</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'TeeTimeListVisible'}<a href="@{TeeTimes.list()}">Tee Times</a>&nbsp;|&nbsp;#{/secure.check}
 						#{secure.check 'TournamentListVisible'}<a href="@{Tournaments.list()}">Tournaments</a>&nbsp;|&nbsp;#{/secure.check}
-						#{secure.check 'AccountVisible'}<a href="@{Clubs.list()}">Account</a>&nbsp;|&nbsp;#{/secure.check}
+						#{secure.check 'AccountVisible'}<a href="@{Accounts.index()}">Account</a>&nbsp;|&nbsp;#{/secure.check}
 	                    #{loggedIn}<a href="@{Secure.logout()}">Log out</a>#{/loggedIn}
 				</nav>
 	    	</div>

@@ -3,7 +3,6 @@ package notifiers;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.Club;
 import models.MembershipRequest;
 import models.Score;
 import models.TeeTime;
@@ -64,23 +63,23 @@ public class Notifier implements MessageNotifier {
 		return null;
 	}
 
-	public Promise teetimeAdded(TeeTime teetime, Club club) {
+	public Promise teetimeAdded(TeeTime teetime) {
 		for (MessageNotifier notifier : registrants) {
-			notifier.teetimeAdded(teetime, club);
+			notifier.teetimeAdded(teetime);
 		}
 		return null;
 	}
 
-	public Promise teetimeUpdated(TeeTimeParticipant participant, Club club) {
+	public Promise teetimeUpdated(TeeTimeParticipant participant) {
 		for (MessageNotifier notifier : registrants) {
-			notifier.teetimeUpdated(participant, club);
+			notifier.teetimeUpdated(participant);
 		}
 		return null;
 	}
 
-	public Promise teetimeDeleted(TeeTime teetime, Club club) {
+	public Promise teetimeDeleted(TeeTime teetime) {
 		for (MessageNotifier notifier : registrants) {
-			notifier.teetimeDeleted(teetime, club);
+			notifier.teetimeDeleted(teetime);
 		}
 		return null;
 	}

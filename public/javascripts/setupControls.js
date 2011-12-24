@@ -24,19 +24,6 @@ $(document).ready(function() {
 	});
 
 	$(function() {
-		$( "#tabs1234" ).tabs({
-		});
-	});
-
-	$(function() {
-		$( ".crudNew a, #addButton" ).button();
-	});
-
-	$(function() {
-		$( "#crudListAdd a" ).button();
-	});
-
-	$(function() {
 		$("input[type='text'],input[type='password'],input[type='date'],input[type='datetime'],input[type='number']").addClass("ui-inputfield ui-inputtext ui-widget ui-corner-all");
 	});
 
@@ -55,7 +42,7 @@ $(document).ready(function() {
 	});
 
 	$(function() {
-		$( ".buttonBox a" ).button();
+		$( ".buttonBox a, .button, #cancel" ).button();
 	});
 
 	$(function() {

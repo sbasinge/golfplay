@@ -76,10 +76,11 @@ public class EmailNotifier extends Mailer implements MessageNotifier {
 		send(score);
 	}
 
-	public static void teetimeAddedEmail(TeeTime teetime, Club club) {
+	public static void teetimeAddedEmail(TeeTime teetime) {
+		Club club = teetime.club;
 		if (teetime.notificationOn && club != null) {
 			for (User user : club.members) {
-				if (user.handicapCalculateNotificationType.notifyByEmail || user.handicapCalculateNotificationType.notifyByText) {
+				if (user.teeTimeFullNotificationType.notifyByEmail || user.teeTimeFullNotificationType.notifyByText) {
 					setSubject("Teetime Added for %s", teetime.course.name);
 					//		addRecipient(user.email);
 					addRecipient("sbasinge@gmail.com");
@@ -90,10 +91,11 @@ public class EmailNotifier extends Mailer implements MessageNotifier {
 		}
 	}
 
-	public static void teetimeUpdatedEmail(TeeTimeParticipant participant, Club club) {
+	public static void teetimeUpdatedEmail(TeeTimeParticipant participant) {
+		Club club = participant.teetime.club;
 		if (participant.teetime.notificationOn && club != null) {
 			for (User user : club.members) {
-				if (!user.username.equals(participant.user.username) && (user.handicapCalculateNotificationType.notifyByEmail || user.handicapCalculateNotificationType.notifyByText)) {
+				if (!user.username.equals(participant.user.username) && (user.teeTimeFullNotificationType.notifyByEmail || user.teeTimeFullNotificationType.notifyByText)) {
 					setSubject("Teetime Updated %s", participant.user.name);
 					//		addRecipient(user.email);
 					addRecipient("sbasinge@gmail.com");
@@ -106,10 +108,11 @@ public class EmailNotifier extends Mailer implements MessageNotifier {
 
 	}
 
-	public static void teetimeDeletedEmail(TeeTime teetime, Club club) {
+	public static void teetimeDeletedEmail(TeeTime teetime) {
+		Club club = teetime.club;
 		if (teetime.notificationOn && club != null) {
 			for (User user : club.members) {
-				if (user.handicapCalculateNotificationType.notifyByEmail || user.handicapCalculateNotificationType.notifyByText) {
+				if (user.teeTimeFullNotificationType.notifyByEmail || user.teeTimeFullNotificationType.notifyByText) {
 					setSubject("Teetime Deleted %s", teetime.course.name);
 					//		addRecipient(user.email);
 					addRecipient("sbasinge@gmail.com");
@@ -145,18 +148,18 @@ public class EmailNotifier extends Mailer implements MessageNotifier {
 		return null;
 	}
 
-	public Promise teetimeAdded(TeeTime teetime, Club club) {
-		EmailNotifier.teetimeAddedEmail(teetime, club);
+	public Promise teetimeAdded(TeeTime teetime) {
+		EmailNotifier.teetimeAddedEmail(teetime);
 		return null;
 	}
 
-	public Promise teetimeUpdated(TeeTimeParticipant participant, Club club) {
-		EmailNotifier.teetimeUpdatedEmail(participant, club);
+	public Promise teetimeUpdated(TeeTimeParticipant participant) {
+		EmailNotifier.teetimeUpdatedEmail(participant);
 		return null;
 	}
 
-	public Promise teetimeDeleted(TeeTime teetime, Club club) {
-		EmailNotifier.teetimeDeletedEmail(teetime, club);
+	public Promise teetimeDeleted(TeeTime teetime) {
+		EmailNotifier.teetimeDeletedEmail(teetime);
 		return null;
 	}
 }

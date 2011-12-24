@@ -21,7 +21,8 @@ public class TeeTimes extends Application {
 //		String selectedClub = (String) renderArgs.get("selectedClub");
 		//TODO should get teetimes for current club only.
 		List<TeeTime> teeTimes = new ArrayList<TeeTime>();
-		teeTimes = TeeTime.all().fetch();
+		User user = (User) renderArgs.get("user");
+		teeTimes = TeeTime.find("byClub",user.selectedClub).fetch();
 		render(teeTimes);
 	}
 	
@@ -46,6 +47,7 @@ public class TeeTimes extends Application {
     	String[] grossScores = params.getAll("grossScore");
     	String[] adjustedScores = params.getAll("adjustedScore");
     	String[] participants = params.getAll("participant");
+    	User user = (User) renderArgs.get("user");
     	boolean adding = false;
     	if (teeTime.id == null) {
     		adding = true;
@@ -79,9 +81,10 @@ public class TeeTimes extends Application {
     			i++;
     		}
     	}
+    	teeTime.club = user.selectedClub;
     	teeTime.save();
     	if (adding) {
-    		Notifier.instance().teetimeAdded(teeTime, null);	//TODO figure out where to get current selected club and/or assign all teetimes to a club
+    		Notifier.instance().teetimeAdded(teeTime);	
     	}
     	list();
     }
@@ -99,7 +102,7 @@ public class TeeTimes extends Application {
     	user.teeTimes.add(teeTime);
     	user.save();
     	participant.save();
-    	Notifier.instance().teetimeUpdated(participant, participant.user.selectedClub);
+    	Notifier.instance().teetimeUpdated(participant);
     	list();
     }
     
