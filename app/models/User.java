@@ -31,6 +31,7 @@ import play.data.validation.Phone;
 import play.data.validation.Required;
 import play.data.validation.Unique;
 import play.db.jpa.GenericModel;
+import play.libs.Crypto;
 
 @Entity
 public class User extends GenericModel {
@@ -49,7 +50,7 @@ public class User extends GenericModel {
     
     @Required
     @MinSize(5)
-    @MaxSize(15)
+    @MaxSize(32)
     public String password;
     
     @Required
@@ -122,6 +123,18 @@ public class User extends GenericModel {
         this(name, username, email);
         this.password = password;
     }
+
+	public void setPassword(String password) {
+		if (password != null)
+			this.password = Crypto.encryptAES(password); 
+	}
+	
+	public String getPassword() {
+		if (password != null && password.length()>0)
+			return Crypto.decryptAES(password);
+		else
+			return null;
+	}
 
     @Transient
     public String getEmailWithName() {
