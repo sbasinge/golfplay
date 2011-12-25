@@ -42,7 +42,7 @@ $(document).ready(function() {
 	});
 
 	$(function() {
-		$( ".buttonBox a, .button, #cancel" ).button();
+		$( "input[type='button'], .buttonBox a, #addButton, .button" ).button();
 	});
 
 	$(function() {

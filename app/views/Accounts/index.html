@@ -1,20 +1,32 @@
-#{extends 'main.html' /}
+#{extends 'template.html' /}
 #{set title:'GolfPlus Main' /}
 
 <div class="section">
-	#{form  @save()}
+	#{form  @save(), enctype:'multipart/form-data'}
     	<fieldset>
     		<legend class="ui-fieldset-legend ui-corner-all ui-state-default">Personal Info</legend>
-           	<input type="hidden" name="user.username" id="user.username" value="${user.username}">
-	    	#{field 'username'}
-		        <p class="${field.errorClass}">
+	    	#{field 'user.username'}
+		        <p class="${field.errorClass}" >
 			        <label for="${field.name}">&{'user.username'}</label>
-	            	<input type="text" name="${field.name}" size="45" value="${user.username}" disabled="disabled">
+			        ${user.username}
+	            	<input type="hidden" name="${field.name}" size="45" value="${user.username}">
 	        	    <span class="error">${field.error}</span>
 	    	    </p>
 		    #{/field}
+    		
+    		#{if user.image.getUUID()}
+				<label for="user.image.view" style="clear:both;">&{'user.image'}</label>
+	    		<img id="user.image.view" src="@{Accounts.getPicture()}" />
+			    <input type="file" name="user.image" />
+			    <a class="button" href="@{Accounts.resetPicture()}">Reset</a>
+    		#{/if}
+    		#{else}
+				<label for="user.image" style="clear:both;">&{'user.image'}</label>
+			    <input type="file" name="user.image" />
+    		#{/else}
+    		
 	    	#{field 'user.name'}
-		        <p class="${field.errorClass}">
+		        <p class="${field.errorClass}" style="clear:both;">
 			        <label for="${field.name}">&{'user.name'}</label>
 	            	<input type="text" name="${field.name}" size="45" value="${user.name}" >
 	        	    <span class="error">${field.error}</span>
@@ -36,6 +48,7 @@
 		    #{/field}
     		
 		</fieldset>
+		<br/>
     	<fieldset>
     		<legend class="ui-fieldset-legend ui-corner-all ui-state-default">Notifications</legend>
 			<div style="clear:both;">
@@ -77,8 +90,8 @@
 		</fieldset>
 		<div class="buttonBox">
 			<input type="submit" id="save" value="&{'user.save'}"  />
-			<a id="cancel" href="@{cancel}" class="button">&{'user.cancel'}</a>
-			<a id="changePassword" href="@{changePassword}" class="button">&{'user.changePassword'}</a>
+			<a id="cancel" href="@{cancel}" >&{'user.cancel'}</a>
+			<a id="changePassword" href="@{changePassword}" >&{'user.changePassword'}</a>
 		</div>
 	#{/form}
 </div>

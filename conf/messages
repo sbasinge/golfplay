@@ -108,6 +108,7 @@ user.phone=Phone Number
 user.save=Save
 user.cancel=Cancel
 user.changePassword=Change Password
+user.image=Avatar
 
 identity_loggedOut=You have successfully ended your session.
 identity_loggedIn=You're signed in as {0}.

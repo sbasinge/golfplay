@@ -30,6 +30,7 @@ import play.data.validation.MinSize;
 import play.data.validation.Phone;
 import play.data.validation.Required;
 import play.data.validation.Unique;
+import play.db.jpa.Blob;
 import play.db.jpa.GenericModel;
 import play.libs.Crypto;
 
@@ -47,6 +48,8 @@ public class User extends GenericModel {
     @MaxSize(15)
     @Match(value="^\\w*$", message="Not a valid username")
     public String username;
+    
+    public Blob image;  
     
     @Required
     @MinSize(5)
